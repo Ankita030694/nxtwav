@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Headphones, Instagram } from "lucide-react";
+import { Headphones, Instagram, Youtube } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
@@ -31,6 +31,15 @@ export function Footer() {
                 aria-label="Instagram"
               >
                 <Instagram className="w-5 h-5" />
+              </a>
+              <a 
+                href="https://www.youtube.com/@nxtwavacademy" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-muted/80 transition-colors"
+                aria-label="YouTube"
+              >
+                <Youtube className="w-5 h-5" />
               </a>
               <a 
                 href="https://soundcloud.com/nxtwavacademy" 

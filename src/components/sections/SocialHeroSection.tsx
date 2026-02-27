@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Instagram, Sparkles } from "lucide-react";
+import { Instagram, Sparkles, Youtube } from "lucide-react";
 import heroStudio from "@/assets/hero-studio.jpg";
 
 export function SocialHeroSection() {
@@ -45,6 +45,16 @@ export function SocialHeroSection() {
               <a href="https://www.instagram.com/nxtwavacademy/" target="_blank" rel="noopener noreferrer">
                 <Instagram className="w-5 h-5 mr-2" />
                 Follow on Instagram
+              </a>
+            </Button>
+            <Button
+              size="lg"
+              className="bg-[#FF0000] hover:bg-[#FF0000]/90 text-white border-transparent"
+              asChild
+            >
+              <a href="https://www.youtube.com/@nxtwavacademy" target="_blank" rel="noopener noreferrer">
+                <Youtube className="w-5 h-5 mr-2" />
+                Watch on YouTube
               </a>
             </Button>
             <Button

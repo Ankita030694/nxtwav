@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Music2, MessageCircle, Instagram } from "lucide-react";
+import { ArrowRight, Music2, MessageCircle, Instagram, Youtube } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export function CommunityCtaSection() {
@@ -54,6 +54,15 @@ export function CommunityCtaSection() {
                 aria-label="Instagram"
               >
                 <Instagram className="w-6 h-6 text-muted-foreground group-hover:text-white" />
+              </a>
+              <a
+                href="https://www.youtube.com/@nxtwavacademy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 rounded-xl bg-muted hover:bg-[#FF0000] transition-all group"
+                aria-label="YouTube"
+              >
+                <Youtube className="w-6 h-6 text-muted-foreground group-hover:text-white" />
               </a>
               <a
                 href="https://soundcloud.com/nxtwavacademy"
