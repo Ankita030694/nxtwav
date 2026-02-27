@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import { Play, ArrowRight } from "lucide-react";
 import { AnimatedCounter } from "@/components/ui/animated-counter";
 import heroStudio from "@/assets/hero-studio.jpg";
@@ -38,13 +39,13 @@ export function HeroSection() {
             We don't just teach beats - we teach business. Join founders live in the studio every month.
           </p>
 
-          {/* CTAs */}
           <div className="flex flex-wrap gap-4 mb-12 animate-fade-in" style={{ animationDelay: '0.3s' }}>
-            <Button size="lg" className="bg-gradient-cta hover:opacity-90 text-primary-foreground shadow-glow-blue">
-              Explore Courses
-              <ArrowRight className="w-5 h-5 ml-2" />
+            <Button size="lg" className="bg-gradient-cta hover:opacity-90 text-primary-foreground shadow-glow-blue" asChild>
+              <Link to="/courses">
+                Explore Courses
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Link>
             </Button>
-           
           </div>
 
          

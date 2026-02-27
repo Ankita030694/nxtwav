@@ -27,7 +27,10 @@ export function AboutHero() {
             className="bg-gradient-cta hover:opacity-90 text-primary-foreground px-8 py-6 text-lg"
             asChild
           >
-          
+            <Link to="/courses">
+              Explore Our Courses
+              <ArrowRight className="w-5 h-5 ml-2" />
+            </Link>
           </Button>
         </div>
       </div>

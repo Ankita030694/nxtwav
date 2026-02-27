@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
@@ -23,20 +23,20 @@ export function Navigation() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border">
       <nav className="container mx-auto px-4 h-16 flex items-center justify-between">
         {/* Logo */}
-        <a href="/" className="flex items-center gap-2 group">
+        <Link to="/" className="flex items-center gap-2 group">
           <img 
             src={nxtwavLogo} 
             alt="NXTwav Academy" 
             className="h-10 md:h-12 w-auto"
           />
-        </a>
+        </Link>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.href}
-              href={link.href}
+              to={link.href}
               className={`text-sm font-medium transition-colors hover:text-primary ${
                 location.pathname === link.href
                   ? "text-primary"
@@ -44,7 +44,7 @@ export function Navigation() {
               }`}
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </div>
 
@@ -55,12 +55,9 @@ export function Navigation() {
           ) : user ? (
             <UserMenu />
           ) : (
-            <>
-
-              <Button size="sm" className="bg-gradient-cta hover:opacity-90 text-primary-foreground" asChild>
-                <a href="/auth/signup">Start Learning</a>
-              </Button>
-            </>
+            <Button size="sm" className="bg-gradient-cta hover:opacity-90 text-primary-foreground" asChild>
+              <Link to="/auth/signup">Start Learning</Link>
+            </Button>
           )}
         </div>
 
@@ -79,9 +76,9 @@ export function Navigation() {
         <div className="md:hidden bg-background border-b border-border">
           <div className="container mx-auto px-4 py-4 flex flex-col gap-4">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.href}
-                href={link.href}
+                to={link.href}
                 onClick={() => setIsOpen(false)}
                 className={`text-sm font-medium transition-colors ${
                   location.pathname === link.href
@@ -90,7 +87,7 @@ export function Navigation() {
                 }`}
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
             <div className="flex flex-col gap-2 pt-4 border-t border-border">
               {loading ? (
@@ -98,17 +95,14 @@ export function Navigation() {
               ) : user ? (
                 <>
                   <Button variant="ghost" size="sm" asChild onClick={() => setIsOpen(false)}>
-                    <a href="/dashboard">Dashboard</a>
+                    <Link to="/dashboard">Dashboard</Link>
                   </Button>
                   <UserMenu />
                 </>
               ) : (
-                <>
-
-                  <Button size="sm" className="bg-gradient-cta hover:opacity-90 text-primary-foreground" asChild onClick={() => setIsOpen(false)}>
-                    <a href="/auth/signup">Start Learning</a>
-                  </Button>
-                </>
+                <Button size="sm" className="bg-gradient-cta hover:opacity-90 text-primary-foreground" asChild onClick={() => setIsOpen(false)}>
+                  <Link to="/auth/signup">Start Learning</Link>
+                </Button>
               )}
             </div>
           </div>
