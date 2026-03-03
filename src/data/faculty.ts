@@ -1,4 +1,12 @@
-// Faculty data for the About page
+import aryaman1 from "@/assets/faculty/aryaman1.jpg";
+import aryaman2 from "@/assets/faculty/aryaman2.jpg";
+import aryaman3 from "@/assets/faculty/aryaman3.jpg";
+import kamazaki1 from "@/assets/faculty/kamazaki1.png";
+import kamazaki2 from "@/assets/faculty/kamazaki2.png";
+import kamazaki3 from "@/assets/faculty/kamazaki3.png";
+import sureal1 from "@/assets/faculty/sureal1.jpg";
+import sureal2 from "@/assets/faculty/sureal2.jpg";
+import sureal3 from "@/assets/faculty/sureal3.jpg";
 
 export interface Faculty {
   id: string;
@@ -6,6 +14,7 @@ export interface Faculty {
   stageName: string;
   role: string;
   photo: string;
+  photos: string[];
   bio: string;
   specialty: string;
   socialLinks: {
@@ -21,7 +30,8 @@ export const faculty: Faculty[] = [
     name: "Su Real",
     stageName: "Su Real",
     role: "Faculty",
-    photo: "/placeholder.svg",
+    photo: sureal1,
+    photos: [sureal1, sureal2, sureal3],
     bio: "Su Real is a pioneering bass music producer and DJ who has been at the forefront of India's electronic music scene. Known for blending Indian sounds with heavy bass and hip-hop influences, he brings a unique perspective to music production education.",
     specialty: "Bass Music & Production",
     socialLinks: {
@@ -31,10 +41,11 @@ export const faculty: Faculty[] = [
   },
   {
     id: "vylom",
-    name: "Vylom",
-    stageName: "Vylom",
+    name: "Kamazaki",
+    stageName: "Kamazaki",
     role: "Faculty",
-    photo: "/placeholder.svg",
+    photo: kamazaki1,
+    photos: [kamazaki1, kamazaki2, kamazaki3],
     bio: "Vylom is an acclaimed electronic music producer known for his intricate sound design and innovative production techniques. His expertise in creating atmospheric and melodic electronic music makes him an invaluable mentor for aspiring producers.",
     specialty: "Electronic Production & Sound Design",
     socialLinks: {
@@ -44,14 +55,16 @@ export const faculty: Faculty[] = [
   },
   {
     id: "aryaman",
-    name: "Aryaman Agarwal",
-    stageName: "Aryaman",
+    name: "Aryaman Aggarwal",
+    stageName: "ARYAMAN AGGARWAL",
     role: "Faculty",
-    photo: "/placeholder.svg",
-    bio: "Aryaman Agarwal is a respected figure in the Indian electronic music scene, known for his work at Lost Stories Academy. His extensive experience in music production and artist development helps students understand both the creative and business sides of the industry.",
-    specialty: "Music Production & Artist Development",
+    photo: aryaman1,
+    photos: [aryaman1, aryaman2, aryaman3],
+    bio: "Graduated in Digital Sound Producer (Advanced) from Pyramind @ San Francisco. Certified Avid Pro Tools Operator, Apple Logic Pro X certified, and an Ableton Certified Trainer with 13+ years of teaching experience (450+ students).",
+    specialty: "Music Production & Sound Design",
     socialLinks: {
-      instagram: "https://www.instagram.com/aryamanagarwal/",
+      instagram: "https://www.instagram.com/aryamanaggarwal/",
     },
   },
 ];
+

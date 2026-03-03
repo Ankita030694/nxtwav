@@ -24,17 +24,15 @@ export function BeatDetectionPuzzle({ onComplete, onClose }: PuzzleComponentProp
   const [accuracy, setAccuracy] = useState<("hit" | "miss" | "extra")[]>([]);
 
   const audioContextRef = useRef<AudioContext | null>(null);
-  const oscillatorRef = useRef<OscillatorNode | null>(null);
-  const gainRef = useRef<GainNode | null>(null);
   const startTimeRef = useRef<number>(0);
   const animationRef = useRef<number>(0);
+  const userClicksRef = useRef<number[]>([]);
+  const timeoutsRef = useRef<number[]>([]);
 
   const duration = 8; // 8 seconds
 
-  const playBeat = useCallback((frequency: number = 100, duration: number = 0.1) => {
-    if (!audioContextRef.current) {
-      audioContextRef.current = new AudioContext();
-    }
+  const playBeat = useCallback((time: number, frequency: number = 100, duration: number = 0.1) => {
+    if (!audioContextRef.current) return;
     
     const ctx = audioContextRef.current;
     const osc = ctx.createOscillator();
@@ -46,76 +44,20 @@ export function BeatDetectionPuzzle({ onComplete, onClose }: PuzzleComponentProp
     osc.frequency.value = frequency;
     osc.type = "sine";
     
-    gain.gain.setValueAtTime(0.5, ctx.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + duration);
+    gain.gain.setValueAtTime(0, time);
+    gain.gain.linearRampToValueAtTime(0.5, time + 0.01);
+    gain.gain.exponentialRampToValueAtTime(0.01, time + duration);
     
-    osc.start(ctx.currentTime);
-    osc.stop(ctx.currentTime + duration);
+    osc.start(time);
+    osc.stop(time + duration);
   }, []);
 
-  const startPlayback = useCallback(() => {
-    if (!audioContextRef.current) {
-      audioContextRef.current = new AudioContext();
-    }
-    
-    audioContextRef.current.resume();
-    startTimeRef.current = audioContextRef.current.currentTime;
-    setIsPlaying(true);
-    setUserClicks([]);
-    setShowResult(false);
-    
-    // Schedule beats
-    BEAT_TIMES.forEach((beatTime) => {
-      const isKick = KICK_TIMES.includes(beatTime);
-      setTimeout(() => {
-        if (isKick) {
-          playBeat(80, 0.15); // Lower frequency for kick
-        } else {
-          playBeat(200, 0.05); // Higher frequency for hi-hat
-        }
-      }, beatTime * 1000);
-    });
-
-    // Animation loop
-    const animate = () => {
-      if (!audioContextRef.current) return;
-      
-      const elapsed = audioContextRef.current.currentTime - startTimeRef.current;
-      setCurrentTime(elapsed);
-      
-      if (elapsed < duration) {
-        animationRef.current = requestAnimationFrame(animate);
-      } else {
-        setIsPlaying(false);
-        calculateScore();
-      }
-    };
-    
-    animationRef.current = requestAnimationFrame(animate);
-  }, [playBeat]);
-
-  const stopPlayback = () => {
-    setIsPlaying(false);
-    if (animationRef.current) {
-      cancelAnimationFrame(animationRef.current);
-    }
-  };
-
-  const handleClick = () => {
-    if (!isPlaying || !audioContextRef.current) return;
-    
-    const clickTime = audioContextRef.current.currentTime - startTimeRef.current;
-    setUserClicks((prev) => [...prev, clickTime]);
-    
-    // Visual feedback
-    playBeat(400, 0.05);
-  };
-
-  const calculateScore = () => {
+  const calculateScore = useCallback(() => {
+    const finalClicks = userClicksRef.current;
     const kicksHit: boolean[] = new Array(KICK_TIMES.length).fill(false);
     const clickAccuracy: ("hit" | "miss" | "extra")[] = [];
     
-    userClicks.forEach((click) => {
+    finalClicks.forEach((click) => {
       let foundMatch = false;
       KICK_TIMES.forEach((kickTime, index) => {
         if (Math.abs(click - kickTime) <= TOLERANCE && !kicksHit[index]) {
@@ -132,12 +74,84 @@ export function BeatDetectionPuzzle({ onComplete, onClose }: PuzzleComponentProp
     setScore(calculatedScore);
     setAccuracy(clickAccuracy);
     setShowResult(true);
+  }, []);
+
+  const startPlayback = useCallback(() => {
+    if (!audioContextRef.current || audioContextRef.current.state === "closed") {
+      audioContextRef.current = new AudioContext();
+    }
+    
+    const ctx = audioContextRef.current;
+    ctx.resume();
+    
+    startTimeRef.current = ctx.currentTime;
+    userClicksRef.current = [];
+    setUserClicks([]);
+    setShowResult(false);
+    setIsPlaying(true);
+    
+    // Schedule audio accurately
+    KICK_TIMES.forEach((beatTime) => {
+      playBeat(ctx.currentTime + beatTime, 80, 0.15);
+    });
+    
+    BEAT_TIMES.filter(t => !KICK_TIMES.includes(t)).forEach((beatTime) => {
+      playBeat(ctx.currentTime + beatTime, 200, 0.05);
+    });
+
+    const animate = () => {
+      const elapsed = ctx.currentTime - startTimeRef.current;
+      setCurrentTime(elapsed);
+      
+      if (elapsed < duration) {
+        animationRef.current = requestAnimationFrame(animate);
+      } else {
+        setIsPlaying(false);
+        calculateScore();
+      }
+    };
+    
+    animationRef.current = requestAnimationFrame(animate);
+  }, [playBeat, calculateScore]);
+
+  const stopPlayback = useCallback(() => {
+    setIsPlaying(false);
+    if (animationRef.current) {
+      cancelAnimationFrame(animationRef.current);
+    }
+    // Re-create context to stop scheduled sounds
+    if (audioContextRef.current) {
+      audioContextRef.current.close();
+      audioContextRef.current = null;
+    }
+  }, []);
+
+  const handleClick = () => {
+    if (!isPlaying || !audioContextRef.current) return;
+    
+    const ctx = audioContextRef.current;
+    const clickTime = ctx.currentTime - startTimeRef.current;
+    
+    userClicksRef.current.push(clickTime);
+    setUserClicks([...userClicksRef.current]);
+    
+    // Low-latency visual feedback sound
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.frequency.value = 400;
+    gain.gain.setValueAtTime(0.2, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.05);
+    osc.start();
+    osc.stop(ctx.currentTime + 0.05);
   };
 
   const reset = () => {
     stopPlayback();
     setCurrentTime(0);
     setUserClicks([]);
+    userClicksRef.current = [];
     setShowResult(false);
     setScore(0);
   };
@@ -148,10 +162,8 @@ export function BeatDetectionPuzzle({ onComplete, onClose }: PuzzleComponentProp
 
   useEffect(() => {
     return () => {
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current);
-      }
-      audioContextRef.current?.close();
+      if (animationRef.current) cancelAnimationFrame(animationRef.current);
+      if (audioContextRef.current) audioContextRef.current.close();
     };
   }, []);
 

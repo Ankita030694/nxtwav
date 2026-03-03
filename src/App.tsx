@@ -22,6 +22,9 @@ import TermsOfService from "./pages/TermsOfService";
 import RefundPolicy from "./pages/RefundPolicy";
 import NotFound from "./pages/NotFound";
 import Leads from "./pages/Leads";
+import AddBlogs from "./pages/AddBlogs";
+import Blog from "./pages/Blog";
+import BlogPostDetail from "./pages/BlogPostDetail";
 
 const queryClient = new QueryClient();
 
@@ -50,6 +53,9 @@ const App = () => (
             <Route path="/terms-of-service" element={<TermsOfService />} />
             <Route path="/refund-policy" element={<RefundPolicy />} />
             <Route path="/leads" element={<Leads />} />
+            <Route path="/addblogs" element={<AddBlogs />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogPostDetail />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

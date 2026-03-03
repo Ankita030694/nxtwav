@@ -1,10 +1,18 @@
 import { useState } from "react";
-import { Instagram, ExternalLink } from "lucide-react";
-import { founders } from "@/data/founders";
+import { Instagram, ExternalLink, X, Plus } from "lucide-react";
+import { founders, Founder } from "@/data/founders";
 import { cn } from "@/lib/utils";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 export function FoundersSection() {
   const [activeFounder, setActiveFounder] = useState<string | null>(null);
+  const [selectedFounder, setSelectedFounder] = useState<Founder | null>(null);
 
   return (
     <section className="py-24 bg-card/50">
@@ -28,102 +36,186 @@ export function FoundersSection() {
             const isActive = activeFounder === founder.id;
 
             return (
-              <div
-                key={founder.id}
-                className={cn(
-                  "group relative rounded-2xl overflow-hidden bg-card border transition-all duration-500",
-                  isActive 
-                    ? `border-${colorClass}/50 shadow-lg` 
-                    : "border-border hover:border-muted-foreground/30"
-                )}
-                onMouseEnter={() => setActiveFounder(founder.id)}
-                onMouseLeave={() => setActiveFounder(null)}
-              >
-                {/* Image Container */}
-                <div className="relative aspect-square overflow-hidden">
-                  <img
-                    src={founder.photo}
-                    alt={founder.name}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  
+              <Dialog key={founder.id}>
+                <DialogTrigger asChild>
+                  <div
+                    className={cn(
+                      "group relative rounded-2xl overflow-hidden bg-card border transition-all duration-500 cursor-pointer",
+                      isActive 
+                        ? `border-${colorClass}/50 shadow-lg` 
+                        : "border-border hover:border-muted-foreground/30"
+                    )}
+                    onMouseEnter={() => setActiveFounder(founder.id)}
+                    onMouseLeave={() => setActiveFounder(null)}
+                    onClick={() => setSelectedFounder(founder)}
+                  >
+                    {/* Image Container */}
+                    <div className="relative aspect-square overflow-hidden">
+                      <img
+                        src={founder.photo}
+                        alt={founder.name}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      
+                      {/* Hover Overlay */}
+                      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <div className="bg-white/10 backdrop-blur-md border border-white/20 p-3 rounded-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                          <Plus className="w-6 h-6 text-white" />
+                        </div>
+                      </div>
 
+                      {/* Color accent bar */}
+                      <div className={cn(
+                        "absolute bottom-0 left-0 right-0 h-1 transition-all duration-300",
+                        colorClass === "primary" && "bg-primary",
+                        colorClass === "secondary" && "bg-secondary",
+                        colorClass === "accent" && "bg-accent",
+                        isActive ? "opacity-100" : "opacity-50"
+                      )} />
+                    </div>
 
-                  {/* Color accent bar */}
-                  <div className={cn(
-                    "absolute bottom-0 left-0 right-0 h-1 transition-all duration-300",
-                    colorClass === "primary" && "bg-primary",
-                    colorClass === "secondary" && "bg-secondary",
-                    colorClass === "accent" && "bg-accent",
-                    isActive ? "opacity-100" : "opacity-50"
-                  )} />
-                </div>
+                    {/* Content */}
+                    <div className="p-6">
+                      <div className="flex items-start justify-between mb-2">
+                        <div>
+                          <h3 className="font-display text-xl font-bold text-foreground">
+                            {founder.name}
+                          </h3>
+                          <p className={cn(
+                            "font-medium text-sm",
+                            colorClass === "primary" && "text-primary",
+                            colorClass === "secondary" && "text-secondary",
+                            colorClass === "accent" && "text-accent",
+                          )}>
+                            {founder.stageName}
+                          </p>
+                        </div>
+                        
+                        {/* Social Links - Stop propagation to allow clicking icons */}
+                        <div className="flex gap-2" onClick={(e) => e.stopPropagation()}>
+                          {founder.socialLinks.instagram && (
+                            <a
+                              href={founder.socialLinks.instagram}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="p-2 rounded-full bg-muted hover:bg-muted-foreground/20 transition-colors"
+                            >
+                              <Instagram className="w-4 h-4 text-muted-foreground" />
+                            </a>
+                          )}
+                        </div>
+                      </div>
 
-                {/* Content */}
-                <div className="p-6">
-                  <div className="flex items-start justify-between mb-2">
-                    <div>
-                      <h3 className="font-display text-xl font-bold text-foreground">
-                        {founder.name}
-                      </h3>
-                      <p className={cn(
-                        "font-medium text-sm",
+                      <p className="text-sm font-semibold text-muted-foreground mb-3">
+                        {founder.role}
+                      </p>
+
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        <span className={cn(
+                          "px-3 py-1 rounded-full text-[10px] uppercase tracking-wider font-bold",
+                          colorClass === "primary" && "bg-primary/10 text-primary",
+                          colorClass === "secondary" && "bg-secondary/10 text-secondary",
+                          colorClass === "accent" && "bg-accent/10 text-accent",
+                        )}>
+                          {founder.specialty}
+                        </span>
+                      </div>
+
+                      {/* Short Bio */}
+                      <p className="text-sm text-muted-foreground line-clamp-3 mb-4 leading-relaxed">
+                        {founder.shortBio}
+                      </p>
+
+                      <button className={cn(
+                        "text-xs font-bold flex items-center gap-1 group/btn",
                         colorClass === "primary" && "text-primary",
                         colorClass === "secondary" && "text-secondary",
                         colorClass === "accent" && "text-accent",
                       )}>
-                        {founder.stageName}
-                      </p>
-                    </div>
-                    
-                    {/* Social Links */}
-                    <div className="flex gap-2">
-                      {founder.socialLinks.instagram && (
-                        <a
-                          href={founder.socialLinks.instagram}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="p-2 rounded-full bg-muted hover:bg-muted-foreground/20 transition-colors"
-                        >
-                          <Instagram className="w-4 h-4 text-muted-foreground" />
-                        </a>
-                      )}
-                      {founder.socialLinks.spotify && (
-                        <a
-                          href={founder.socialLinks.spotify}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="p-2 rounded-full bg-muted hover:bg-muted-foreground/20 transition-colors"
-                        >
-                          <ExternalLink className="w-4 h-4 text-muted-foreground" />
-                        </a>
-                      )}
+                        VIEW FULL BIO <ArrowRight className="w-3 h-3 transform group-hover/btn:translate-x-1 transition-transform" />
+                      </button>
                     </div>
                   </div>
+                </DialogTrigger>
 
-                  <p className="text-sm text-muted-foreground mb-3">
-                    {founder.role}
-                  </p>
+                <DialogContent className="max-w-6xl w-[95vw] bg-card border-border p-0 overflow-hidden shadow-2xl overflow-y-auto md:overflow-hidden max-h-[95vh]">
+                  <div className="flex flex-col md:flex-row md:min-h-[750px]">
+                    {/* Left: Image (50%) */}
+                    <div className="w-full md:w-1/2 relative bg-muted h-[40vh] md:h-auto">
+                      <img 
+                        src={founder.photo} 
+                        alt={founder.name} 
+                        className="w-full h-full object-cover object-top"
+                      />
+                      <div className={cn(
+                        "absolute bottom-0 left-0 right-0 h-2 z-10",
+                        colorClass === "primary" && "bg-primary",
+                        colorClass === "secondary" && "bg-secondary",
+                        colorClass === "accent" && "bg-accent",
+                      )} />
+                    </div>
 
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    <span className={cn(
-                      "px-3 py-1 rounded-full text-xs font-medium",
-                      colorClass === "primary" && "bg-primary/10 text-primary",
-                      colorClass === "secondary" && "bg-secondary/10 text-secondary",
-                      colorClass === "accent" && "bg-accent/10 text-accent",
-                    )}>
-                      {founder.specialty}
-                    </span>
-                    <span className="px-3 py-1 rounded-full bg-muted text-muted-foreground text-xs font-medium">
-                      10+ years
-                    </span>
+                    {/* Right: Content (50%) */}
+                    <div className="w-full md:w-1/2 p-6 sm:p-8 md:p-20 overflow-y-auto bg-card/95 backdrop-blur-sm shadow-inner">
+                      <div className="mb-6">
+                        <span className={cn(
+                          "text-xs font-bold uppercase tracking-widest",
+                          colorClass === "primary" && "text-primary",
+                          colorClass === "secondary" && "text-secondary",
+                          colorClass === "accent" && "text-accent",
+                        )}>
+                          {founder.role}
+                        </span>
+                        <h2 className="font-display text-3xl font-bold text-foreground mt-1">
+                          {founder.name}
+                        </h2>
+                        <p className="text-xl font-medium text-muted-foreground">
+                          {founder.stageName}
+                        </p>
+                      </div>
+
+                      <div className="space-y-4 text-muted-foreground leading-relaxed whitespace-pre-wrap">
+                        {founder.bio}
+                      </div>
+
+                      <div className="mt-8 pt-8 border-t border-border/50">
+                        <h4 className="text-sm font-bold uppercase tracking-wider text-foreground mb-4">Core Focus</h4>
+                        <div className="flex flex-wrap gap-2">
+                          <span className="px-4 py-1.5 rounded-full bg-muted text-muted-foreground text-xs font-medium border border-border">
+                            {founder.specialty}
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Socials in popup */}
+                      <div className="mt-8 flex gap-4">
+                        {founder.socialLinks.instagram && (
+                          <a 
+                            href={founder.socialLinks.instagram} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+                          >
+                            <Instagram className="w-5 h-5" />
+                            <span>Instagram</span>
+                          </a>
+                        )}
+                        {founder.socialLinks.spotify && (
+                          <a 
+                            href={founder.socialLinks.spotify} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+                          >
+                            <ExternalLink className="w-5 h-5" />
+                            <span>Artist Profile</span>
+                          </a>
+                        )}
+                      </div>
+                    </div>
                   </div>
-
-                  <p className="text-sm text-muted-foreground italic border-l-2 border-muted pl-3">
-                    "{founder.teachingPhilosophy}"
-                  </p>
-                </div>
-              </div>
+                </DialogContent>
+              </Dialog>
             );
           })}
         </div>
@@ -131,3 +223,5 @@ export function FoundersSection() {
     </section>
   );
 }
+
+import { ArrowRight } from "lucide-react";

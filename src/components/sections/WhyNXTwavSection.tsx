@@ -5,21 +5,18 @@ const differentiators = [
     icon: Target,
     title: "Guaranteed Career Outcomes",
     description: "Unlike generic courses, we provide mentorship, industry connections, and placement support. Our students don't just learn - they launch careers.",
-    highlight: "95% Career Success Rate",
     color: "primary",
   },
   {
     icon: TrendingUp,
     title: "Structured Career Roadmaps",
     description: "Follow our proven path: Producer → First Releases → Label Deals → Revenue Diversification. Every step mapped, every milestone tracked.",
-    highlight: "Clear Path to Success",
     color: "secondary",
   },
   {
     icon: Radio,
     title: "Live in the Studio Sessions",
     description: "Watch our founders produce music live every month. Ask questions in real-time. See the creative process unfold - no pre-recorded fluff.",
-    highlight: "Monthly Live Access",
     color: "accent",
   },
 ];
@@ -63,12 +60,6 @@ export function WhyNXTwavSection() {
               <p className="text-muted-foreground mb-6">
                 {item.description}
               </p>
-
-              {/* Highlight badge */}
-              <div className="inline-flex items-center gap-2 text-sm">
-                <CheckCircle className="w-4 h-4 text-accent" />
-                <span className="text-accent font-medium">{item.highlight}</span>
-              </div>
 
               {/* Hover glow effect */}
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity -z-10" />

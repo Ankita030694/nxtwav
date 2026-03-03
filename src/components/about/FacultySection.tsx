@@ -1,6 +1,50 @@
+import { useState, useEffect } from "react";
 import { Instagram, ExternalLink } from "lucide-react";
 import { faculty } from "@/data/faculty";
 import { cn } from "@/lib/utils";
+import { motion, AnimatePresence } from "framer-motion";
+
+function FacultyImageCarousel({ images, name }: { images: string[]; name: string }) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 3000);
+
+    return () => clearInterval(timer);
+  }, [images.length]);
+
+  return (
+    <div className="relative w-full h-full">
+      <AnimatePresence mode="wait">
+        <motion.img
+          key={currentIndex}
+          src={images[currentIndex]}
+          alt={`${name} - Photo ${currentIndex + 1}`}
+          initial={{ opacity: 0, scale: 1.1 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.9 }}
+          transition={{ duration: 0.8, ease: "easeInOut" }}
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+      </AnimatePresence>
+      
+      {/* Indicators */}
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1 z-20">
+        {images.map((_, index) => (
+          <div
+            key={index}
+            className={cn(
+              "w-1.5 h-1.5 rounded-full transition-all duration-300",
+              index === currentIndex ? "bg-white w-4" : "bg-white/50"
+            )}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export function FacultySection() {
   return (
@@ -18,7 +62,7 @@ export function FacultySection() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {faculty.map((member, index) => {
             const colors = ["secondary", "accent", "primary"];
             const colorClass = colors[index % 3];
@@ -26,19 +70,15 @@ export function FacultySection() {
             return (
               <div
                 key={member.id}
-                className="group relative rounded-2xl overflow-hidden bg-card border border-border hover:border-muted-foreground/30 transition-all duration-300"
+                className="group relative rounded-2xl overflow-hidden bg-card border border-border hover:border-muted-foreground/30 transition-all duration-300 flex flex-col h-full"
               >
-                {/* Image Container */}
-                <div className="relative aspect-square overflow-hidden bg-muted">
-                  <img
-                    src={member.photo}
-                    alt={member.name}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
+                {/* Image Carousel Container */}
+                <div className="relative aspect-[4/5] overflow-hidden bg-muted">
+                  <FacultyImageCarousel images={member.photos} name={member.name} />
                   
                   {/* Color accent bar */}
                   <div className={cn(
-                    "absolute bottom-0 left-0 right-0 h-1",
+                    "absolute bottom-0 left-0 right-0 h-1 z-10",
                     colorClass === "primary" && "bg-primary",
                     colorClass === "secondary" && "bg-secondary",
                     colorClass === "accent" && "bg-accent",
@@ -46,7 +86,7 @@ export function FacultySection() {
                 </div>
 
                 {/* Content */}
-                <div className="p-6">
+                <div className="p-6 flex flex-col flex-grow">
                   <div className="flex items-start justify-between mb-3">
                     <div>
                       <h3 className="font-display text-xl font-bold text-foreground">
@@ -82,18 +122,16 @@ export function FacultySection() {
                     </div>
                   </div>
 
-                  <span className={cn(
-                    "inline-block px-3 py-1 rounded-full text-xs font-medium mb-3",
-                    colorClass === "primary" && "bg-primary/10 text-primary",
-                    colorClass === "secondary" && "bg-secondary/10 text-secondary",
-                    colorClass === "accent" && "bg-accent/10 text-accent",
-                  )}>
-                    {member.specialty}
-                  </span>
-
-                  <p className="text-sm text-muted-foreground line-clamp-3">
-                    {member.bio}
-                  </p>
+                  <div className="mt-auto">
+                    <span className={cn(
+                      "inline-block px-3 py-1 rounded-full text-xs font-medium mb-3",
+                      colorClass === "primary" && "bg-primary/10 text-primary",
+                      colorClass === "secondary" && "bg-secondary/10 text-secondary",
+                      colorClass === "accent" && "bg-accent/10 text-accent",
+                    )}>
+                      {member.specialty}
+                    </span>
+                  </div>
                 </div>
               </div>
             );
@@ -103,3 +141,4 @@ export function FacultySection() {
     </section>
   );
 }
+

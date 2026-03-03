@@ -36,7 +36,7 @@ const faqs = [
   },
   {
     question: "What's your refund policy?",
-    answer: "We offer a 14-day no-questions-asked refund policy. If you're not satisfied with the course content or teaching quality within the first 2 weeks, we'll refund 100% of your payment. We're that confident in our program. You can view our complete refund policy in the footer.",
+    answer: "At NXTwav, we strive to ensure your satisfaction with every course. Please refer to our complete refund policy link in the footer for detailed eligibility and process information.",
   },
   {
     question: "Do you offer payment plans or EMI options?",

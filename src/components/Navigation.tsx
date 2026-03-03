@@ -11,6 +11,7 @@ const navLinks = [
   { href: "/about", label: "About Us" },
   { href: "/courses", label: "Courses" },
   { href: "/interactive-learning", label: "Interactive Learning" },
+  { href: "/blog", label: "Journal" },
   { href: "/pricing", label: "Pricing" },
 ];
 

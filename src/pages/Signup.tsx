@@ -12,6 +12,8 @@ import nxtwavLogo from "@/assets/nxtwav-logo-v2.png";
 import { db } from "@/lib/firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
+import ParticleBackground from "@/components/ui/particle-background";
+
 const indianStatesAndUTs = [
   "Andaman and Nicobar Islands", "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", 
   "Chandigarh", "Chhattisgarh", "Dadra and Nagar Haveli and Daman and Diu", "Delhi", "Goa", 
@@ -126,8 +128,8 @@ export default function Signup() {
   };
 
   return (
-    <div className="min-h-screen bg-background flex items-center justify-center p-4">
-      <div className="absolute inset-0 bg-gradient-hero opacity-50" />
+    <div className="min-h-screen bg-background flex items-center justify-center p-4 overflow-hidden">
+      <ParticleBackground />
       
       <Card className="w-full max-w-md relative z-10 bg-card/95 backdrop-blur-xl border-border mt-20 md:mt-0">
         <CardHeader className="text-center space-y-4 pb-4">

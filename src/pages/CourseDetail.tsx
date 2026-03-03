@@ -135,6 +135,30 @@ const CourseDetail = () => {
                   ))}
                 </Accordion>
               </div>
+
+              {/* Post-Course Benefits */}
+              {course.postCourseBenefits && (
+                <div>
+                  <h2 className="font-display text-2xl font-bold text-foreground mb-6">Post-Course Benefits</h2>
+                  <div className="grid sm:grid-cols-2 gap-6">
+                    {course.postCourseBenefits.map((benefit) => (
+                      <div key={benefit.category} className="p-6 rounded-2xl bg-card border border-border">
+                        <h3 className={cn("font-display text-lg font-bold mb-4", `text-${colorClass}`)}>
+                          {benefit.category}
+                        </h3>
+                        <ul className="space-y-3">
+                          {benefit.items.map((item) => (
+                            <li key={item} className="flex items-start gap-3 text-sm text-muted-foreground">
+                              <CheckCircle className={cn("w-4 h-4 shrink-0 mt-0.5", `text-${colorClass}`)} />
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Sidebar */}

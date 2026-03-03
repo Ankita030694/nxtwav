@@ -1,11 +1,19 @@
+import mission1 from "@/assets/missionvision1.jpg";
+import mission2 from "@/assets/missionvision2.jpg";
+import mission3 from "@/assets/missionvision3.jpg";
+import mission4 from "@/assets/missionvision4.jpg";
+import mission6 from "@/assets/missionvision6.jpg";
+
 export function MissionSection() {
+  const missionImages = [mission1, mission2, mission3, mission4, mission6];
+
   return (
     <section className="py-24 relative overflow-hidden">
       {/* Background Effect */}
       <div className="absolute inset-0 bg-gradient-hero opacity-30" />
       
       <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-6xl mx-auto text-center">
           <span className="inline-block px-4 py-1.5 bg-accent/10 text-accent rounded-full text-sm font-medium mb-6">
             The Name Says It All
           </span>
@@ -37,6 +45,24 @@ export function MissionSection() {
                 Just proper learning
               </span>
             </div>
+
+            {/* Mission Vision Images - Single Row */}
+            <div className="py-12 px-2 max-w-screen-xl mx-auto overflow-x-auto no-scrollbar">
+              <div className="grid grid-cols-5 gap-4 md:gap-6 min-w-[1300px] xl:min-w-0">
+                {missionImages.map((img, index) => (
+                  <div 
+                    key={index} 
+                    className="rounded-2xl overflow-hidden border border-border/50 shadow-2xl"
+                  >
+                    <img 
+                      src={img} 
+                      alt={`Mission & Vision ${index + 1}`} 
+                      className="w-full h-full object-cover aspect-[4/5]"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
             
             <p className="text-xl text-foreground font-semibold pt-4">
               Real exposure. The right push.
@@ -47,3 +73,6 @@ export function MissionSection() {
     </section>
   );
 }
+
+import { cn } from "@/lib/utils";
+

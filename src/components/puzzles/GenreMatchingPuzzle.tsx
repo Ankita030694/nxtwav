@@ -136,11 +136,9 @@ export function GenreMatchingPuzzle({ onComplete, onClose }: PuzzleComponentProp
     setAnswers([]);
   };
 
-  useEffect(() => {
-    if (isComplete) {
-      onComplete(score, tracks.length);
-    }
-  }, [isComplete, score, onComplete]);
+  const handleComplete = () => {
+    onComplete(score, tracks.length);
+  };
 
   if (isComplete) {
     return (
@@ -184,8 +182,8 @@ export function GenreMatchingPuzzle({ onComplete, onClose }: PuzzleComponentProp
             <RotateCcw className="w-4 h-4 mr-2" />
             Try Again
           </Button>
-          <Button onClick={onClose} className="bg-gradient-cta hover:opacity-90 text-primary-foreground">
-            Done
+          <Button onClick={handleComplete} className="bg-gradient-cta hover:opacity-90 text-primary-foreground">
+            Continue
           </Button>
         </div>
       </div>
