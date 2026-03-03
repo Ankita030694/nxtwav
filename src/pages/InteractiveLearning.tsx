@@ -111,7 +111,7 @@ const InteractiveLearning = () => {
         <div className="container mx-auto px-4">
           <PuzzleGateway 
             puzzles={puzzles} 
-            onStartCourses={() => navigate("/courses")} 
+            onStartCourses={() => navigate("/auth/signup")} 
           />
         </div>
       </section>

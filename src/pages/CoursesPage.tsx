@@ -78,7 +78,7 @@ const CoursesPage = () => {
           <div className="flex justify-center mb-12">
             <Button 
               variant="outline" 
-              onClick={() => navigate("/interactive-learning")}
+              onClick={() => navigate("/auth/signup")}
               className="border-border text-foreground hover:bg-muted"
             >
               <Gamepad2 className="w-4 h-4 mr-2" />

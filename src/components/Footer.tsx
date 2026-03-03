@@ -92,8 +92,8 @@ export function Footer() {
                 placeholder="Enter your email"
                 className="bg-muted border-border"
               />
-              <Button className="bg-gradient-cta hover:opacity-90 text-primary-foreground shrink-0">
-                Subscribe
+              <Button className="bg-gradient-cta hover:opacity-90 text-primary-foreground shrink-0" asChild>
+                <Link to="/auth/signup">Subscribe</Link>
               </Button>
             </div>
           </div>

@@ -25,7 +25,7 @@ export function AboutCTA() {
               className="bg-gradient-cta hover:opacity-90 text-primary-foreground px-8 py-6 text-lg"
               asChild
             >
-              <Link to="/courses">
+              <Link to="/auth/signup">
                 Explore Our Courses
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
@@ -37,7 +37,7 @@ export function AboutCTA() {
               className="border-border text-foreground hover:bg-muted px-8 py-6 text-lg"
               asChild
             >
-              <Link to="/pricing">
+              <Link to="/auth/signup">
                 <BookOpen className="mr-2 w-5 h-5" />
                 View Pricing
               </Link>

@@ -41,7 +41,7 @@ export function HeroSection() {
 
           <div className="flex flex-wrap gap-4 mb-12 animate-fade-in" style={{ animationDelay: '0.3s' }}>
             <Button size="lg" className="bg-gradient-cta hover:opacity-90 text-primary-foreground shadow-glow-blue" asChild>
-              <Link to="/courses">
+              <Link to="/auth/signup">
                 Explore Courses
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Link>

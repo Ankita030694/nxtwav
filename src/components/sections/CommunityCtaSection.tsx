@@ -27,7 +27,7 @@ export function CommunityCtaSection() {
               className="bg-gradient-cta hover:opacity-90 text-primary-foreground"
               asChild
             >
-              <Link to="/courses">
+              <Link to="/auth/signup">
                 <Music2 className="w-5 h-5 mr-2" />
                 Explore Courses
                 <ArrowRight className="w-5 h-5 ml-2" />

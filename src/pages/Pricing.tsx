@@ -269,7 +269,7 @@ const Pricing = () => {
               Our career consultants are available to guide you through the process and help select the best program for your current skill level and future ambitions.
             </p>
             <Button size="lg" className="bg-gradient-cta hover:opacity-90 text-primary-foreground group" asChild>
-              <Link to="/#faq" className="flex items-center gap-2">
+              <Link to="/auth/signup" className="flex items-center gap-2">
                 Talk to an Expert <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </Button>
@@ -290,8 +290,8 @@ const Pricing = () => {
             <Button variant="outline" className="border-border text-foreground hover:bg-muted" asChild>
               <Link to="/#faq">View FAQ</Link>
             </Button>
-            <Button className="bg-gradient-cta hover:opacity-90 text-primary-foreground">
-              Contact Us
+            <Button className="bg-gradient-cta hover:opacity-90 text-primary-foreground" asChild>
+              <Link to="/auth/signup">Contact Us</Link>
             </Button>
           </div>
         </div>

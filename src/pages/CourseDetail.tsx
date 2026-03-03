@@ -173,7 +173,9 @@ const CourseDetail = () => {
                     <div className="flex justify-between"><span className="text-muted-foreground">Sessions</span><span className="text-foreground">{course.totalSessions} total</span></div>
                     <div className="flex justify-between"><span className="text-muted-foreground">Level</span><span className="text-foreground capitalize">{course.level}</span></div>
                   </div>
-                  <Button className="w-full bg-gradient-cta hover:opacity-90 text-primary-foreground mb-3">Enroll Now</Button>
+                  <Button className="w-full bg-gradient-cta hover:opacity-90 text-primary-foreground mb-3" asChild>
+                    <Link to="/auth/signup">Enroll Now</Link>
+                  </Button>
                   <div className="space-y-2 text-sm text-muted-foreground">
                     {course.whatsIncluded.slice(0, 4).map((item) => (
                       <div key={item} className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-accent" />{item}</div>

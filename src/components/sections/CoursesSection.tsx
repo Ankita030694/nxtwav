@@ -65,7 +65,7 @@ export function CoursesSection() {
             </h2>
             
           </div>
-          <Link to="/courses">
+          <Link to="/auth/signup">
             <Button variant="outline" className="border-border text-foreground hover:bg-muted mb-2 md:mb-0">
               View All Courses
               <ArrowRight className="w-4 h-4 ml-2" />
@@ -76,7 +76,7 @@ export function CoursesSection() {
         <div className="grid lg:grid-cols-3 gap-8">
           {categoryCards.map((category) => (
             <Link
-              to={category.href}
+              to="/auth/signup"
               key={category.id}
               className="group relative rounded-2xl overflow-hidden bg-card border border-border hover:border-primary/50 transition-all duration-300 flex flex-col"
             >
