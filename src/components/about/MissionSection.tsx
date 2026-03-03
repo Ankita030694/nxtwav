@@ -48,7 +48,7 @@ export function MissionSection() {
 
             {/* Mission Vision Images - Single Row */}
             <div className="py-12 px-2 max-w-screen-xl mx-auto overflow-x-auto no-scrollbar">
-              <div className="grid grid-cols-5 gap-4 md:gap-6 min-w-[1300px] xl:min-w-0">
+              <div className="grid grid-cols-5 gap-4 md:gap-6 min-w-[1600px] xl:min-w-0">
                 {missionImages.map((img, index) => (
                   <div 
                     key={index} 

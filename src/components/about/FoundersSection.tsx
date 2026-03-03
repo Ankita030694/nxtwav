@@ -138,10 +138,10 @@ export function FoundersSection() {
                   </div>
                 </DialogTrigger>
 
-                <DialogContent className="max-w-6xl w-[95vw] bg-card border-border p-0 overflow-hidden shadow-2xl overflow-y-auto md:overflow-hidden max-h-[95vh]">
+                <DialogContent className="max-w-6xl w-[90vw] md:w-[95vw] bg-card border-border p-0 overflow-hidden shadow-2xl overflow-y-auto md:overflow-hidden h-auto max-h-[80vh] md:max-h-[95vh]">
                   <div className="flex flex-col md:flex-row md:min-h-[750px]">
                     {/* Left: Image (50%) */}
-                    <div className="w-full md:w-1/2 relative bg-muted h-[40vh] md:h-auto">
+                    <div className="w-full md:w-1/2 relative bg-muted h-[30vh] md:h-auto">
                       <img 
                         src={founder.photo} 
                         alt={founder.name} 
