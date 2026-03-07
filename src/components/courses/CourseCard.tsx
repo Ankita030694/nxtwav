@@ -109,7 +109,7 @@ export function CourseCard({ course }: CourseCardProps) {
           className={cn("w-full transition-all duration-300", colors.button)}
           asChild
         >
-          <Link to="/auth/signup">
+          <Link to={`/courses/${course.slug}`}>
             View This Course
             <ArrowRight className="w-4 h-4 ml-2" />
           </Link>

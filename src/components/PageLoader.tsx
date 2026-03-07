@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { useAuth } from "@/hooks/useAuth";
 
 export function LoadingSpinner() {
   return (
@@ -15,22 +16,37 @@ export function LoadingSpinner() {
 }
 
 export function PageLoader() {
+  const { loading: authLoading } = useAuth();
   const location = useLocation();
-  const [isLoading, setIsLoading] = useState(false);
+  const [isNavigating, setIsNavigating] = useState(false);
+  const [shouldShow, setShouldShow] = useState(false);
 
   useEffect(() => {
-    // Show loader when location changes
-    setIsLoading(true);
-
-    // Hide loader after a short delay to allow for page transitions
+    // Trigger "loading" state on navigation
+    setIsNavigating(true);
+    
+    // Total transition duration (artificial for smooth feel)
     const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 600); // 600ms corresponds to a satisfying transition
+      setIsNavigating(false);
+    }, 500); // Reduced from 600ms
 
     return () => clearTimeout(timer);
-  }, [location.pathname, location.search]); // We don't trigger on hash change for smooth anchor navigation
+  }, [location.pathname, location.search]);
 
-  if (!isLoading) return null;
+  useEffect(() => {
+    // Only show if we are still loading after a grace period
+    if (authLoading || isNavigating) {
+      const gracePeriod = setTimeout(() => {
+        setShouldShow(true);
+      }, 150); // 150ms grace period to avoid flashing on instant loads
+
+      return () => clearTimeout(gracePeriod);
+    } else {
+      setShouldShow(false);
+    }
+  }, [authLoading, isNavigating]);
+
+  if (!shouldShow) return null;
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center bg-background/90 backdrop-blur-md transition-opacity duration-300">
