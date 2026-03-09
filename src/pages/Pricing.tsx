@@ -8,34 +8,45 @@ import { useAuth } from "@/hooks/useAuth";
 import { Link } from "react-router-dom";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
+import { courses, formatPrice } from "@/data/courses";
+
+const getPrice = (id: string) => {
+  const course = courses.find(c => c.id === id);
+  return course ? course.price : 0;
+};
+
+const getFormattedPrice = (id: string) => {
+  const course = courses.find(c => c.id === id);
+  return course ? formatPrice(course.price) : "₹0";
+};
 
 const productionPlans = [
   {
     id: "daw-fundamentals",
     name: "DAW Fundamentals",
     description: "Beginners exploring music production with focus on software understanding",
-    price: 39999,
-    displayPrice: "₹39,999",
+    price: getPrice("daw-fundamentals"),
+    displayPrice: getFormattedPrice("daw-fundamentals"),
     period: "/ 1 month",
     popular: false,
     cta: "Get Started",
   },
   {
-    id: "intro-production",
+    id: "intro-to-music-production",
     name: "Introduction to Music Production",
     description: "Serious learners building a strong foundation in structured production",
-    price: 99999,
-    displayPrice: "₹99,999",
+    price: getPrice("intro-to-music-production"),
+    displayPrice: getFormattedPrice("intro-to-music-production"),
     period: "/ 3 months",
     popular: true,
     cta: "Enroll Now",
   },
   {
-    id: "advanced-mastery",
+    id: "advanced-production-mastery",
     name: "Advanced Production Mastery",
     description: "Complete professional-level mastery for aspiring producers",
-    price: 179999,
-    displayPrice: "₹1,79,999",
+    price: getPrice("advanced-production-mastery"),
+    displayPrice: getFormattedPrice("advanced-production-mastery"),
     period: "/ 5 months",
     popular: false,
     cta: "Apply Now",
@@ -45,20 +56,20 @@ const productionPlans = [
 const djingPlans = [
   {
     id: "dj-beginner",
-    name: "1-Month DJ Beginner",
+    name: "DJ Beginner",
     description: "Build strong technical foundations and learn to mix clean sets with confidence.",
-    price: 35000,
-    displayPrice: "₹35,000",
+    price: getPrice("dj-beginner"),
+    displayPrice: getFormattedPrice("dj-beginner"),
     period: "/ 4 weeks",
     popular: false,
     cta: "Get Started",
   },
   {
     id: "dj-artistry-program",
-    name: "2-Month Advanced DJing Course",
+    name: "Advanced DJing Course",
     description: "Transform from a technically good DJ into a performance-ready artist.",
-    price: 60000,
-    displayPrice: "₹60,000",
+    price: getPrice("dj-artistry-program"),
+    displayPrice: getFormattedPrice("dj-artistry-program"),
     period: "/ 8 weeks",
     popular: true,
     cta: "Enroll Now",
@@ -66,7 +77,7 @@ const djingPlans = [
 ];
 
 const productionComparison = [
-  { feature: "Price", values: ["₹39,999", "₹99,999", "₹1,79,999"] },
+  { feature: "Price", values: [getFormattedPrice("daw-fundamentals"), getFormattedPrice("intro-to-music-production"), getFormattedPrice("advanced-production-mastery")] },
   { feature: "Duration", values: ["1 Month", "3 Months", "5 Months"] },
   { feature: "Sessions Per Week", values: ["3", "3", "3"] },
   { feature: "Hours Per Session", values: ["2 Hours", "2 Hours", "2 Hours"] },
@@ -92,7 +103,7 @@ const productionComparison = [
 ];
 
 const djingComparison = [
-  { feature: "Price", values: ["₹35,000", "₹60,000"] },
+  { feature: "Price", values: [getFormattedPrice("dj-beginner"), getFormattedPrice("dj-artistry-program")] },
   { feature: "Duration", values: ["4 Weeks", "8 Weeks"] },
   { feature: "Total Sessions", values: ["8 Sessions", "16 Sessions"] },
   { feature: "Manual Beatmatching", values: [true, true] },

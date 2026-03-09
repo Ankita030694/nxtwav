@@ -46,26 +46,41 @@ export function MissionSection() {
               </span>
             </div>
 
-            {/* Mission Vision Images - Single Row */}
-            <div className="py-12 px-2 max-w-screen-xl mx-auto overflow-x-auto no-scrollbar">
-              <div className="grid grid-cols-5 gap-4 md:gap-6 min-w-[1600px] xl:min-w-0">
-                {missionImages.map((img, index) => (
-                  <div 
-                    key={index} 
-                    className="rounded-2xl overflow-hidden border border-border/50 shadow-2xl"
-                  >
-                    <img 
-                      src={img} 
-                      alt={`Mission & Vision ${index + 1}`} 
-                      className="w-full h-full object-cover aspect-[4/5]"
-                    />
+            {/* Mission & Vision Containers */}
+            <div className="py-12 px-2 max-w-5xl mx-auto">
+              <div className="grid md:grid-cols-2 gap-8">
+                {/* Vision Container */}
+                <div className="group relative rounded-2xl overflow-hidden border border-border/50 shadow-2xl transition-all duration-300 hover:border-primary/50">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10" />
+                  <img 
+                    src={mission3} 
+                    alt="Our Vision" 
+                    className="w-full h-[400px] object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 p-8 z-20 text-left">
+                    <h3 className="font-display text-2xl font-bold text-white mb-2">Our Vision</h3>
+                    <p className="text-white/80 text-sm">Empowering the next generation of digital artists and performers.</p>
                   </div>
-                ))}
+                </div>
+
+                {/* Mission Container */}
+                <div className="group relative rounded-2xl overflow-hidden border border-border/50 shadow-2xl transition-all duration-300 hover:border-secondary/50">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10" />
+                  <img 
+                    src={mission4} 
+                    alt="Our Mission" 
+                    className="w-full h-[400px] object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 p-8 z-20 text-left">
+                    <h3 className="font-display text-2xl font-bold text-white mb-2">Our Mission</h3>
+                    <p className="text-white/80 text-sm">Providing hands-on expertise and real-world exposure for career success.</p>
+                  </div>
+                </div>
               </div>
             </div>
             
-            <p className="text-xl text-foreground font-semibold pt-4">
-              Real exposure. The right push.
+            <p className="text-xl text-foreground font-semibold pt-4 italic">
+              "Real exposure. The right push."
             </p>
           </div>
         </div>

@@ -29,6 +29,8 @@ export default function Signup() {
     email: "",
     phone: "",
     state: "",
+    instagram: "",
+    linkedin: "",
     message: ""
   });
   const [isLoading, setIsLoading] = useState(false);
@@ -65,10 +67,10 @@ export default function Signup() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!formData.name || !formData.email || !formData.phone || !formData.state) {
+    if (!formData.name || !formData.email || !formData.phone || !formData.state || !formData.instagram) {
       toast({
         title: "Missing fields",
-        description: "Please fill in all required fields.",
+        description: "Please fill in all required fields, including your Instagram username.",
         variant: "destructive",
       });
       return;
@@ -110,6 +112,8 @@ export default function Signup() {
         email: "",
         phone: "",
         state: "",
+        instagram: "",
+        linkedin: "",
         message: ""
       });
       
@@ -189,6 +193,33 @@ export default function Signup() {
               />
             </div>
 
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label htmlFor="instagram">Instagram Username</Label>
+                <Input
+                  id="instagram"
+                  type="text"
+                  placeholder="@yourusername"
+                  value={formData.instagram}
+                  onChange={handleTextChange}
+                  className="bg-background/50"
+                  required
+                />
+              </div>
+              
+              <div className="space-y-2">
+                <Label htmlFor="linkedin">LinkedIn Profile (Optional)</Label>
+                <Input
+                  id="linkedin"
+                  type="text"
+                  placeholder="Profile URL"
+                  value={formData.linkedin}
+                  onChange={handleTextChange}
+                  className="bg-background/50"
+                />
+              </div>
+            </div>
+
             <div className="space-y-2">
               <Label htmlFor="state">State</Label>
               <Select value={formData.state} onValueChange={handleStateChange} required>
@@ -232,5 +263,6 @@ export default function Signup() {
         </CardContent>
       </Card>
     </div>
+
   );
 }

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Instagram, ExternalLink } from "lucide-react";
+import { Instagram, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
 import { faculty } from "@/data/faculty";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
@@ -7,16 +7,20 @@ import { motion, AnimatePresence } from "framer-motion";
 function FacultyImageCarousel({ images, name }: { images: string[]; name: string }) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 3000);
+  const handleNext = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setCurrentIndex((prev) => (prev + 1) % images.length);
+  };
 
-    return () => clearInterval(timer);
-  }, [images.length]);
+  const handlePrev = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+  };
+
+  if (!images || images.length === 0) return null;
 
   return (
-    <div className="relative w-full h-full">
+    <div className="relative w-full h-full group/carousel">
       <AnimatePresence mode="wait">
         <motion.img
           key={currentIndex}
@@ -25,19 +29,63 @@ function FacultyImageCarousel({ images, name }: { images: string[]; name: string
           initial={{ opacity: 0, scale: 1.1 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.9 }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+          className={cn(
+            "w-full h-full object-cover",
+            name === "Garry Bedi" && "object-top"
+          )}
         />
       </AnimatePresence>
+      
+      {/* Navigation Buttons */}
+      {images.length > 1 && (
+        <>
+          <button
+            onClick={handlePrev}
+            className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/20 backdrop-blur-sm border border-white/10 flex items-center justify-center text-white opacity-0 group-hover/carousel:opacity-100 transition-all hover:bg-black/40 z-20"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+          
+          <div className="absolute right-2 top-1/2 -translate-y-1/2 z-20">
+            <motion.button
+              onClick={handleNext}
+              initial={false}
+              animate={{ 
+                scale: [1, 1.1, 1],
+                opacity: [0.4, 0.7, 0.4]
+              }}
+              transition={{ 
+                duration: 2, 
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+              className="w-8 h-8 rounded-full bg-black/40 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white group-hover/carousel:hidden transition-all"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </motion.button>
+            <button
+              onClick={handleNext}
+              className="w-8 h-8 rounded-full bg-black/20 backdrop-blur-sm border border-white/10 hidden group-hover/carousel:flex items-center justify-center text-white hover:bg-black/40 transition-all"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+          </div>
+        </>
+      )}
       
       {/* Indicators */}
       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1 z-20">
         {images.map((_, index) => (
-          <div
+          <button
             key={index}
+            onClick={(e) => {
+              e.stopPropagation();
+              setCurrentIndex(index);
+            }}
             className={cn(
               "w-1.5 h-1.5 rounded-full transition-all duration-300",
-              index === currentIndex ? "bg-white w-4" : "bg-white/50"
+              index === currentIndex ? "bg-white w-4" : "bg-white/50 hover:bg-white/80"
             )}
           />
         ))}

@@ -15,6 +15,8 @@ interface Lead {
   email: string;
   phone: string;
   state: string;
+  instagram?: string;
+  linkedin?: string;
   message: string;
   createdAt: any;
 }
@@ -152,6 +154,8 @@ export default function Leads() {
                     <TableHead>Name</TableHead>
                     <TableHead>Email</TableHead>
                     <TableHead>Phone</TableHead>
+                    <TableHead>Instagram</TableHead>
+                    <TableHead>LinkedIn</TableHead>
                     <TableHead>State</TableHead>
                     <TableHead className="min-w-[200px]">Message</TableHead>
                     <TableHead className="min-w-[250px]">Remarks</TableHead>

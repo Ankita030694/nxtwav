@@ -3,14 +3,14 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { getCourseBySlug, getInstructorById, formatPrice, categoryInfo } from "@/data/courses";
+import { getCourseBySlug, getInstructorsForCourse, formatPrice, categoryInfo } from "@/data/courses";
 import { Clock, Users, GraduationCap, CheckCircle, ArrowLeft, Calendar, BookOpen } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const CourseDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const course = slug ? getCourseBySlug(slug) : undefined;
-  const instructor = course ? getInstructorById(course.instructorId) : undefined;
+  const instructorsForCourse = course ? getInstructorsForCourse(course) : [];
 
   if (!course) {
     return (
@@ -139,7 +139,7 @@ const CourseDetail = () => {
               {/* Post-Course Benefits */}
               {course.postCourseBenefits && (
                 <div>
-                  <h2 className="font-display text-2xl font-bold text-foreground mb-6">Post-Course Benefits</h2>
+                  <h2 className="font-display text-2xl font-bold text-foreground mb-6">Course Benefits</h2>
                   <div className="grid sm:grid-cols-2 gap-6">
                     {course.postCourseBenefits.map((benefit) => (
                       <div key={benefit.category} className="p-6 rounded-2xl bg-card border border-border">
@@ -183,18 +183,31 @@ const CourseDetail = () => {
                   </div>
                 </div>
 
-                {/* Instructor Card */}
-                {instructor && (
-                  <div className="p-6 rounded-2xl bg-card border border-border">
-                    <h3 className="font-display text-lg font-bold text-foreground mb-4">Your Instructor</h3>
-                    <div className="flex items-center gap-4 mb-4">
-                      <img src={instructor.photo} alt={instructor.name} className="w-16 h-16 rounded-full object-cover bg-muted" />
-                      <div>
-                        <p className="font-semibold text-foreground">{instructor.name}</p>
-                        <p className={cn("text-sm", `text-${colorClass}`)}>{instructor.stageName}</p>
+                {/* Instructor Cards */}
+                {instructorsForCourse.length > 0 && (
+                  <div className="space-y-4">
+                    <h3 className="font-display text-lg font-bold text-foreground">
+                      {instructorsForCourse.length > 1 ? "Your Instructors" : "Your Instructor"}
+                    </h3>
+                    {instructorsForCourse.map((instructor) => (
+                      <div key={instructor.id} className="p-6 rounded-2xl bg-card border border-border">
+                        <div className="flex items-center gap-4 mb-4">
+                          <img 
+                            src={instructor.photo} 
+                            alt={instructor.name} 
+                            className={cn(
+                              "w-16 h-16 rounded-full object-cover bg-muted",
+                              instructor.id === "garry" && "object-top"
+                            )}
+                          />
+                          <div>
+                            <p className="font-semibold text-foreground">{instructor.name}</p>
+                            <p className={cn("text-sm", `text-${colorClass}`)}>{instructor.stageName}</p>
+                          </div>
+                        </div>
+                        <p className="text-sm text-muted-foreground">{instructor.specialty}</p>
                       </div>
-                    </div>
-                    <p className="text-sm text-muted-foreground">{instructor.specialty}</p>
+                    ))}
                   </div>
                 )}
               </div>

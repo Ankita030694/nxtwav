@@ -11,6 +11,7 @@ export default defineConfig(({ mode }) => ({
     allowedHosts: ["positivistically-unitinerant-edith.ngrok-free.dev"],
   },
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
+  assetsInclude: ["**/*.JPG"],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),

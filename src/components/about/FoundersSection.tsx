@@ -54,7 +54,7 @@ export function FoundersSection() {
                       <img
                         src={founder.photo}
                         alt={founder.name}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
                       />
                       
                       {/* Hover Overlay */}
@@ -110,16 +110,7 @@ export function FoundersSection() {
                         {founder.role}
                       </p>
 
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        <span className={cn(
-                          "px-3 py-1 rounded-full text-[10px] uppercase tracking-wider font-bold",
-                          colorClass === "primary" && "bg-primary/10 text-primary",
-                          colorClass === "secondary" && "bg-secondary/10 text-secondary",
-                          colorClass === "accent" && "bg-accent/10 text-accent",
-                        )}>
-                          {founder.specialty}
-                        </span>
-                      </div>
+                     
 
                       {/* Short Bio */}
                       <p className="text-sm text-muted-foreground line-clamp-3 mb-4 leading-relaxed">

@@ -1,4 +1,11 @@
 // Course data types and real course offerings
+import skoposPhoto from "@/assets/founders/lakshay_nanda.jpg";
+import beatcrushPhoto from "@/assets/founders/beatcrush-siddharth-sethi.png";
+import slctPhoto from "@/assets/founders/slct-kanav-kumar.png";
+import sureal1 from "@/assets/faculty/su_real1.jpg";
+import kamazaki1 from "@/assets/faculty/kamazaki1.png";
+import garryBedi from "@/assets/faculty/garry_bedi.jpeg";
+import aryamann from "@/assets/faculty/aryamann.png";
 
 export type CourseCategory = "production" | "djing" | "artist-dev";
 export type CourseLevel = "beginner" | "intermediate" | "advanced" | "all-levels";
@@ -40,7 +47,8 @@ export interface Course {
   };
   price: number;
   level: CourseLevel;
-  instructorId: string;
+  instructorId?: string;
+  instructorIds?: string[];
   sessions: CourseSession[];
   sessionsPerWeek: number;
   totalSessions: number;
@@ -61,7 +69,7 @@ export const instructors: Instructor[] = [
     id: "siddharth",
     name: "Siddharth Sethi",
     stageName: "BEATCRUSH",
-    photo: "/placeholder.svg", // Will be replaced with actual photo
+    photo: beatcrushPhoto,
     bio: "With over 8 years in the music industry, Siddharth has performed at major clubs and festivals across India. His productions have garnered millions of streams, and he specializes in electronic music production and sound design. As a co-founder of NXTwav, he brings hands-on industry experience to every session.",
     specialty: "Production & Sound Design",
     socialLinks: {
@@ -73,7 +81,7 @@ export const instructors: Instructor[] = [
     id: "lakshay",
     name: "Lakshay",
     stageName: "SKOPOS",
-    photo: "/placeholder.svg", // Will be replaced with actual photo
+    photo: skoposPhoto,
     bio: "Lakshay is a seasoned DJ with residencies at top venues and experience performing at weddings, corporate events, and festivals. Known for his technical prowess and ability to read any crowd, he has mentored dozens of aspiring DJs. At NXTwav, he leads the DJ training programs with a focus on real-world performance skills.",
     specialty: "DJ Performance & Turntablism",
     socialLinks: {
@@ -85,7 +93,7 @@ export const instructors: Instructor[] = [
     id: "kanav",
     name: "Kanav Kumar",
     stageName: "SLCT",
-    photo: "/placeholder.svg", // Will be replaced with actual photo
+    photo: slctPhoto,
     bio: "Kanav brings a unique blend of artistic vision and business acumen to NXTwav. With experience managing artist careers, coordinating releases, and building brands in the music industry, he focuses on the business side of music. His expertise helps students understand not just how to make music, but how to build sustainable careers.",
     specialty: "Artist Development & Business",
     socialLinks: {
@@ -96,7 +104,7 @@ export const instructors: Instructor[] = [
     id: "sureal",
     name: "Su Real",
     stageName: "SU REAL",
-    photo: "/placeholder.svg", // Will be replaced with actual photo
+    photo: sureal1,
     bio: "Su Real is an internationally acclaimed producer and DJ known for pioneering bass music in India. With releases on major labels and performances at international festivals, he brings world-class expertise to the Pro Remix Alchemy program as a guest mentor.",
     specialty: "Remix Production & Bass Music",
     socialLinks: {
@@ -105,22 +113,33 @@ export const instructors: Instructor[] = [
     },
   },
   {
-    id: "dishant",
-    name: "Dishant Kohli",
-    stageName: "DISHANT KOHLI",
-    photo: "/placeholder.svg",
-    bio: "Led by Faculty with 17+ Years of Professional Industry Experience, Dishant Kohli is a veteran in the DJing world. He has performed at major venues and brings a wealth of knowledge in performance-ready artistry and industry awareness.",
+    id: "kamazaki",
+    name: "Kamazaki",
+    stageName: "KAMAZAKI",
+    photo: kamazaki1,
+    bio: "Kamazaki is a veteran in the DJing world with over 17+ years of professional experience. Having performed at major venues across the country, he brings a wealth of knowledge in performance-ready artistry and industry awareness.",
     specialty: "DJ Performance & Industry Mastery",
     socialLinks: {
-      instagram: "https://instagram.com/dishantkohli",
+      instagram: "https://instagram.com/nxtwav",
+    },
+  },
+  {
+    id: "garry",
+    name: "Garry Bedi",
+    stageName: "GARRY BEDI",
+    photo: garryBedi,
+    bio: "Garry Bedi is an industry veteran in the DJing scene with years of experience performing at elite venues. His technical precision and deep understanding of crowd dynamics make him a leading mentor in DJ artistry.",
+    specialty: "DJ Performance & Industry Mastery",
+    socialLinks: {
+      instagram: "https://instagram.com/nxtwav",
     },
   },
   {
     id: "aryaman",
     name: "Aryaman Aggarwal",
     stageName: "ARYAMAN AGGARWAL",
-    photo: "/placeholder.svg",
-    bio: "Graduated in Digital Sound Producer (Advanced) from Pyramind @ San Francisco, California. Certified Avid Pro Tools Operator, Certified by Apple in Logic Pro X, and Ableton Certified Trainer with 13+ years teaching experience and 450+ students.",
+    photo: aryamann,
+    bio: "Aryaman Aggarwal is a graduate in Digital Sound Producer (Advanced) from Pyramind @ San Francisco, California. He is a Certified Avid Pro Tools Operator, Apple Logic Pro X Certified, and an Ableton Certified Trainer with 13+ years of teaching experience and has mentored 450+ students.",
     specialty: "Music Production & Sound Design",
     socialLinks: {
       instagram: "https://instagram.com/aryamanaggarwal",
@@ -159,9 +178,9 @@ export const courses: Course[] = [
     description: "Learn the fundamentals of Digital Audio Workstations (DAW). Perfect for absolute beginners looking to start their production journey.",
     longDescription: "This intensive 1-month program takes you from zero to confident DAW user. You'll learn interface navigation, basic recording, MIDI programming, and essential editing techniques. By the end, you'll have a solid foundation to build upon in more advanced courses.",
     duration: { months: 1 },
-    price: 40000,
+    price: 39999,
     level: "beginner",
-    instructorId: "siddharth",
+    instructorId: "aryaman",
     sessionsPerWeek: 3,
     totalSessions: 12,
     totalHours: 24,
@@ -174,11 +193,38 @@ export const courses: Course[] = [
     ],
     prerequisites: "None - perfect for absolute beginners",
     whatsIncluded: [
-      "12 live sessions (2 hours each)",
-      "Session recordings for revision",
-      "Project files and templates",
-      "Community Discord access",
-      "Certificate of completion",
+      "Train with Ableton Certified Trainer Aryaman Agarwal (13+ years experience)",
+      "Get hands-on experience with Ableton Live Suite 12",
+      "Learn sound design and creative production techniques",
+      "Access exclusive templates, project files, and sample packs",
+      "Receive a professional certificate",
+      "Join a growing creative alumni network",
+    ],
+    postCourseBenefits: [
+      {
+        category: "Learning Resources",
+        items: [
+          "Ableton Live Suite 12 Experience",
+          "Exclusive Project Templates",
+          "Production Sample Packs",
+        ],
+      },
+      {
+        category: "Expert Guidance",
+        items: [
+          "Ableton Certified Instruction",
+          "Sound Design Foundations",
+          "Workflow Optimization",
+        ],
+      },
+      {
+        category: "Growth & Community",
+        items: [
+          "Professional Certificate",
+          "Creative Alumni Network",
+          "Continuing Education Path",
+        ],
+      },
     ],
     sessions: [
       {
@@ -288,9 +334,9 @@ export const courses: Course[] = [
     description: "Comprehensive introduction to music production covering composition, sound design, arrangement, and production workflow. Students complete production-ready tracks.",
     longDescription: "This 3-month intensive program transforms you from a beginner into a capable music producer. You'll master composition, sound design, arrangement, and mixing fundamentals while creating your own original tracks. By the end, you'll have a portfolio of production-ready music.",
     duration: { months: 3 },
-    price: 100000,
+    price: 99999,
     level: "intermediate",
-    instructorId: "siddharth",
+    instructorId: "aryaman",
     sessionsPerWeek: 3,
     totalSessions: 36,
     totalHours: 72,
@@ -304,12 +350,38 @@ export const courses: Course[] = [
     ],
     prerequisites: "DAW Fundamentals or basic DAW knowledge",
     whatsIncluded: [
-      "36 live sessions (2 hours each)",
-      "All session recordings",
-      "Premium sample packs",
-      "1-on-1 feedback sessions",
-      "Community Discord access",
-      "Certificate of completion",
+      "Train with Ableton Certified Trainer Aryaman Agarwal (13+ years experience)",
+      "Splice membership included for access to professional sample libraries",
+      "Hands-on training in beat making, sampling, and production workflows",
+      "Access to industry partners and discounted music software & gear",
+      "Free templates, project files, and sample packs",
+      "Professional certification and alumni network",
+    ],
+    postCourseBenefits: [
+      {
+        category: "Professional Tools",
+        items: [
+          "Splice Premium Membership",
+          "Industry Partner Discounts",
+          "Professional Sample Libraries",
+        ],
+      },
+      {
+        category: "Mentorship & Mastery",
+        items: [
+          "Direct Mentorship (Aryaman Agarwal)",
+          "Advanced Workflow Systems",
+          "Beat Making & Sampling Mastery",
+        ],
+      },
+      {
+        category: "Career Launch",
+        items: [
+          "Professional Certification",
+          "Alumni Network Access",
+          "Portfolio Review & Feedback",
+        ],
+      },
     ],
     sessions: [
       {
@@ -340,7 +412,7 @@ export const courses: Course[] = [
     description: "Go beyond presets - understand synthesis, sound shaping, and instrument architecture to craft your own signature sound. Master full-spectrum production from core fundamentals to advanced performance techniques.",
     longDescription: "This intensive 5-month program is designed for producers ready to reach professional levels. Train with Aryaman Aggarwal, a Pyramind graduate and Ableton Certified Trainer. Get Ableton Live Suite 12 along with the course and master sampling, groove design, sound shaping, and industry-ready workflow systems.",
     duration: { months: 5 },
-    price: 175000,
+    price: 179999,
     level: "advanced",
     instructorId: "aryaman",
     sessionsPerWeek: 3,
@@ -355,13 +427,16 @@ export const courses: Course[] = [
     ],
     prerequisites: "Previous music knowledge recommended",
     whatsIncluded: [
-      "72 live sessions (2 hours each)",
-      "Ableton Live Suite 12 included",
-      "Exclusive templates & project files",
-      "Sample packs & workflow guides",
-      "Industry networking & access",
-      "Professional certification",
-      "Community Discord access",
+      "Train with Ableton Certified Trainer Aryaman Agarwal (13+ years experience)",
+      "Ableton Live Suite 12 software included with the course",
+      "Splice membership included for access to world-class sounds and samples",
+      "Deep instrument, synthesis, and sound design knowledge",
+      "Professional production, arrangement, and mixing techniques",
+      "Free templates, sample packs, and project resources",
+      "Access to academy partners with exclusive discounts on music production tools and products",
+      "Industry exposure, mentorship, and career guidance",
+      "Career roadmap support (Producer, Beatmaker, Mix Engineer, etc.)",
+      "Professional certification and alumni network",
     ],
     postCourseBenefits: [
       {
@@ -468,11 +543,11 @@ export const courses: Course[] = [
     tagline: "Perfect For: Complete beginners & hobby DJs",
     category: "djing",
     description: "In just one month, you’ll build strong technical foundations and learn how to mix clean, structured DJ sets with confidence.",
-    longDescription: "Whether you're starting from scratch or want to level up your skills, our academy is built to take you from basic understanding to confident live performance - and beyond. Train with Industry Expert Dishant Kohli (17+ Years Experience).",
+    longDescription: "Whether you're starting from scratch or want to level up your skills, our academy is built to take you from basic understanding to confident live performance - and beyond. Train with Industry Expert Kamazaki (17+ Years Experience).",
     duration: { months: 1 },
-    price: 35000,
+    price: 34999,
     level: "beginner",
-    instructorId: "dishant",
+    instructorIds: ["kamazaki", "garry"],
     sessionsPerWeek: 2,
     totalSessions: 8,
     totalHours: 16,
@@ -485,14 +560,32 @@ export const courses: Course[] = [
     ],
     prerequisites: "None - perfect for complete beginners",
     whatsIncluded: [
-      "8 live sessions (2 hours each)",
-      "Session recordings",
-      "Music library starter pack",
-      "Equipment buying guide",
-      "Community Discord access",
-      "Certificate of completion",
+      "Beginner DJ Certification upon course completion",
+      "Hands-on training with industry-standard CDJs & Pioneer mixers",
+      "Pre-booked practice slots in a professional DJ environment",
+      "Manual beatmatching & clean mixing skills for confident performances",
+      "Recorded 30 Min Set for your DJ portfolio",
     ],
     postCourseBenefits: [
+      {
+        category: "Practice & Performance",
+        items: [
+          "Pre-booked Practice Slots",
+          "Hands-on CDJ Experience",
+          "Pioneer Mixer Mastery",
+          "Access to industry-standard DJ equipment",
+          "Performance recordings",
+        ],
+      },
+      {
+        category: "Portfolio & Recording",
+        items: [
+          "Recorded 30-Min DJ Set",
+          "Performance Evaluation",
+          "Technical Drill Sheet",
+          "Performance video content",
+        ],
+      },
       {
         category: "Core Skills & Certification",
         items: [
@@ -500,29 +593,9 @@ export const courses: Course[] = [
           "Confident Equipment Control",
           "Manual Beatmatching Skills",
           "Clean Mixing Ability",
-        ],
-      },
-      {
-        category: "Creative Techniques",
-        items: [
           "Harmonic Mixing Knowledge",
           "Basic Looping & FX Control",
-          "Professional Track Preparation",
-          "Live Set Confidence",
-        ],
-      },
-      {
-        category: "Professional Practice Environment",
-        items: [
-          "Access to industry-standard DJ equipment",
-          "Pre Booked Practice Slots",
-          "Performance recordings",
-        ],
-      },
-      {
-        category: "Portfolio Development",
-        items: [
-          "Performance video content",
+          "Alumni Community Access",
           "Artist positioning support",
         ],
       },
@@ -600,12 +673,12 @@ export const courses: Course[] = [
     title: "DJ Advanced Performance Program",
     tagline: "Perfect For: Aspiring professional DJs",
     category: "djing",
-    description: "Month 2 transforms you from a technically good DJ into a performance-ready artist with industry awareness. Led by Faculty Dishant Kohli.",
+    description: "Month 2 transforms you from a technically good DJ into a performance-ready artist with industry awareness. Led by Faculty Kamazaki.",
     longDescription: "This program is designed to first build rock-solid DJ foundations and then elevate students into technically advanced, performance-ready artists with strong industry awareness. Includes the full 1-Month Fundamentals Program.",
     duration: { months: 2 },
-    price: 60000,
+    price: 59999,
     level: "advanced",
-    instructorId: "dishant",
+    instructorIds: ["kamazaki", "garry"],
     sessionsPerWeek: 2,
     totalSessions: 16,
     totalHours: 32,
@@ -618,13 +691,13 @@ export const courses: Course[] = [
     ],
     prerequisites: "None - Includes the full 1-Month Fundamentals Program",
     whatsIncluded: [
-      "16 live sessions (8 Weeks)",
-      "Access to industry-standard DJ equipment",
-      "Pre Booked Practice Slots",
-      "Professionally recorded mixtape & video content",
-      "Graduation showcase event & performance opportunities",
-      "Artist positioning & career guidance support",
-      "Promoter introductions & networking opportunities",
+      "Access to industry-standard DJ equipment & pre-booked practice slots",
+      "Professionally recorded mixtape and performance video for your portfolio",
+      "Guaranteed DJ performance slots through academy showcases",
+      "Guaranteed placement opportunities within the event industry",
+      "Real performance opportunities at academy events and showcases",
+      "Industry networking, promoter introductions & alumni DJ community",
+      "Career guidance, branding support, and long-term mentoring",
     ],
     postCourseBenefits: [
       {
@@ -811,7 +884,7 @@ export const courses: Course[] = [
     description: "Exclusive remix masterclass with renowned producer Su Real. Learn professional remixing techniques and contribute to a compilation album release.",
     longDescription: "This unique 1-month program pairs you with internationally acclaimed producer Su Real for an intensive remix masterclass. You'll learn professional remixing techniques, creative interpretation, and advanced sound design. The program culminates in a compilation album featuring remixes from all students, professionally released and marketed.",
     duration: { months: 1 },
-    price: 50000,
+    price: 49999,
     level: "advanced",
     instructorId: "sureal",
     sessionsPerWeek: 2,
@@ -827,14 +900,37 @@ export const courses: Course[] = [
     ],
     prerequisites: "Some music production experience recommended",
     whatsIncluded: [
-      "8 regular sessions + 1 album recording session",
-      "Direct mentorship from Su Real",
-      "Original stems for remixing",
-      "Compilation album release credit",
-      "Professional marketing materials",
-      "Industry collaboration experience",
-      "Community Discord access",
-      "Certificate of completion",
+      "Train directly with award-winning DJ/Producer Su Real",
+      "Learn industry remix techniques used by global DJs",
+      "Create a professional remix ready for release on any DAW",
+      "Potential feature on a student remix compilation album",
+      "Guidance on distribution, copyright, and promotion",
+    ],
+    postCourseBenefits: [
+      {
+        category: "Direct Mentorship",
+        items: [
+          "Artist Mentorship (Su Real)",
+          "Creative Breakdown Sessions",
+          "Industry Workflow Insights",
+        ],
+      },
+      {
+        category: "Professional Release",
+        items: [
+          "Release-Ready Remix",
+          "Album Feature Potential",
+          "Marketing Content Support",
+        ],
+      },
+      {
+        category: "Career Strategy",
+        items: [
+          "Distribution Guidance",
+          "Copyright & IP Support",
+          "Promotion Walkthrough",
+        ],
+      },
     ],
     sessions: [
       {
@@ -928,6 +1024,19 @@ export function getInstructorById(id: string): Instructor | undefined {
 
 export function getFeaturedCourses(): Course[] {
   return courses.filter((course) => course.featured);
+}
+
+export function getInstructorsForCourse(course: Course): Instructor[] {
+  if (course.instructorIds) {
+    return course.instructorIds
+      .map(id => getInstructorById(id))
+      .filter((instructor): instructor is Instructor => instructor !== undefined);
+  }
+  if (course.instructorId) {
+    const instructor = getInstructorById(course.instructorId);
+    return instructor ? [instructor] : [];
+  }
+  return [];
 }
 
 export function formatPrice(price: number): string {

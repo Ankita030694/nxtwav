@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Headphones, Instagram, Youtube } from "lucide-react";
+import { Headphones, Instagram, Youtube, MapPin, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
@@ -56,6 +56,16 @@ export function Footer() {
                   <path d="M11.562 16.216h.463v-6.936l-.463.155v6.781zm-1.385-.461h.463V9.754l-.463.784v5.217zm-1.387-.768h.463V11.23l-.463.538v3.717zm-1.386-.77h.463v-2.34l-.463.078v2.262zm-1.387-.23h.463v-.539H5.53v.539zm7.394 2.229h7.322c1.7 0 3.078-1.378 3.078-3.078s-1.378-3.078-3.078-3.078c-.28 0-.547.037-.802.106-.29-2.008-2.015-3.562-4.102-3.562-.977 0-1.874.343-2.58.918-.21-.19-.462-.338-.737-.435v9.129z"/>
                 </svg>
               </a>
+              <a 
+                href="tel:+919599595597" 
+                className="flex items-center gap-2 group ml-2"
+                aria-label="Call Support"
+              >
+                <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-muted/80 transition-colors">
+                  <Phone className="w-5 h-5" />
+                </div>
+
+              </a>
             </div>
           </div>
 
@@ -80,21 +90,27 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Newsletter */}
+          {/* Contact Information */}
           <div>
-            <h4 className="font-display font-semibold text-foreground mb-4">Stay Updated</h4>
-            <p className="text-muted-foreground text-sm mb-4">
-              Get production tips, industry insights, and exclusive offers.
-            </p>
-            <div className="flex gap-2">
-              <Input
-                type="email"
-                placeholder="Enter your email"
-                className="bg-muted border-border"
-              />
-              <Button className="bg-gradient-cta hover:opacity-90 text-primary-foreground shrink-0" asChild>
-                <Link to="/auth/signup">Subscribe</Link>
-              </Button>
+            <h4 className="font-display font-semibold text-foreground mb-4">Contact Us</h4>
+            <div className="flex flex-col gap-4">
+              <div className="flex items-center gap-2 text-muted-foreground">
+                <span className="text-sm font-medium">Academy Support:</span>
+                <a 
+                  href="tel:+919599595597" 
+                  className="text-sm font-bold text-foreground hover:text-primary transition-colors"
+                >
+                  +91 95995 95597
+                </a>
+              </div>
+              <div className="flex items-start gap-2 text-muted-foreground mt-1">
+                <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
+                <p className="text-xs leading-relaxed">
+                  O-119, Second Floor | THE SHOPPING MALL,<br />
+                  Arjun Marg, Block E, DLF Phase 1, Sector 26A,<br />
+                  Gurugram, Haryana 122002
+                </p>
+              </div>
             </div>
           </div>
         </div>

@@ -7,46 +7,51 @@ import {
 
 const faqs = [
   {
-    question: "Who are the founders of NXTwav?",
-    answer: "NXTwav was co-founded by three industry insiders: Siddharth Sethi (BeatCrush) - a touring DJ, music producer, and entrepreneur; Lakshay Nanda (Skopos) - with over 10 years of experience behind the decks including 500+ weddings and corporate events; and Kanav Kumar (SLCT) - an entrepreneur with extensive experience in artist management, event curation, and brand-led live experiences. Together, they bring real-world industry knowledge to every course.",
+    question: "Who is this academy for?",
+    answer: "Our programs are designed for students, working professionals, freelancers, and creators who want to build real-world skills and start earning in the digital economy. Whether you’re a beginner or already have some experience, the curriculum adapts to your level.",
   },
   {
-    question: "What makes NXTwav different from other music academies?",
-    answer: "Three key differences: (1) Our founders are active working artists who still perform at clubs, festivals, and events, not just instructors teaching from textbooks. (2) We focus on career outcomes with structured 12-month roadmaps, mentorship, and industry connections, not just course certificates. (3) Monthly live founder sessions let you watch real production happen in real-time. We don't just teach skills, we launch careers.",
+    question: "Is NxtWav an online or offline academy?",
+    answer: "Currently, NxtWav operates as an offline learning academy where students learn through hands-on sessions, practical workshops, and mentor guidance. We are also working on online learning programs that will launch soon, allowing students from anywhere to access our courses.",
   },
   {
-    question: "What kind of courses do you offer?",
-    answer: "We offer comprehensive programs covering Music Production (DAWs, sound design, mixing, mastering), DJ Performance (beatmatching, scratching, crowd control, controller and CDJ workflows), Artist Development (branding, marketing, content strategy), and Music Business (label submissions, licensing, revenue streams, booking). Each course is designed with real-world application in mind.",
+    question: "What will I be able to do after completing the program?",
+    answer: "By the end of the program, you will be able to:\n• Apply your skills to real-world projects\n• Build a professional portfolio\n• Work with industry tools and workflows\n• Start freelancing, internships, or entry-level opportunities in the field",
+  },
+  {
+    question: "Is there an age requirement to join NxtWav Academy?",
+    answer: "There is no strict age criteria to join NxtWav Academy. Our programs are open to students, aspiring creators, and working professionals who are passionate about learning creative skills. As long as you have the interest to learn and the commitment to practice, you’re welcome to be part of the academy.",
+  },
+  {
+    question: "What kind of career opportunities can students expect after completing the program?",
+    answer: "At NxtWav, our goal is to help students build real-world creative skills and connect with meaningful opportunities. Students receive career guidance, portfolio support, and access to our growing network of creators, professionals, and industry contacts. We actively assist learners in exploring opportunities such as freelance work, collaborations, internships, and entry-level roles where applicable.",
   },
   {
     question: "Do I need prior experience to join?",
     answer: "Not at all! We have programs for all skill levels. Our beginner courses assume no prior knowledge and build your foundation step-by-step. Advanced courses are available for those looking to take their existing skills to a professional level. The interactive puzzles on our Courses page can help you discover which program suits your current level.",
   },
   {
-    question: "How are the 'Live in the Studio' sessions different from recorded courses?",
-    answer: "They're 100% live, unscripted, and interactive! Our founders produce a track from scratch in real-time while you watch. You can ask questions in the chat, vote on creative decisions, and see the entire thought process - no cuts, no editing. It's like being in the studio with a professional producer. Replays are available within 24 hours for enrolled students.",
+    question: "Are there any prerequisites to join this academy?",
+    answer: "To get the most out of the program, students should have a laptop and a good pair of studio-quality headphones for practice and production work.\n\nHaving experience with a musical instrument can be helpful for understanding music theory, but it is not required. Our curriculum covers music theory and fundamentals from the ground up, so beginners are welcome.",
   },
   {
-    question: "Do you help students get real gigs and opportunities?",
-    answer: "Absolutely! Career guidance is central to our mission. BeatCrush's vision for NXTwav is to bridge the gap between learning and performing. We actively guide students into real-world gigs, showcases, and professional opportunities through our industry network. Our 95% career success rate reflects our commitment to launching careers, not just teaching skills.",
+    question: "What payment options are available?",
+    answer: "NxtWav offers flexible payment options to make enrollment easier for students. You can choose to:\n• Pay the full course fee upfront, or\n• Opt for a 2-installment payment plan directly through the academy\n\nWe also support flexible EMI or pay-later options through our online payment gateways (such as Razorpay and credit card providers), subject to the gateway’s terms and eligibility. To confirm your seat, an advance payment is required.",
   },
   {
-    question: "What software and equipment do I need?",
-    answer: "For music production, we primarily teach on Ableton Live, but skills transfer to any DAW (FL Studio, Logic Pro, etc.). For DJing, we cover Pioneer CDJ workflows and controller-based DJing with Serato and Rekordbox. We've partnered with these companies for student discounts - you'll get details upon enrollment. A laptop and headphones are recommended to start.",
+    question: "Does NxtWav offer a refund policy?",
+    answer: "All enrollments are final and non-refundable once access to the program or academy resources has been granted.",
   },
   {
-    question: "What's your refund policy?",
-    answer: "At NXTwav, we strive to ensure your satisfaction with every course. Please refer to our complete refund policy link in the footer for detailed eligibility and process information.",
+    question: "What makes NxtWav different from other creative academies?",
+    answer: "NxtWav is built around real-world creative practice and industry exposure, not just classroom learning. Three key things set us apart:\n\n1. Industry-led learning: Our programs are guided by active creators and professionals, so students learn workflows, tools, and approaches that are actually used in the industry today.\n\n2. Focus on real outcomes: We emphasize portfolio building, practical projects, mentorship, and industry exposure, helping students develop work that can open doors to freelance projects, collaborations, and entry-level opportunities.\n\n3. Direct access to creators and mentors: Students regularly interact with mentors and founders through sessions, feedback reviews, and live creative breakdowns.",
   },
   {
-    question: "Do you offer payment plans or EMI options?",
-    answer: "Yes! We offer flexible EMI options for Indian students through partner payment gateways including Razorpay. International students can pay in 2-3 installments. Contact our team for custom payment arrangements that work for your budget.",
-  },
-  {
-    question: "Can I access courses offline?",
-    answer: "All recorded course content can be downloaded for offline viewing through our mobile app. Live sessions must be watched in real-time, but replays are available within 24 hours for enrolled students. This way, you can learn at your own pace, anywhere.",
+    question: "How do I enroll in NxtWav Academy?",
+    answer: "The best way to get started is by speaking with our team. They’ll help you understand the programs, learning format, schedules, and payment options, and guide you in choosing the course that aligns with your creative goals. Once you’re ready, we’ll assist you with the enrollment process step-by-step. Simply reach out through our website or contact channels to connect with the team.",
   },
 ];
+
 
 export function FAQSection() {
   return (

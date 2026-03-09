@@ -1,5 +1,5 @@
 // Founder data for the About page
-import skoposPhoto from "@/assets/founders/skopos-lakshay-nanda.png";
+import skoposPhoto from "@/assets/founders/lakshay_nanda.jpg";
 import beatcrushPhoto from "@/assets/founders/beatcrush-siddharth-sethi.png";
 import slctPhoto from "@/assets/founders/slct-kanav-kumar.png";
 
