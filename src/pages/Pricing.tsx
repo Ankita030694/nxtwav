@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
 import { courses, formatPrice } from "@/data/courses";
+import SEO from "@/components/SEO";
 
 const getPrice = (id: string) => {
   const course = courses.find(c => c.id === id);
@@ -212,6 +213,11 @@ const Pricing = () => {
 
   return (
     <main className="min-h-screen bg-background">
+      <SEO 
+        title="Pricing & Course Comparison | NXTwav Academy"
+        description="Compare our music production and DJing programs. Find the perfect fit for your skill level and career goals with transparent pricing and detailed feature comparisons."
+        keywords="music production course fees, DJ course price India, music academy pricing, Ableton course cost"
+      />
       <Navigation />
       
       {/* Hero */}

@@ -6,6 +6,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { getCourseBySlug, getInstructorsForCourse, formatPrice, categoryInfo } from "@/data/courses";
 import { Clock, Users, GraduationCap, CheckCircle, ArrowLeft, Calendar, BookOpen } from "lucide-react";
 import { cn } from "@/lib/utils";
+import SEO from "@/components/SEO";
 
 const CourseDetail = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -30,6 +31,11 @@ const CourseDetail = () => {
 
   return (
     <main className="min-h-screen bg-background">
+      <SEO 
+        title={`${course.title} | NXTwav Academy`}
+        description={course.tagline}
+        keywords={`${course.title}, music production course, ${category.label}, ${course.level} music course`}
+      />
       <Navigation />
       
       {/* Hero */}

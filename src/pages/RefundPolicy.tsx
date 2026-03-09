@@ -1,9 +1,15 @@
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
+import SEO from "@/components/SEO";
 
 const RefundPolicy = () => {
   return (
     <main className="min-h-screen bg-background">
+      <SEO 
+        title="Refund Policy | NXTwav Academy"
+        description="Learn about our refund policy and satisfaction guarantee for all NXTwav Academy courses and programs."
+        keywords="refund policy, course refund, satisfaction guarantee, NXTwav"
+      />
       <Navigation />
       
       <div className="pt-24 pb-16">

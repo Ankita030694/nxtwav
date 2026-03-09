@@ -1,9 +1,15 @@
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
+import SEO from "@/components/SEO";
 
 const TermsOfService = () => {
   return (
     <main className="min-h-screen bg-background">
+      <SEO 
+        title="Terms of Service | NXTwav Academy"
+        description="Read our terms of service to understand the rules and guidelines for using NXTwav Academy's platform and courses."
+        keywords="terms of service, legal, NXTwav terms"
+      />
       <Navigation />
       
       <div className="pt-24 pb-16">

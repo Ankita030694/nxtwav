@@ -534,7 +534,7 @@ const TiptapEditor: React.FC<TiptapEditorProps> = ({ content, onChange, classNam
     },
     editorProps: {
       attributes: {
-        class: 'prose prose-sm sm:prose lg:prose-lg max-w-none p-4 min-h-[300px] focus:outline-none',
+        class: 'prose prose-sm sm:prose lg:prose-lg prose-invert max-w-none p-4 min-h-[300px] focus:outline-none text-white',
       },
       handleDrop: (view, event, slice, moved) => {
         if (!moved && event.dataTransfer && event.dataTransfer.files && event.dataTransfer.files.length > 0) {
@@ -702,14 +702,10 @@ const TiptapEditor: React.FC<TiptapEditorProps> = ({ content, onChange, classNam
       .ProseMirror {
         min-height: 300px;
         outline: none;
+        color: white;
       }
-      .ProseMirror h1 { font-size: 2em; font-weight: 700; margin: 0.67em 0; }
-      .ProseMirror h2 { font-size: 1.5em; font-weight: 700; margin: 0.83em 0; }
-      .ProseMirror h3 { font-size: 1.17em; font-weight: 600; margin: 1em 0; }
-      .ProseMirror h4 { font-size: 1em; font-weight: 600; margin: 1.33em 0; }
-      .ProseMirror h5 { font-size: 0.83em; font-weight: 600; margin: 1.67em 0; }
-      .ProseMirror h6 { font-size: 0.67em; font-weight: 600; margin: 2.33em 0; }
-      .ProseMirror p { margin: 1em 0; }
+      .ProseMirror p { margin: 1em 0; color: white; }
+      .ProseMirror h1, .ProseMirror h2, .ProseMirror h3, .ProseMirror h4, .ProseMirror h5, .ProseMirror h6 { color: white; }
       .ProseMirror blockquote { border-left: 4px solid #d1d5db; margin-left: 0; padding-left: 1em; color: #4b5563; }
       .ProseMirror pre { background-color: #f5f5f5; padding: 0.75em; border-radius: 0.5em; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
       .ProseMirror table { border-collapse: collapse; margin: 0; overflow: hidden; table-layout: fixed; width: 100%; }

@@ -3,6 +3,7 @@ import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Play, Calendar, Clock, Users, Bell } from "lucide-react";
 import heroStudio from "@/assets/hero-studio.jpg";
+import SEO from "@/components/SEO";
 
 const sessions = [
   {
@@ -49,6 +50,11 @@ const sessions = [
 const LiveSessions = () => {
   return (
     <main className="min-h-screen bg-background">
+      <SEO 
+        title="Live Music Production Sessions | Watch & Learn from Experts"
+        description="Join our live monthly sessions with platinum producers and industry experts. Get real-time feedback, ask questions, and watch professional workflows unfold."
+        keywords="live music production sessions, producer Q&A, online music masterclass, music career coaching, expert music production"
+      />
       <Navigation />
       
       {/* Hero */}

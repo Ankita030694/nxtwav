@@ -11,6 +11,7 @@ import { faStar, faUser, faQuoteLeft, faShareNodes } from '@fortawesome/free-sol
 import { faFacebook, faTwitter, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { Loader2, Calendar, User, ArrowRight, Share2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import SEO from "@/components/SEO";
 
 // Define interfaces
 export interface Blog {
@@ -190,6 +191,11 @@ const BlogPostDetail = () => {
 
   return (
     <main className="min-h-screen bg-background selection:bg-primary/30">
+      <SEO 
+        title={blog.metaTitle || `${blog.title} | NXTwav Academy Blog`}
+        description={blog.metaDescription || blog.subtitle || blog.description.substring(0, 160)}
+        keywords={`${blog.title}, music production blog, ${blog.author}, music industry insights`}
+      />
       <Navigation />
       
       {/* Hero Header */}
@@ -229,7 +235,7 @@ const BlogPostDetail = () => {
           className="aspect-video max-w-6xl mx-auto rounded-3xl overflow-hidden shadow-[0_0_50px_rgba(var(--primary-rgb),0.15)] border border-border group"
         >
           <img 
-            src={blog.image} 
+            src={blog.image || "https://images.unsplash.com/photo-1514525253361-bee24386b17b?w=1200&auto=format&fit=crop&q=80"} 
             alt={blog.title}
             className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
           />

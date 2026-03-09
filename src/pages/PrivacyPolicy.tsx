@@ -1,9 +1,15 @@
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
+import SEO from "@/components/SEO";
 
 const PrivacyPolicy = () => {
   return (
     <main className="min-h-screen bg-background">
+      <SEO 
+        title="Privacy Policy | NXTwav Academy"
+        description="Our commitment to your privacy. Learn how NXTwav Academy collects, uses, and safeguards your personal information."
+        keywords="privacy policy, data protection, NXTwav privacy"
+      />
       <Navigation />
       
       <div className="pt-24 pb-16">

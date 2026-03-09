@@ -111,9 +111,15 @@ export function FacultySection() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {faculty.map((member, index) => {
-            const colors = ["secondary", "accent", "primary"];
-            const colorClass = colors[index % 3];
+          {faculty.map((member) => {
+            const getSpecialtyColor = (specialty: string) => {
+              if (specialty === "Artist Development Programme") return "accent";
+              if (specialty === "DJ Performance & Industry Mastery") return "secondary";
+              if (specialty === "Music Production & Sound Design") return "primary";
+              return "primary";
+            };
+
+            const colorClass = getSpecialtyColor(member.specialty);
 
             return (
               <div

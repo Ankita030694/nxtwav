@@ -19,7 +19,7 @@ import {
   getDoc,
   serverTimestamp,
 } from 'firebase/firestore';
-import { ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
+import { ref, uploadBytesResumable, getDownloadURL, deleteObject } from 'firebase/storage';
 import { useNavigate } from 'react-router-dom';
 
 import { db, auth, storage } from '@/lib/firebase';
@@ -27,6 +27,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { AdminSidebar } from "@/components/AdminSidebar";
 import TiptapEditor from '@/components/TiptapEditor';
 import { Loader2 } from "lucide-react";
+import SEO from "@/components/SEO";
 
 const BLOG_DRAFT_KEY = 'nxtwav:blogDraft';
 
@@ -343,30 +344,50 @@ const AddBlogs = () => {
       setUploading(true);
       setUploadProgress(0);
 
-      const storageRef = ref(storage, `blog-images/${Date.now()}_${file.name}`);
-
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        setImagePreview(event.target?.result as string);
-      };
-      reader.readAsDataURL(file);
-
       let fileToUpload = file;
       if (file.type.startsWith('image/')) {
         fileToUpload = await compressImage(file);
+        // Show local preview immediately
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          setImagePreview(event.target?.result as string);
+        };
+        reader.readAsDataURL(fileToUpload);
+      } else {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          setImagePreview(event.target?.result as string);
+        };
+        reader.readAsDataURL(file);
       }
 
-      const snapshot = await uploadBytes(storageRef, fileToUpload);
-      const downloadURL = await getDownloadURL(snapshot.ref);
-      setNewBlog((prevState) => ({
-        ...prevState,
-        image: downloadURL,
-      }));
-      setUploadProgress(100);
+      const storageRef = ref(storage, `blog-images/${Date.now()}_${file.name}`);
+      const uploadTask = uploadBytesResumable(storageRef, fileToUpload);
+
+      uploadTask.on(
+        'state_changed',
+        (snapshot) => {
+          const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          setUploadProgress(progress);
+        },
+        (error) => {
+          console.error('Error uploading image:', error);
+          alert('Failed to upload image. Please try again.');
+          setUploading(false);
+        },
+        async () => {
+          const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+          setNewBlog((prevState) => ({
+            ...prevState,
+            image: downloadURL,
+          }));
+          setUploading(false);
+          setUploadProgress(100);
+        }
+      );
     } catch (error) {
-      console.error('Error uploading image:', error);
-      alert('Failed to upload image. Please try again.');
-    } finally {
+      console.error('Error in file upload process:', error);
+      alert('Failed to process image. Please try again.');
       setUploading(false);
     }
   };
@@ -560,6 +581,7 @@ const AddBlogs = () => {
 
   return (
     <div className="flex bg-background min-h-screen text-foreground">
+      <SEO title="Manage Blogs | NXTwav Academy" description="Admin dashboard to manage blogs." noindex={true} />
       <AdminSidebar />
       <div className="flex-1 md:ml-64 p-4 pt-24 pb-12 overflow-x-hidden">
         <div className="max-w-7xl mx-auto w-full">
@@ -734,8 +756,23 @@ const AddBlogs = () => {
                             <FontAwesomeIcon icon={faUpload} className="mr-2" />
                             {uploading ? 'Uploading...' : 'Choose Image'}
                           </motion.button>
-                          {newBlog.image && (
-                            <span className="text-xs text-green-500">✓ Uploaded</span>
+                          {uploading && (
+                            <div className="w-full max-w-sm mt-2">
+                              <div className="h-2 bg-muted rounded-full overflow-hidden">
+                                <motion.div 
+                                  className="h-full bg-primary"
+                                  initial={{ width: 0 }}
+                                  animate={{ width: `${uploadProgress}%` }}
+                                />
+                              </div>
+                              <p className="text-[10px] text-muted-foreground mt-1 text-right">{Math.round(uploadProgress)}% uploaded</p>
+                            </div>
+                          )}
+                          {!uploading && newBlog.image && (
+                            <span className="text-xs text-green-500 font-medium flex items-center gap-1">
+                              <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                              Ready to Publish
+                            </span>
                           )}
                         </div>
 

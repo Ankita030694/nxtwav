@@ -9,10 +9,16 @@ import { FacultySection } from "@/components/about/FacultySection";
 import { WhyJoinSection } from "@/components/about/WhyJoinSection";
 import { AboutCTA } from "@/components/about/AboutCTA";
 import { CTASection } from "@/components/sections/CTASection";
+import SEO from "@/components/SEO";
 
 const About = () => {
   return (
     <main className="min-h-screen bg-background">
+      <SEO 
+        title="About NXTwav Academy | Our Mission & Founders"
+        description="Learn about NXTwav Academy's mission to empower the next generation of music creators. Meet our founders and discover why we're India's premier music production school."
+        keywords="NXTwav founders, music production school India, music education, music coaching India"
+      />
       <Navigation />
       <AboutHero />
       <AboutStory />

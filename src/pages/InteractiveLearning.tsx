@@ -9,6 +9,7 @@ import { BeatDetectionPuzzle } from "@/components/puzzles/BeatDetectionPuzzle";
 import { SoundDesignPuzzle } from "@/components/puzzles/SoundDesignPuzzle";
 import { RevenueAllocationPuzzle } from "@/components/puzzles/RevenueAllocationPuzzle";
 import { Sliders, Calendar, Music, Headphones, DollarSign } from "lucide-react";
+import SEO from "@/components/SEO";
 
 const puzzles: PuzzleConfig[] = [
   {
@@ -84,8 +85,12 @@ const InteractiveLearning = () => {
 
   return (
     <main className="min-h-screen bg-background">
-      <Navigation />
-      
+      <SEO 
+        title="Interactive Music Learning Challenges | NXTwav Academy"
+        description="Test your music production, mixing, and DJing skills with our interactive challenges. Find the right learning path for your musical journey."
+        keywords="music production puzzles, ear training, mixing challenges, DJ skill test, interactive music education"
+      />
+      <Navigation />      
       {/* Hero Section */}
       <section className="pt-32 pb-16 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-hero opacity-50" />

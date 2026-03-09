@@ -13,6 +13,7 @@ import { db } from "@/lib/firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
 import ParticleBackground from "@/components/ui/particle-background";
+import SEO from "@/components/SEO";
 
 const indianStatesAndUTs = [
   "Andaman and Nicobar Islands", "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", 
@@ -133,6 +134,11 @@ export default function Signup() {
 
   return (
     <div className="min-h-screen bg-background flex items-center justify-center p-4 overflow-hidden">
+      <SEO 
+        title="Sign Up | NXTwav Academy"
+        description="Create your NXTwav Academy account or get in touch with us."
+        noindex={true}
+      />
       <ParticleBackground />
       
       <Card className="w-full max-w-md relative z-10 bg-card/95 backdrop-blur-xl border-border mt-20 md:mt-0">

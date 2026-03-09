@@ -8,6 +8,7 @@ import { CategoryHeader } from "@/components/courses/CategoryHeader";
 import { Button } from "@/components/ui/button";
 import { courses, CourseCategory, getCoursesByCategory } from "@/data/courses";
 import { Gamepad2 } from "lucide-react";
+import SEO from "@/components/SEO";
 
 const CoursesPage = () => {
   const location = useLocation();

@@ -6,6 +6,7 @@ import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Music, BookOpen, Users, Trophy, Play, ArrowRight } from "lucide-react";
+import SEO from "@/components/SEO";
 
 export default function Dashboard() {
   const { user, loading } = useAuth();
@@ -62,6 +63,7 @@ export default function Dashboard() {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO title="Dashboard | NXTwav Academy" description="Your student dashboard." noindex={true} />
       <Navigation />
       
       <main className="pt-24 pb-16">
@@ -69,7 +71,7 @@ export default function Dashboard() {
           {/* Welcome Section */}
           <div className="mb-12">
             <h1 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-2">
-              Welcome back{user.user_metadata?.full_name ? `, ${user.user_metadata.full_name}` : ''}!
+              Welcome back{user.displayName ? `, ${user.displayName}` : ''}!
             </h1>
             <p className="text-muted-foreground">
               Ready to create your next hit? Let's get started.

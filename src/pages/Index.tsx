@@ -12,6 +12,7 @@ import { FAQSection } from "@/components/sections/FAQSection";
 import { CTASection } from "@/components/sections/CTASection";
 import { WhyJoinSection } from "@/components/about/WhyJoinSection";
 import { ConsultationButton } from "@/components/ConsultationButton";
+import SEO from "@/components/SEO";
 
 const Index = () => {
   const location = useLocation();
@@ -38,6 +39,11 @@ const Index = () => {
 
   return (
     <main className="min-h-screen bg-background">
+      <SEO 
+        title="NXTwav Academy | Master Music Production & DJing in India"
+        description="Level up your music career with NXTwav Academy. Professional music production and DJ courses with industry roadmaps and career guidance. Join the next wave of music producers."
+        keywords="music production course, music academy India, DJ training, Ableton course, music career, music producer school"
+      />
       <Navigation />
       <HeroSection />
       <RoadmapSection />

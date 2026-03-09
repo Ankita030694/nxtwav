@@ -8,6 +8,9 @@ import kamazaki3 from "@/assets/faculty/kamazaki3.png";
 import sureal1 from "@/assets/faculty/sureal1.jpg";
 import sureal2 from "@/assets/faculty/sureal2.jpg";
 import sureal3 from "@/assets/faculty/sureal3.jpg";
+import skipster1 from "@/assets/faculty/skipster1.jpg";
+import skipster2 from "@/assets/faculty/skipster2.jpg";
+import skipster3 from "@/assets/faculty/skipster3.jpg";
 import garryBedi from "@/assets/faculty/garry_bedi.jpeg";
 
 export interface Faculty {
@@ -35,26 +38,13 @@ export const faculty: Faculty[] = [
     photo: sureal1,
     photos: [sureal1, sureal2, sureal3],
     bio: "Su Real is a pioneering bass music producer and DJ who has been at the forefront of India's electronic music scene. Known for blending Indian sounds with heavy bass and hip-hop influences, he brings a unique perspective to music production education.",
-    specialty: "Bass Music & Production",
+    specialty: "Artist Development Programme",
     socialLinks: {
       instagram: "https://www.instagram.com/su_real/",
       spotify: "https://open.spotify.com/artist/su-real",
     },
   },
-  {
-    id: "vylom",
-    name: "Kamazaki",
-    stageName: "Kamazaki",
-    role: "Faculty",
-    photo: kamazaki1,
-    photos: [kamazaki1, kamazaki2, kamazaki3],
-    bio: "Kamazaki is an acclaimed electronic music producer known for his intricate sound design and innovative production techniques. His expertise in creating atmospheric and melodic electronic music makes him an invaluable mentor for aspiring producers.",
-    specialty: "Electronic Production & Sound Design",
-    socialLinks: {
-      instagram: "https://www.instagram.com/vylom/",
-      spotify: "https://open.spotify.com/artist/vylom",
-    },
-  },
+
   {
     id: "aryaman",
     name: "Aryaman Aggarwal",
@@ -92,6 +82,19 @@ export const faculty: Faculty[] = [
     specialty: "DJ Performance & Industry Mastery",
     socialLinks: {
       instagram: "https://www.instagram.com/nxtwav/",
+    },
+  },
+  {
+    id: "skipster",
+    name: "Skipster",
+    stageName: "SKIPSTER",
+    role: "Faculty",
+    photo: skipster1,
+    photos: [skipster1, skipster2, skipster3],
+    bio: "Skipster is a world-renowned DJ and turntablist, recognized for his historic victory as the 2025 IDA World DJ Champion. With over 17 years of experience, a DMC National title, and a Red Bull 3Style National championship, he is a true master of performance concepts and creative scratching techniques.",
+    specialty: "Artist Development Programme",
+    socialLinks: {
+      instagram: "https://www.instagram.com/skipstermusic/",
     },
   },
 ];

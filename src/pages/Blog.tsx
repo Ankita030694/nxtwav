@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
 import { Calendar, User, ArrowRight, Loader2 } from "lucide-react";
 import { motion } from "framer-motion";
+import SEO from "@/components/SEO";
 
 interface Blog {
   id: string;
@@ -48,6 +49,11 @@ const BlogPage = () => {
 
   return (
     <main className="min-h-screen bg-background">
+      <SEO 
+        title="Music Production & DJing Blog | NXTwav Academy"
+        description="Stay updated with the latest trends in music production, DJing techniques, and career advice for artists. Read insights from industry professionals."
+        keywords="music production blog, DJ tips, electronic music trends, music career advice, NXTwav journal"
+      />
       <Navigation />
       
       {/* Hero Section */}

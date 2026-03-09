@@ -9,6 +9,7 @@ import { Eye, EyeOff, Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import nxtwavLogo from "@/assets/nxtwav-logo-v2.png";
 import ParticleBackground from "@/components/ui/particle-background";
+import SEO from "@/components/SEO";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -87,6 +88,11 @@ export default function Login() {
 
   return (
     <div className="min-h-screen bg-background flex items-center justify-center p-4 overflow-hidden">
+      <SEO 
+        title="Login | NXTwav Academy"
+        description="Login to your NXTwav Academy account."
+        noindex={true}
+      />
       <ParticleBackground />
       
       <Card className="w-full max-w-md relative z-10 bg-card/95 backdrop-blur-xl border-border">

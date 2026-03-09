@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { Loader2 } from "lucide-react";
 import { AdminSidebar } from "@/components/AdminSidebar";
 import { LeadRow } from "@/components/LeadRow";
+import SEO from "@/components/SEO";
 
 interface Lead {
   id: string;
@@ -126,6 +127,7 @@ export default function Leads() {
 
   return (
     <div className="flex bg-background min-h-screen text-foreground">
+      <SEO title="Manage Leads | NXTwav Academy" description="Admin dashboard to manage leads." noindex={true} />
       <AdminSidebar />
       <div className="flex-1 md:ml-64 p-4 pt-24 pb-12 overflow-x-hidden">
         <div className="w-full">
