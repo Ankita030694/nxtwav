@@ -3,7 +3,7 @@ import skoposPhoto from "@/assets/founders/lakshay_nanda.jpg";
 import beatcrushPhoto from "@/assets/founders/beatcrush-siddharth-sethi.png";
 import slctPhoto from "@/assets/founders/slct-kanav-kumar.png";
 import sureal1 from "@/assets/faculty/su_real1.jpg";
-import kamazaki1 from "@/assets/faculty/kamazaki1.png";
+import kamazakiImage from "@/assets/faculty/kamazaki.jpeg";
 import garryBedi from "@/assets/faculty/garry_bedi.jpeg";
 import aryamann from "@/assets/faculty/aryamann.png";
 
@@ -116,7 +116,7 @@ export const instructors: Instructor[] = [
     id: "kamazaki",
     name: "Kamazaki",
     stageName: "KAMAZAKI",
-    photo: kamazaki1,
+    photo: kamazakiImage,
     bio: "Kamazaki is a veteran in the DJing world with over 17+ years of professional experience. Having performed at major venues across the country, he brings a wealth of knowledge in performance-ready artistry and industry awareness.",
     specialty: "DJ Performance & Industry Mastery",
     socialLinks: {

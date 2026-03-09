@@ -32,7 +32,7 @@ export function ConsultationButton() {
     >
       <div className="absolute inset-0 bg-black translate-x-full group-hover:translate-x-0 transition-transform duration-300" />
       <span className="relative block transform rotate-180 uppercase tracking-[0.2em] text-[10px] sm:text-xs group-hover:text-white transition-colors duration-300">
-        Get a Free Consultation
+        Talk to our Career Expert
       </span>
     </Link>
   );
