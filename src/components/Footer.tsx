@@ -117,7 +117,7 @@ export function Footer() {
 
         <div className="mt-12 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-muted-foreground text-sm">
-            © 2025 NXTwav Academy. All rights reserved.
+            © 2026 NXTwav Academy. All rights reserved.
           </p>
           <div className="flex gap-6">
             <Link to="/privacy-policy" className="text-muted-foreground hover:text-primary text-sm transition-colors">Privacy Policy</Link>
