@@ -118,7 +118,7 @@ export default function Signup() {
         message: ""
       });
       
-      setTimeout(() => navigate("/"), 2000);
+      setTimeout(() => navigate("/thank-you", { state: { submitted: true } }), 500);
       
     } catch (error) {
       console.error("Error adding document: ", error);

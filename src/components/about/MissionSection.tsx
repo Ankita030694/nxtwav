@@ -1,93 +1,136 @@
-import mission1 from "@/assets/missionvision1.jpg";
-import mission2 from "@/assets/missionvision2.jpg";
-import mission3 from "@/assets/missionvision3.jpg";
-import mission4 from "@/assets/missionvision4.jpg";
-import mission6 from "@/assets/missionvision6.jpg";
+import { Target, Eye, ArrowRight, Zap, Play, Radio, Music } from "lucide-react";
+import { motion } from "framer-motion";
 
 export function MissionSection() {
-  const missionImages = [mission1, mission2, mission3, mission4, mission6];
-
   return (
     <section className="py-24 relative overflow-hidden">
-      {/* Background Effect */}
-      <div className="absolute inset-0 bg-gradient-hero opacity-30" />
+      {/* Background from CTA Section */}
+      <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-secondary/20 to-accent/20" />
+      <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" />
+      
+      {/* Glowing orbs */}
+      <div className="absolute top-1/2 left-1/4 w-64 h-64 bg-primary/30 rounded-full blur-[100px]" />
+      <div className="absolute top-1/2 right-1/4 w-64 h-64 bg-secondary/30 rounded-full blur-[100px]" />
       
       <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-6xl mx-auto text-center">
-          <span className="inline-block px-4 py-1.5 bg-accent/10 text-accent rounded-full text-sm font-medium mb-6">
-            The Name Says It All
-          </span>
-          
-          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-8">
-            Creating the <span className="text-gradient">Next Wave</span>
-          </h2>
-          
-          <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
-            <p className="text-xl text-foreground">
-              The name <span className="font-bold text-primary">NxtWav</span> comes from 
-              exactly what we stand for, creating the next wave of artists who are confident, 
-              skilled, and ready for the real scene.
-            </p>
+        <div className="max-w-6xl mx-auto">
+          {/* Section Header */}
+          <div className="text-center mb-16">
+            <motion.span 
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="inline-block px-4 py-1.5 bg-primary/10 text-primary rounded-full text-sm font-semibold mb-6 tracking-wide uppercase"
+            >
+              The Name Says It All
+            </motion.span>
             
-            <p>
-              Whether you're starting from scratch or looking to level up, NxtWav is where 
-              raw interest turns into real potential.
-            </p>
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="font-display text-4xl sm:text-5xl md:text-6xl font-bold text-foreground mb-8"
+            >
+              Creating the <span className="text-gradient">Next Wave</span>
+            </motion.h2>
             
-            <div className="flex flex-wrap justify-center gap-4 pt-8">
-              <span className="px-6 py-3 rounded-full border border-primary/30 text-primary font-medium">
-                No shortcuts
-              </span>
-              <span className="px-6 py-3 rounded-full border border-secondary/30 text-secondary font-medium">
-                No gimmicks
-              </span>
-              <span className="px-6 py-3 rounded-full border border-accent/30 text-accent font-medium">
-                Just proper learning
-              </span>
-            </div>
-
-            {/* Mission & Vision Containers */}
-            <div className="py-12 px-2 max-w-5xl mx-auto">
-              <div className="grid md:grid-cols-2 gap-8">
-                {/* Vision Container */}
-                <div className="group relative rounded-2xl overflow-hidden border border-border/50 shadow-2xl transition-all duration-300 hover:border-primary/50">
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10" />
-                  <img 
-                    src={mission3} 
-                    alt="Our Vision" 
-                    className="w-full h-[400px] object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute bottom-0 left-0 right-0 p-8 z-20 text-left">
-                    <h3 className="font-display text-2xl font-bold text-white mb-2">Our Vision</h3>
-                    <p className="text-white/80 text-sm">Empowering the next generation of digital artists and performers.</p>
-                  </div>
-                </div>
-
-                {/* Mission Container */}
-                <div className="group relative rounded-2xl overflow-hidden border border-border/50 shadow-2xl transition-all duration-300 hover:border-secondary/50">
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10" />
-                  <img 
-                    src={mission4} 
-                    alt="Our Mission" 
-                    className="w-full h-[400px] object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute bottom-0 left-0 right-0 p-8 z-20 text-left">
-                    <h3 className="font-display text-2xl font-bold text-white mb-2">Our Mission</h3>
-                    <p className="text-white/80 text-sm">Providing hands-on expertise and real-world exposure for career success.</p>
-                  </div>
-                </div>
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="max-w-3xl mx-auto space-y-6 text-lg text-muted-foreground leading-relaxed"
+            >
+              <p className="text-xl font-medium text-foreground/90">
+                The name <span className="font-bold text-primary">NxtWav</span> comes from 
+                exactly what we stand for: creating the next wave of artists who are confident, 
+                skilled, and ready for the real scene.
+              </p>
+              
+              <div className="flex flex-wrap justify-center gap-4 pt-4">
+                {["No shortcuts", "No gimmicks", "Just proper learning"].map((pill, idx) => (
+                  <span key={pill} className="px-5 py-2 rounded-full border border-border bg-card/30 backdrop-blur-sm text-sm font-medium text-foreground/70">
+                    {pill}
+                  </span>
+                ))}
               </div>
-            </div>
-            
-            <p className="text-xl text-foreground font-semibold pt-4 italic">
-              "Real exposure. The right push."
-            </p>
+            </motion.div>
           </div>
+
+          {/* Cards Container */}
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {/* Vision Card */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="p-8 lg:p-12 rounded-2xl bg-card border border-border hover:border-primary/50 transition-all duration-300 group"
+            >
+                <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center mb-8 group-hover:bg-primary/20 transition-colors">
+                  <Eye className="w-8 h-8 text-primary" />
+                </div>
+                
+                <h3 className="font-display text-2xl font-bold text-foreground mb-4 uppercase tracking-tight">
+                  Our <span className="text-primary">Vision</span>
+                </h3>
+                
+                <div className="space-y-4">
+                  <p className="text-lg text-foreground font-semibold leading-snug">
+                    To build culturally aware, industry-ready creators and set a new global standard for creative education in India.
+                  </p>
+                  <p className="text-muted-foreground leading-relaxed">
+                    We bridge the gap between skill and career - training artists to move beyond classrooms into stages, platforms, and markets.
+                  </p>
+                </div>
+            </motion.div>
+
+            {/* Mission Card */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="p-8 lg:p-12 rounded-2xl bg-card border border-border hover:border-secondary/50 transition-all duration-300 group"
+            >
+                <div className="w-16 h-16 rounded-xl bg-secondary/10 flex items-center justify-center mb-8 group-hover:bg-secondary/20 transition-colors">
+                  <Target className="w-8 h-8 text-secondary" />
+                </div>
+                
+                <h3 className="font-display text-2xl font-bold text-foreground mb-4 uppercase tracking-tight">
+                  Our <span className="text-secondary">Mission</span>
+                </h3>
+                
+                <div className="space-y-4">
+                  <p className="text-lg text-foreground font-semibold leading-snug">
+                    To build culturally aware, industry-ready creators and set a new global standard for creative education in India.
+                  </p>
+                  <p className="text-muted-foreground leading-relaxed">
+                    We bridge the gap between skill and career - training artists to move beyond classrooms into stages, platforms, and markets.
+                  </p>
+                </div>
+            </motion.div>
+          </div>
+
+          {/* Pillars Footer */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="mt-20 text-center"
+          >
+            <div className="flex flex-wrap justify-center items-center gap-x-6 gap-y-4 font-display text-xl sm:text-2xl font-bold uppercase tracking-[0.2em] text-foreground/30">
+              <span className="hover:text-primary transition-colors">Learn.</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-border"></span>
+              <span className="hover:text-secondary transition-colors">Build.</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-border"></span>
+              <span className="hover:text-accent transition-colors">Perform.</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-border"></span>
+              <span className="hover:text-primary transition-colors">Release.</span>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
   );
 }
 
-import { cn } from "@/lib/utils";
+
 
