@@ -172,7 +172,7 @@ export const courses: Course[] = [
   {
     id: "daw-fundamentals",
     slug: "daw-fundamentals",
-    title: "DAW Fundamentals",
+    title: "Introduction to DAW",
     tagline: "Master your Digital Audio Workstation from the ground up",
     category: "production",
     description: "Learn the fundamentals of Digital Audio Workstations (DAW). Perfect for absolute beginners looking to start their production journey.",
@@ -328,7 +328,7 @@ export const courses: Course[] = [
   {
     id: "intro-to-music-production",
     slug: "intro-to-music-production",
-    title: "Introduction to Music Production",
+    title: "Intermediate Music Production",
     tagline: "Your comprehensive guide to creating professional music",
     category: "production",
     description: "Comprehensive introduction to music production covering composition, sound design, arrangement, and production workflow. Students complete production-ready tracks.",
@@ -348,7 +348,7 @@ export const courses: Course[] = [
       "Mix your productions to release quality",
       "Develop your unique artistic voice",
     ],
-    prerequisites: "DAW Fundamentals or basic DAW knowledge",
+    prerequisites: "Introduction to DAW or basic DAW knowledge",
     whatsIncluded: [
       "Train with Ableton Certified Trainer Aryaman Agarwal (13+ years experience)",
       "Splice membership included for access to professional sample libraries",
@@ -478,7 +478,7 @@ export const courses: Course[] = [
     sessions: [
       {
         sessionNumber: 1,
-        title: "Module 1: DAW FUNDAMENTALS (12 sessions)",
+        title: "Module 1: INTRODUCTION TO DAW (12 sessions)",
         duration: 24,
         objectives: ["Introduction to the DAW and its interface", "Setting up for production", "Core fundamental tools"],
         topics: ["Interface overview", "Session vs Arrangement", "Signal flow", "Setting up your studio"],

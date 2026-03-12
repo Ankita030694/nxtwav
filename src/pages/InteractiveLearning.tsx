@@ -20,7 +20,7 @@ const puzzles: PuzzleConfig[] = [
     timeEstimate: "3 min",
     category: "Mixing",
     icon: <Sliders className="w-6 h-6" />,
-    recommendedCourse: "Introduction to Music Production",
+    recommendedCourse: "Intermediate Music Production",
     component: FrequencyBalancePuzzle,
   },
   {
@@ -75,7 +75,7 @@ const puzzles: PuzzleConfig[] = [
     timeEstimate: "3 min",
     category: "Knowledge",
     icon: <Music className="w-6 h-6" />,
-    recommendedCourse: "Introduction to Music Production",
+    recommendedCourse: "Intermediate Music Production",
     component: GenreMatchingPuzzle,
   },
 ];

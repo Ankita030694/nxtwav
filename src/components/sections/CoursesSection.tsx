@@ -15,7 +15,7 @@ const categoryCards = [
     href: "/courses#production",
     colorClass: "bg-primary/20",
     outcomes: [
-      "DAW Fundamentals",
+      "Introduction to DAW",
       "Sound Design",
       "Mixing & Mastering",
     ],

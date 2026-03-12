@@ -24,7 +24,7 @@ const getFormattedPrice = (id: string) => {
 const productionPlans = [
   {
     id: "daw-fundamentals",
-    name: "DAW Fundamentals",
+    name: "Introduction to DAW",
     description: "Beginners exploring music production with focus on software understanding",
     price: getPrice("daw-fundamentals"),
     displayPrice: getFormattedPrice("daw-fundamentals"),
@@ -34,7 +34,7 @@ const productionPlans = [
   },
   {
     id: "intro-to-music-production",
-    name: "Introduction to Music Production",
+    name: "Intermediate Music Production",
     description: "Serious learners building a strong foundation in structured production",
     price: getPrice("intro-to-music-production"),
     displayPrice: getFormattedPrice("intro-to-music-production"),
