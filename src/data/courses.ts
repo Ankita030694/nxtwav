@@ -1,11 +1,12 @@
 // Course data types and real course offerings
-import skoposPhoto from "@/assets/founders/lakshay_nanda.jpg";
+import skoposPhoto from "@/assets/faculty/skopos_1.jpg";
 import beatcrushPhoto from "@/assets/founders/beatcrush-siddharth-sethi.png";
 import slctPhoto from "@/assets/founders/slct-kanav-kumar.png";
-import sureal1 from "@/assets/faculty/su_real1.jpg";
-import kamazakiImage from "@/assets/faculty/kamazaki.jpeg";
-import garryBedi from "@/assets/faculty/garry_bedi.jpeg";
-import aryamann from "@/assets/faculty/aryamann.png";
+import sureal1 from "@/assets/faculty/su_real_1.jpg";
+import kamazakiImage from "@/assets/faculty/kamazaki_1.png";
+import garryBedi from "@/assets/faculty/garry_bedi_1.png";
+import aryamann from "@/assets/faculty/aryaman_1.jpg";
+import skipsterPhoto1 from "@/assets/faculty/skipster_1.jpg";
 
 export type CourseCategory = "production" | "djing" | "artist-dev";
 export type CourseLevel = "beginner" | "intermediate" | "advanced" | "all-levels";
@@ -105,11 +106,10 @@ export const instructors: Instructor[] = [
     name: "Su Real",
     stageName: "SU REAL",
     photo: sureal1,
-    bio: "Su Real is an internationally acclaimed producer and DJ known for pioneering bass music in India. With releases on major labels and performances at international festivals, he brings world-class expertise to the Pro Remix Alchemy program as a guest mentor.",
+    bio: "Su Real is an internationally acclaimed producer and DJ known for pioneering bass music in India. With releases on major labels and performances at international festivals, he brings world-class expertise to the NXTwav ACADEMY ~ REMIX PRODUCTION MASTERCLASS as a guest mentor.",
     specialty: "Remix Production & Bass Music",
     socialLinks: {
-      instagram: "https://instagram.com/sureal",
-      spotify: "https://open.spotify.com/artist/sureal",
+      instagram: "https://www.instagram.com/realsureal/",
     },
   },
   {
@@ -120,7 +120,7 @@ export const instructors: Instructor[] = [
     bio: "Kamazaki is a veteran in the DJing world with over 17+ years of professional experience. Having performed at major venues across the country, he brings a wealth of knowledge in performance-ready artistry and industry awareness.",
     specialty: "DJ Performance & Industry Mastery",
     socialLinks: {
-      instagram: "https://instagram.com/nxtwav",
+      instagram: "https://www.instagram.com/dishant_kamazaki",
     },
   },
   {
@@ -131,7 +131,7 @@ export const instructors: Instructor[] = [
     bio: "Garry Bedi is an industry veteran in the DJing scene with years of experience performing at elite venues. His technical precision and deep understanding of crowd dynamics make him a leading mentor in DJ artistry.",
     specialty: "DJ Performance & Industry Mastery",
     socialLinks: {
-      instagram: "https://instagram.com/nxtwav",
+      instagram: "https://www.instagram.com/garry_bedii/?hl=en",
     },
   },
   {
@@ -142,7 +142,18 @@ export const instructors: Instructor[] = [
     bio: "Aryaman Aggarwal is a graduate in Digital Sound Producer (Advanced) from Pyramind @ San Francisco, California. He is a Certified Avid Pro Tools Operator, Apple Logic Pro X Certified, and an Ableton Certified Trainer with 13+ years of teaching experience and has mentored 450+ students.",
     specialty: "Music Production & Sound Design",
     socialLinks: {
-      instagram: "https://instagram.com/aryamanaggarwal",
+      instagram: "https://www.instagram.com/yarkiman/",
+    },
+  },
+  {
+    id: "skipster",
+    name: "Skipster",
+    stageName: "SKIPSTER",
+    photo: skipsterPhoto1,
+    bio: "Skipster is a world-renowned DJ and turntablist, recognized for his historic victory as the 2025 IDA World DJ Champion. With over 17 years of experience, a DMC National title, and a Red Bull 3Style National championship, he is a true master of performance concepts and creative scratching techniques.",
+    specialty: "DJ Performance & Turntablism",
+    socialLinks: {
+      instagram: "https://www.instagram.com/skipstermusic/?hl=en",
     },
   },
 ];
@@ -878,32 +889,32 @@ export const courses: Course[] = [
   {
     id: "pro-remix-alchemy",
     slug: "pro-remix-alchemy",
-    title: "Pro Remix Alchemy with Su Real",
+    title: "Remix Production Masterclass w/ Su Real",
     tagline: "Master the art of remixing with a world-class producer",
     category: "artist-dev",
-    description: "Exclusive remix masterclass with renowned producer Su Real. Learn professional remixing techniques and contribute to a compilation album release.",
-    longDescription: "This unique 1-month program pairs you with internationally acclaimed producer Su Real for an intensive remix masterclass. You'll learn professional remixing techniques, creative interpretation, and advanced sound design. The program culminates in a compilation album featuring remixes from all students, professionally released and marketed.",
+    description: "This unique 1-month program pairs you with internationally acclaimed DJ/producer Su Real for an intensive Remix masterclass. Learn professional remixing, edits, mash ups & more.",
+    longDescription: "This unique 1-month program pairs you with internationally acclaimed DJ/producer Su Real for an intensive Remix masterclass. You’ll learn how to create professional-quality Remixes, edits, mash ups & more. How to creatively re-interpret songs to your own signature style to light up the dancefloor.\n\nThe course begins with the origins of Remix culture and culminates in a compilation album featuring Remixes from all students. Students will learn all the basics of Remixing music plus numerous advanced techniques, tips & tricks to make their productions stand out from the clutter.\n\nThis course will be taught primarily using Logic Pro X on a Mac system. However, the skills and techniques taught can be applied to any DAW/system.\n\nSchedule:\nEight Modules, 2 sessions per week.\nTwo hours per session.\nEach session consists of:\n- 30 mins. Theory/Lecture\n- 30 mins. Practical Demonstration\n- 60 mins. Student Projects with Instructor Guidance",
     duration: { months: 1 },
     price: 49999,
     level: "advanced",
     instructorId: "sureal",
     sessionsPerWeek: 2,
-    totalSessions: 9,
-    totalHours: 18,
+    totalSessions: 8,
+    totalHours: 16,
     featured: true,
     learningOutcomes: [
-      "Create professional-quality remixes",
-      "Develop creative interpretation skills",
-      "Master advanced sound design for remixes",
-      "Collaborate at a professional level",
-      "Get a real release on a compilation album",
+      "Create professional-quality Remixes, edits, and mash ups",
+      "Creatively re-interpret songs to your own signature style",
+      "Master basics of Remixing plus numerous advanced techniques",
+      "Learn tips & tricks to make your productions stand out",
+      "Contribute to a compilation album featuring student remixes",
     ],
     prerequisites: "Some music production experience recommended",
     whatsIncluded: [
-      "Train directly with award-winning DJ/Producer Su Real",
-      "Learn industry remix techniques used by global DJs",
-      "Create a professional remix ready for release on any DAW",
-      "Potential feature on a student remix compilation album",
+      "Intensive Remix masterclass with Su Real",
+      "Training on Logic Pro X (applicable to any DAW)",
+      "Compilation album feature with fellow students",
+      "Advanced production tips, tricks, and techniques",
       "Guidance on distribution, copyright, and promotion",
     ],
     postCourseBenefits: [
@@ -935,75 +946,67 @@ export const courses: Course[] = [
     sessions: [
       {
         sessionNumber: 1,
-        title: "The Remix Mindset",
+        title: "Module 1: Introduction - The Art & History of Remixing",
         duration: 2,
-        objectives: ["Understand remix philosophy", "Analyze successful remixes", "Plan your approach"],
-        topics: ["What makes a great remix", "Creative interpretation", "Respecting originals", "Finding your angle"],
-        exercise: "Analyze 5 successful remixes and their approaches",
+        objectives: ["Understand the origins of Remix culture", "Analyze the evolution of Remixing", "Philosophy of creative interpretation"],
+        topics: ["Remix history", "Cultural impact", "Finding your signature style"],
+        exercise: "Analyze the evolution of a classic remix",
       },
       {
         sessionNumber: 2,
-        title: "Deconstructing Originals",
+        title: "Module 2: Deconstructing Originals, Looping, Beat Matching, Edits, Mash Ups",
         duration: 2,
-        objectives: ["Analyze original tracks", "Identify key elements", "Plan reconstruction"],
-        topics: ["Stem analysis", "Key element identification", "Mood and energy mapping", "Creative planning"],
-        exercise: "Deconstruct the provided original track",
+        objectives: ["Master deconstruction of tracks", "Learn looping and beat matching", "Create quick edits and mash ups"],
+        topics: ["Deconstruction", "Looping techniques", "Beat matching", "Mash up workflow"],
+        exercise: "Create a simple mash up using two tracks",
       },
       {
         sessionNumber: 3,
-        title: "Creative Reinterpretation",
+        title: "Module 3: Arrangement, Stem Separation, Module Set Up",
         duration: 2,
-        objectives: ["Transform original elements", "Add your signature", "Build new arrangements"],
-        topics: ["Element transformation", "Adding personality", "New arrangement structures", "Genre bending"],
-        exercise: "Create 3 different remix concepts for the same track",
+        objectives: ["Understand stems and separation", "Set up your project module", "Arrangement strategies"],
+        topics: ["Stem separation", "Project organization", "Arrangement blueprints"],
+        exercise: "Set up a remix project with separated stems",
       },
       {
         sessionNumber: 4,
-        title: "Sound Design for Remixes",
+        title: "Module 4: Building a Club Remix - Adding Drums & Drops",
         duration: 2,
-        objectives: ["Design remix-specific sounds", "Create signature elements", "Build sonic identity"],
-        topics: ["Sound design techniques", "Creating hooks", "Signature sounds", "Texture and layers"],
-        exercise: "Design 5 unique sounds for your remix",
+        objectives: ["Build energy with drums", "Create impactful drops", "Club-focused production"],
+        topics: ["Drum programming", "Drop design", "Energy management"],
+        exercise: "Produce a drum section and drop for your remix",
       },
       {
         sessionNumber: 5,
-        title: "Production Techniques",
+        title: "Module 5: Advanced Creative Techniques: Chopping, Pitch-Shifting, Effects",
         duration: 2,
-        objectives: ["Apply advanced production", "Polish your remix", "Achieve professional quality"],
-        topics: ["Advanced processing", "Mixing for impact", "Energy management", "Professional polish"],
-        exercise: "Complete 50% of your remix",
+        objectives: ["Master advanced chopping", "Use pitch-shifting creatively", "Advanced FX processing"],
+        topics: ["Audio chopping", "Pitch manipulation", "Creative effects"],
+        exercise: "Apply advanced chopping to a vocal or instrumental hook",
       },
       {
         sessionNumber: 6,
-        title: "Mixing Your Remix",
+        title: "Module 6: Advanced Technical Tips - Improving the Quality of your Remix",
         duration: 2,
-        objectives: ["Mix your remix professionally", "Create balance and impact", "Prepare for mastering"],
-        topics: ["Remix-specific mixing", "Balancing old and new", "Impact and clarity", "Pre-master prep"],
-        exercise: "Complete your remix mix",
+        objectives: ["Improve production quality", "Technical troubleshooting", "Sonic enhancement"],
+        topics: ["Quality control", "Production tips", "Sonic clarity"],
+        exercise: "Implement technical improvements to your production",
       },
       {
         sessionNumber: 7,
-        title: "Final Touches & Feedback",
+        title: "Module 7: Finishing Your Remix - Mixdown & Mastering",
         duration: 2,
-        objectives: ["Finalize your remix", "Receive mentor feedback", "Make final adjustments"],
-        topics: ["Final review", "Su Real feedback", "Adjustments", "Polish"],
-        exercise: "Finalize your remix based on feedback",
+        objectives: ["Achieve a professional mixdown", "Essential mastering for remixes", "Finalizing the sound"],
+        topics: ["Mixdown workflow", "Mastering basics", "Final polish"],
+        exercise: "Complete the mixdown and mastering of your remix",
       },
       {
         sessionNumber: 8,
-        title: "Mastering & Preparation",
+        title: "Module 8: Getting Your Remix Out There - Distribution, Copyright & Promotion",
         duration: 2,
-        objectives: ["Prepare for album release", "Understand mastering", "Final submissions"],
-        topics: ["Mastering basics", "Release preparation", "File formats", "Submission"],
-        exercise: "Submit your final remix for the compilation",
-      },
-      {
-        sessionNumber: 9,
-        title: "Compilation Album Recording",
-        duration: 2,
-        objectives: ["Participate in album creation", "Experience professional release", "Celebrate achievements"],
-        topics: ["Album sequencing", "Release strategy", "Marketing materials", "Launch planning"],
-        exercise: "Contribute to album notes and materials",
+        objectives: ["Understand distribution channels", "Navigate copyright issues", "Effective promotion strategies"],
+        topics: ["Distribution", "Copyright law", "Self-promotion"],
+        exercise: "Develop a basic release and promotion plan for your remix",
       },
     ],
   },

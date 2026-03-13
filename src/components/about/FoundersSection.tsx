@@ -129,14 +129,14 @@ export function FoundersSection() {
                   </div>
                 </DialogTrigger>
 
-                <DialogContent className="max-w-6xl w-[90vw] md:w-[95vw] bg-card border-border p-0 overflow-hidden shadow-2xl overflow-y-auto md:overflow-hidden h-auto max-h-[80vh] md:max-h-[95vh]">
-                  <div className="flex flex-col md:flex-row md:min-h-[750px]">
-                    {/* Left: Image (50%) */}
-                    <div className="w-full md:w-1/2 relative bg-muted h-[30vh] md:h-auto">
+                <DialogContent className="max-w-4xl w-[95vw] md:w-[85vw] bg-card border-border p-0 overflow-hidden shadow-2xl h-auto max-h-[90vh] md:max-h-[680px]">
+                  <div className="flex flex-col md:flex-row h-full">
+                    {/* Left: Image (40%) */}
+                    <div className="w-full md:w-[40%] relative bg-muted h-[30vh] md:h-auto">
                       <img 
                         src={founder.photo} 
                         alt={founder.name} 
-                        className="w-full h-full object-cover object-top"
+                        className="w-full h-full object-cover bg-muted/50"
                       />
                       <div className={cn(
                         "absolute bottom-0 left-0 right-0 h-2 z-10",
@@ -146,8 +146,8 @@ export function FoundersSection() {
                       )} />
                     </div>
 
-                    {/* Right: Content (50%) */}
-                    <div className="w-full md:w-1/2 p-6 sm:p-8 md:p-20 overflow-y-auto bg-card/95 backdrop-blur-sm shadow-inner">
+                    {/* Right: Content (60%) */}
+                    <div className="w-full md:w-[60%] p-6 sm:p-8 md:p-10 flex flex-col justify-center bg-card/95 backdrop-blur-sm overflow-hidden">
                       <div className="mb-6">
                         <span className={cn(
                           "text-xs font-bold uppercase tracking-widest",
@@ -157,29 +157,29 @@ export function FoundersSection() {
                         )}>
                           {founder.role}
                         </span>
-                        <h2 className="font-display text-3xl font-bold text-foreground mt-1">
+                        <h2 className="font-display text-2xl font-bold text-foreground mt-1">
                           {founder.name}
                         </h2>
-                        <p className="text-xl font-medium text-muted-foreground">
+                        <p className="text-lg font-medium text-muted-foreground">
                           {founder.stageName}
                         </p>
                       </div>
 
-                      <div className="space-y-4 text-muted-foreground leading-relaxed whitespace-pre-wrap">
+                      <div className="space-y-3 text-muted-foreground text-xs sm:text-sm leading-relaxed">
                         {founder.bio}
                       </div>
 
-                      <div className="mt-8 pt-8 border-t border-border/50">
-                        <h4 className="text-sm font-bold uppercase tracking-wider text-foreground mb-4">Core Focus</h4>
+                      <div className="mt-4 pt-4 border-t border-border/50">
+                        <h4 className="text-[10px] font-bold uppercase tracking-wider text-foreground mb-2">Core Focus</h4>
                         <div className="flex flex-wrap gap-2">
-                          <span className="px-4 py-1.5 rounded-full bg-muted text-muted-foreground text-xs font-medium border border-border">
+                          <span className="px-3 py-1 rounded-full bg-muted text-muted-foreground text-[10px] font-medium border border-border">
                             {founder.specialty}
                           </span>
                         </div>
                       </div>
 
                       {/* Socials in popup */}
-                      <div className="mt-8 flex gap-4">
+                      <div className="mt-4 flex gap-4">
                         {founder.socialLinks.instagram && (
                           <a 
                             href={founder.socialLinks.instagram} 

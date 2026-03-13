@@ -31,7 +31,7 @@ const puzzles: PuzzleConfig[] = [
     timeEstimate: "4 min",
     category: "Business",
     icon: <Calendar className="w-6 h-6" />,
-    recommendedCourse: "Pro Remix Alchemy with Su Real",
+    recommendedCourse: "NXTwav ACADEMY ~ REMIX PRODUCTION MASTERCLASS w/ Su Real",
     component: ReleaseStrategyPuzzle,
   },
   {
