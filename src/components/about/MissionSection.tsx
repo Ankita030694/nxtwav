@@ -15,7 +15,7 @@ export function MissionSection() {
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-16">
+          <div id="mission-vision" className="text-center mb-16 scroll-mt-32">
             <motion.span 
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -60,10 +60,11 @@ export function MissionSection() {
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {/* Vision Card */}
             <motion.div 
+              id="vision"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="p-8 lg:p-12 rounded-2xl bg-card border border-border hover:border-primary/50 transition-all duration-300 group"
+              className="p-8 lg:p-12 rounded-2xl bg-card border border-border hover:border-primary/50 transition-all duration-300 group scroll-mt-24"
             >
                 <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center mb-8 group-hover:bg-primary/20 transition-colors">
                   <Eye className="w-8 h-8 text-primary" />
@@ -85,10 +86,11 @@ export function MissionSection() {
 
             {/* Mission Card */}
             <motion.div 
+              id="mission"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="p-8 lg:p-12 rounded-2xl bg-card border border-border hover:border-secondary/50 transition-all duration-300 group"
+              className="p-8 lg:p-12 rounded-2xl bg-card border border-border hover:border-secondary/50 transition-all duration-300 group scroll-mt-24"
             >
                 <div className="w-16 h-16 rounded-xl bg-secondary/10 flex items-center justify-center mb-8 group-hover:bg-secondary/20 transition-colors">
                   <Target className="w-8 h-8 text-secondary" />
