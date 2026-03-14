@@ -96,7 +96,7 @@ function FacultyImageCarousel({ images, name }: { images: string[]; name: string
 
 export function FacultySection() {
   return (
-    <section className="py-24 bg-background">
+    <section id="faculty" className="py-24 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <span className="inline-block px-4 py-1.5 bg-secondary/10 text-secondary rounded-full text-sm font-medium mb-4">

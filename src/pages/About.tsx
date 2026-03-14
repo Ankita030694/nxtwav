@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { AboutHero } from "@/components/about/AboutHero";
@@ -12,6 +14,28 @@ import { CTASection } from "@/components/sections/CTASection";
 import SEO from "@/components/SEO";
 
 const About = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const scrollWithRetries = (retries = 0) => {
+        const id = location.hash.replace('#', '');
+        const element = document.getElementById(id);
+        
+        if (element) {
+          setTimeout(() => {
+            const y = element.getBoundingClientRect().top + window.scrollY - 100;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+          }, 100);
+        } else if (retries < 10) {
+          setTimeout(() => scrollWithRetries(retries + 1), 100);
+        }
+      };
+
+      scrollWithRetries();
+    }
+  }, [location.hash]);
+
   return (
     <main className="min-h-screen bg-background">
       <SEO 

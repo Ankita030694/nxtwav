@@ -15,7 +15,7 @@ export function FoundersSection() {
   const [selectedFounder, setSelectedFounder] = useState<Founder | null>(null);
 
   return (
-    <section className="py-24 bg-card/50">
+    <section id="founders" className="py-24 bg-card/50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <span className="inline-block px-4 py-1.5 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">
