@@ -87,6 +87,20 @@ const djingPlans = [
   },
 ];
 
+const artistDevPlans = [
+  {
+    id: "pro-remix-alchemy",
+    name: "Remix Masterclass w/ Su Real",
+    description: "Master the art of remixing, edits, and mashups with a world-class producer.",
+    price: getPrice("pro-remix-alchemy"),
+    displayPrice: getFormattedPrice("pro-remix-alchemy"),
+    originalDisplayPrice: getOriginalFormattedPrice("pro-remix-alchemy"),
+    period: "/ 1 month",
+    popular: true,
+    cta: "Book Now",
+  },
+];
+
 const productionComparison = [
   { feature: "Price", values: [
     courses.find(c => c.id === "daw-fundamentals")?.originalPrice ? `${formatPrice(courses.find(c => c.id === "daw-fundamentals")!.originalPrice!)} ${getFormattedPrice("daw-fundamentals")}` : getFormattedPrice("daw-fundamentals"),
@@ -149,10 +163,27 @@ const djingComparison = [
   { feature: "Graduation Certificate", values: [true, true] },
 ];
 
+const artistDevComparison = [
+  { feature: "Price", values: [courses.find(c => c.id === "pro-remix-alchemy")?.originalPrice ? `${formatPrice(courses.find(c => c.id === "pro-remix-alchemy")!.originalPrice!)} ${getFormattedPrice("pro-remix-alchemy")}` : getFormattedPrice("pro-remix-alchemy")] },
+  { feature: "Duration", values: ["1 Month"] },
+  { feature: "Total Sessions", values: ["8 Sessions"] },
+  { feature: "Format", values: ["Intensive Masterclass"] },
+  { feature: "Software Used", values: ["Logic Pro X (Open to all DAWs)"] },
+  { feature: "Remixing Techniques", values: [true] },
+  { feature: "Stem Separation", values: [true] },
+  { feature: "Mashups & Edits", values: [true] },
+  { feature: "Advanced Creative FX", values: [true] },
+  { feature: "Mixdown & Mastering", values: [true] },
+  { feature: "Compilation Album Feature", values: [true] },
+  { feature: "Distribution Guidance", values: [true] },
+  { feature: "Mentorship w/ Su Real", values: [true] },
+  { feature: "Certification", values: [true] },
+];
+
 const Pricing = () => {
   const { initiatePayment, isLoading } = useRazorpay();
   const { user } = useAuth();
-  const [activeCategory, setActiveCategory] = useState<"production" | "djing">("production");
+  const [activeCategory, setActiveCategory] = useState<"production" | "djing" | "artist-dev">("production");
 
   const handlePurchase = async (plan: any) => {
     await initiatePayment({
@@ -264,8 +295,8 @@ const Pricing = () => {
             professional music production mastery.
           </p>
 
-          <Tabs defaultValue="production" className="w-full max-w-sm mx-auto" onValueChange={(v) => setActiveCategory(v as any)}>
-            <TabsList className="grid grid-cols-2 p-1 bg-muted/50 backdrop-blur-sm border border-border/50 rounded-full">
+          <Tabs defaultValue="production" className="w-full max-w-md mx-auto" onValueChange={(v) => setActiveCategory(v as any)}>
+            <TabsList className="grid grid-cols-3 p-1 bg-muted/50 backdrop-blur-sm border border-border/50 rounded-full">
               <TabsTrigger 
                 value="production" 
                 className="rounded-full data-[state=active]:bg-background data-[state=active]:text-primary data-[state=active]:shadow-sm flex items-center justify-center gap-2 py-2 text-xs transition-all"
@@ -279,6 +310,13 @@ const Pricing = () => {
               >
                 <Headphones className="w-3.5 h-3.5" />
                 DJing
+              </TabsTrigger>
+              <TabsTrigger 
+                value="artist-dev" 
+                className="rounded-full data-[state=active]:bg-background data-[state=active]:text-primary data-[state=active]:shadow-sm flex items-center justify-center gap-2 py-2 text-xs transition-all"
+              >
+                <Sparkles className="w-3.5 h-3.5" />
+                Artist Dev
               </TabsTrigger>
             </TabsList>
           </Tabs>
@@ -304,6 +342,9 @@ const Pricing = () => {
               </TabsContent>
               <TabsContent value="djing" className="mt-0 focus-visible:outline-none focus-visible:ring-0">
                 {renderComparisonTable(djingPlans, djingComparison)}
+              </TabsContent>
+              <TabsContent value="artist-dev" className="mt-0 focus-visible:outline-none focus-visible:ring-0">
+                {renderComparisonTable(artistDevPlans, artistDevComparison)}
               </TabsContent>
             </Tabs>
           </div>
