@@ -98,8 +98,19 @@ export function CourseCard({ course }: CourseCardProps) {
             <span>{course.totalSessions} Total Sessions</span>
           </div>
           <div className="flex items-center gap-2 text-sm font-semibold text-foreground">
-            <span className="text-muted-foreground/70">₹</span>
-            <span>{formatPrice(course.price).replace("₹", "")}</span>
+            {course.originalPrice ? (
+              <div className="flex items-center gap-1.5">
+                <span className="text-muted-foreground line-through text-xs font-normal">
+                  {formatPrice(course.originalPrice)}
+                </span>
+                <span className="text-primary">{formatPrice(course.price)}</span>
+              </div>
+            ) : (
+              <>
+                <span className="text-muted-foreground/70">₹</span>
+                <span>{formatPrice(course.price).replace("₹", "")}</span>
+              </>
+            )}
           </div>
         </div>
 

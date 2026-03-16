@@ -21,6 +21,11 @@ const getFormattedPrice = (id: string) => {
   return course ? formatPrice(course.price) : "₹0";
 };
 
+const getOriginalFormattedPrice = (id: string) => {
+  const course = courses.find(c => c.id === id);
+  return course?.originalPrice ? formatPrice(course.originalPrice) : undefined;
+};
+
 const productionPlans = [
   {
     id: "daw-fundamentals",
@@ -28,6 +33,7 @@ const productionPlans = [
     description: "Beginners exploring music production with focus on software understanding",
     price: getPrice("daw-fundamentals"),
     displayPrice: getFormattedPrice("daw-fundamentals"),
+    originalDisplayPrice: getOriginalFormattedPrice("daw-fundamentals"),
     period: "/ 1 month",
     popular: false,
     cta: "Get Started",
@@ -38,6 +44,7 @@ const productionPlans = [
     description: "Serious learners building a strong foundation in structured production",
     price: getPrice("intro-to-music-production"),
     displayPrice: getFormattedPrice("intro-to-music-production"),
+    originalDisplayPrice: getOriginalFormattedPrice("intro-to-music-production"),
     period: "/ 3 months",
     popular: true,
     cta: "Enroll Now",
@@ -48,6 +55,7 @@ const productionPlans = [
     description: "Complete professional-level mastery for aspiring producers",
     price: getPrice("advanced-production-mastery"),
     displayPrice: getFormattedPrice("advanced-production-mastery"),
+    originalDisplayPrice: getOriginalFormattedPrice("advanced-production-mastery"),
     period: "/ 5 months",
     popular: false,
     cta: "Apply Now",
@@ -61,6 +69,7 @@ const djingPlans = [
     description: "Build strong technical foundations and learn to mix clean sets with confidence.",
     price: getPrice("dj-beginner"),
     displayPrice: getFormattedPrice("dj-beginner"),
+    originalDisplayPrice: getOriginalFormattedPrice("dj-beginner"),
     period: "/ 4 weeks",
     popular: false,
     cta: "Get Started",
@@ -71,6 +80,7 @@ const djingPlans = [
     description: "Transform from a technically good DJ into a performance-ready artist.",
     price: getPrice("dj-artistry-program"),
     displayPrice: getFormattedPrice("dj-artistry-program"),
+    originalDisplayPrice: getOriginalFormattedPrice("dj-artistry-program"),
     period: "/ 8 weeks",
     popular: true,
     cta: "Enroll Now",
@@ -78,7 +88,11 @@ const djingPlans = [
 ];
 
 const productionComparison = [
-  { feature: "Price", values: [getFormattedPrice("daw-fundamentals"), getFormattedPrice("intro-to-music-production"), getFormattedPrice("advanced-production-mastery")] },
+  { feature: "Price", values: [
+    courses.find(c => c.id === "daw-fundamentals")?.originalPrice ? `${formatPrice(courses.find(c => c.id === "daw-fundamentals")!.originalPrice!)} ${getFormattedPrice("daw-fundamentals")}` : getFormattedPrice("daw-fundamentals"),
+    courses.find(c => c.id === "intro-to-music-production")?.originalPrice ? `${formatPrice(courses.find(c => c.id === "intro-to-music-production")!.originalPrice!)} ${getFormattedPrice("intro-to-music-production")}` : getFormattedPrice("intro-to-music-production"),
+    courses.find(c => c.id === "advanced-production-mastery")?.originalPrice ? `${formatPrice(courses.find(c => c.id === "advanced-production-mastery")!.originalPrice!)} ${getFormattedPrice("advanced-production-mastery")}` : getFormattedPrice("advanced-production-mastery")
+  ] },
   { feature: "Duration", values: ["1 Month", "3 Months", "5 Months"] },
   { feature: "Sessions Per Week", values: ["3", "3", "3"] },
   { feature: "Hours Per Session", values: ["2 Hours", "2 Hours", "2 Hours"] },
@@ -104,7 +118,10 @@ const productionComparison = [
 ];
 
 const djingComparison = [
-  { feature: "Price", values: [getFormattedPrice("dj-beginner"), getFormattedPrice("dj-artistry-program")] },
+  { feature: "Price", values: [
+    courses.find(c => c.id === "dj-beginner")?.originalPrice ? `${formatPrice(courses.find(c => c.id === "dj-beginner")!.originalPrice!)} ${getFormattedPrice("dj-beginner")}` : getFormattedPrice("dj-beginner"),
+    courses.find(c => c.id === "dj-artistry-program")?.originalPrice ? `${formatPrice(courses.find(c => c.id === "dj-artistry-program")!.originalPrice!)} ${getFormattedPrice("dj-artistry-program")}` : getFormattedPrice("dj-artistry-program")
+  ] },
   { feature: "Duration", values: ["4 Weeks", "8 Weeks"] },
   { feature: "Total Sessions", values: ["8 Sessions", "16 Sessions"] },
   { feature: "Manual Beatmatching", values: [true, true] },
@@ -166,7 +183,14 @@ const Pricing = () => {
                     <span className={cn("font-display text-sm font-bold", plan.popular ? "text-primary" : "text-foreground")}>
                       {plan.name}
                     </span>
-                    <span className="text-lg font-bold text-foreground">{plan.displayPrice}</span>
+                    <div className="flex flex-col items-center">
+                      {plan.originalDisplayPrice && (
+                        <span className="text-xs text-muted-foreground line-through font-normal mb-0.5">
+                          {plan.originalDisplayPrice}
+                        </span>
+                      )}
+                      <span className="text-lg font-bold text-foreground">{plan.displayPrice}</span>
+                    </div>
                   </div>
                 </th>
               ))}
@@ -197,7 +221,12 @@ const Pricing = () => {
                         )
                       ) : (
                         <span className={cn("text-xs font-medium whitespace-nowrap", isPopular ? "text-foreground" : "text-muted-foreground")}>
-                          {val}
+                          {typeof val === 'string' && val.includes(' ₹') ? (
+                            <>
+                              <span className="line-through text-muted-foreground/60 mr-1.5">{val.split(' ')[0]}</span>
+                              <span>{val.split(' ')[1]}</span>
+                            </>
+                          ) : val}
                         </span>
                       )}
                     </td>

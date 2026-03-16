@@ -62,7 +62,14 @@ const CourseDetail = () => {
             <div className="flex items-center gap-2"><Clock className="w-5 h-5" /> {course.duration.months || course.duration.weeks} {course.duration.months ? "Months" : "Weeks"}</div>
             <div className="flex items-center gap-2"><Users className="w-5 h-5" /> {course.sessionsPerWeek} sessions/week</div>
             <div className="flex items-center gap-2"><GraduationCap className="w-5 h-5" /> {course.totalSessions} Sessions</div>
-            <div className="flex items-center gap-2 text-foreground font-semibold">{formatPrice(course.price)}</div>
+            <div className="flex items-center gap-2 text-foreground font-semibold">
+              {course.originalPrice && (
+                <span className="text-muted-foreground line-through text-base font-normal mr-1">
+                  {formatPrice(course.originalPrice)}
+                </span>
+              )}
+              <span>{formatPrice(course.price)}</span>
+            </div>
           </div>
         </div>
       </section>
@@ -174,7 +181,17 @@ const CourseDetail = () => {
                 <div className="p-6 rounded-2xl bg-card border border-border">
                   <h3 className="font-display text-xl font-bold text-foreground mb-4">Enrollment Details</h3>
                   <div className="space-y-3 mb-6">
-                    <div className="flex justify-between"><span className="text-muted-foreground">Price</span><span className="font-semibold text-foreground">{formatPrice(course.price)}</span></div>
+                    <div className="flex justify-between items-baseline">
+                      <span className="text-muted-foreground">Price</span>
+                      <div className="flex flex-col items-end">
+                        {course.originalPrice && (
+                          <span className="text-muted-foreground line-through text-xs font-normal">
+                            {formatPrice(course.originalPrice)}
+                          </span>
+                        )}
+                        <span className="font-semibold text-foreground">{formatPrice(course.price)}</span>
+                      </div>
+                    </div>
                     <div className="flex justify-between"><span className="text-muted-foreground">Duration</span><span className="text-foreground">{course.duration.months || course.duration.weeks} {course.duration.months ? "Months" : "Weeks"}</span></div>
                     <div className="flex justify-between"><span className="text-muted-foreground">Sessions</span><span className="text-foreground">{course.totalSessions} total</span></div>
                     <div className="flex justify-between"><span className="text-muted-foreground">Level</span><span className="text-foreground capitalize">{course.level}</span></div>

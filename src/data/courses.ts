@@ -47,6 +47,7 @@ export interface Course {
     weeks?: number;
   };
   price: number;
+  originalPrice?: number;
   level: CourseLevel;
   instructorId?: string;
   instructorIds?: string[];
@@ -557,6 +558,7 @@ export const courses: Course[] = [
     longDescription: "Whether you're starting from scratch or want to level up your skills, our academy is built to take you from basic understanding to confident live performance - and beyond. Train with Industry Expert Kamazaki (17+ Years Experience).",
     duration: { months: 1 },
     price: 34999,
+    originalPrice: 49999,
     level: "beginner",
     instructorIds: ["kamazaki", "garry"],
     sessionsPerWeek: 2,
@@ -688,6 +690,7 @@ export const courses: Course[] = [
     longDescription: "This program is designed to first build rock-solid DJ foundations and then elevate students into technically advanced, performance-ready artists with strong industry awareness. Includes the full 1-Month Fundamentals Program.",
     duration: { months: 2 },
     price: 59999,
+    originalPrice: 79999,
     level: "advanced",
     instructorIds: ["kamazaki", "garry"],
     sessionsPerWeek: 2,
