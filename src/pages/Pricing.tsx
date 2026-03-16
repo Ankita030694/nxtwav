@@ -183,7 +183,7 @@ const artistDevComparison = [
 const Pricing = () => {
   const { initiatePayment, isLoading } = useRazorpay();
   const { user } = useAuth();
-  const [activeCategory, setActiveCategory] = useState<"production" | "djing" | "artist-dev">("production");
+  const [activeCategory, setActiveCategory] = useState<"production" | "djing">("production");
 
   const handlePurchase = async (plan: any) => {
     await initiatePayment({
@@ -295,8 +295,8 @@ const Pricing = () => {
             professional music production mastery.
           </p>
 
-          <Tabs defaultValue="production" className="w-full max-w-md mx-auto" onValueChange={(v) => setActiveCategory(v as any)}>
-            <TabsList className="grid grid-cols-3 p-1 bg-muted/50 backdrop-blur-sm border border-border/50 rounded-full">
+          <Tabs defaultValue="production" className="w-full max-w-sm mx-auto" onValueChange={(v) => setActiveCategory(v as any)}>
+            <TabsList className="grid grid-cols-2 p-1 bg-muted/50 backdrop-blur-sm border border-border/50 rounded-full">
               <TabsTrigger 
                 value="production" 
                 className="rounded-full data-[state=active]:bg-background data-[state=active]:text-primary data-[state=active]:shadow-sm flex items-center justify-center gap-2 py-2 text-xs transition-all"
@@ -310,13 +310,6 @@ const Pricing = () => {
               >
                 <Headphones className="w-3.5 h-3.5" />
                 DJing
-              </TabsTrigger>
-              <TabsTrigger 
-                value="artist-dev" 
-                className="rounded-full data-[state=active]:bg-background data-[state=active]:text-primary data-[state=active]:shadow-sm flex items-center justify-center gap-2 py-2 text-xs transition-all"
-              >
-                <Sparkles className="w-3.5 h-3.5" />
-                Artist Dev
               </TabsTrigger>
             </TabsList>
           </Tabs>
@@ -342,9 +335,6 @@ const Pricing = () => {
               </TabsContent>
               <TabsContent value="djing" className="mt-0 focus-visible:outline-none focus-visible:ring-0">
                 {renderComparisonTable(djingPlans, djingComparison)}
-              </TabsContent>
-              <TabsContent value="artist-dev" className="mt-0 focus-visible:outline-none focus-visible:ring-0">
-                {renderComparisonTable(artistDevPlans, artistDevComparison)}
               </TabsContent>
             </Tabs>
           </div>
