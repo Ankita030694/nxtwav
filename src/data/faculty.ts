@@ -32,20 +32,6 @@ export interface Faculty {
 
 export const faculty: Faculty[] = [
   {
-    id: "sureal",
-    name: "Su Real",
-    stageName: "Su Real",
-    role: "Faculty",
-    photo: sureal1,
-    photos: [sureal1, sureal2, sureal3],
-    bio: "Su Real is a pioneering bass music producer and DJ who has been at the forefront of India's electronic music scene. Known for blending Indian sounds with heavy bass and hip-hop influences, he brings a unique perspective to music production education.",
-    specialty: "Artist Development Programme",
-    socialLinks: {
-      instagram: "https://www.instagram.com/realsureal/",
-    },
-  },
-
-  {
     id: "aryaman",
     name: "Aryaman Aggarwal",
     stageName: "ARYAMAN AGGARWAL",
@@ -56,19 +42,6 @@ export const faculty: Faculty[] = [
     specialty: "Music Production & Sound Design",
     socialLinks: {
       instagram: "https://www.instagram.com/yarkiman/",
-    },
-  },
-  {
-    id: "kamazaki",
-    name: "Kamazaki",
-    stageName: "KAMAZAKI",
-    role: "Faculty",
-    photo: kamazaki1,
-    photos: [kamazaki1, kamazaki2, kamazaki3],
-    bio: "Kamazaki is a veteran in the DJing world with over 17+ years of professional experience. Having performed at major venues across the country, he brings a wealth of knowledge in performance-ready artistry and industry awareness.",
-    specialty: "DJ Performance & Industry Mastery",
-    socialLinks: {
-      instagram: "https://www.instagram.com/dishant_kamazaki",
     },
   },
   {
@@ -85,6 +58,19 @@ export const faculty: Faculty[] = [
     },
   },
   {
+    id: "kamazaki",
+    name: "Kamazaki",
+    stageName: "KAMAZAKI",
+    role: "Faculty",
+    photo: kamazaki1,
+    photos: [kamazaki1, kamazaki2, kamazaki3],
+    bio: "Kamazaki is a veteran in the DJing world with over 17+ years of professional experience. Having performed at major venues across the country, he brings a wealth of knowledge in performance-ready artistry and industry awareness.",
+    specialty: "DJ Performance & Industry Mastery",
+    socialLinks: {
+      instagram: "https://www.instagram.com/dishant_kamazaki",
+    },
+  },
+  {
     id: "skipster",
     name: "Skipster",
     stageName: "SKIPSTER",
@@ -95,6 +81,19 @@ export const faculty: Faculty[] = [
     specialty: "Artist Development Programme",
     socialLinks: {
       instagram: "https://www.instagram.com/skipstermusic/?hl=en",
+    },
+  },
+  {
+    id: "sureal",
+    name: "Su Real",
+    stageName: "Su Real",
+    role: "Faculty",
+    photo: sureal1,
+    photos: [sureal1, sureal2, sureal3],
+    bio: "Su Real is a pioneering bass music producer and DJ who has been at the forefront of India's electronic music scene. Known for blending Indian sounds with heavy bass and hip-hop influences, he brings a unique perspective to music production education.",
+    specialty: "Artist Development Programme",
+    socialLinks: {
+      instagram: "https://www.instagram.com/realsureal/",
     },
   },
 ];

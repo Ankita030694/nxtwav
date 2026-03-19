@@ -76,7 +76,7 @@ const djingPlans = [
   },
   {
     id: "dj-artistry-program",
-    name: "Advanced DJing Course",
+    name: "Advanced DJing Program",
     description: "Transform from a technically good DJ into a performance-ready artist.",
     price: getPrice("dj-artistry-program"),
     displayPrice: getFormattedPrice("dj-artistry-program"),

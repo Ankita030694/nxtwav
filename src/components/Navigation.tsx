@@ -22,9 +22,9 @@ const navLinks = [
     href: "/courses", 
     label: "Courses",
     children: [
-      { href: "/courses#production", label: "Music Production" },
-      { href: "/courses#djing", label: "DJing" },
-      { href: "/courses#artist-dev", label: "Artist Development" },
+      { href: "/courses#production", label: "Music Production Launchpad" },
+      { href: "/courses#djing", label: "DJing Essentials" },
+      { href: "/courses#artist-dev", label: "Artist Development Programme" },
     ]
   },
   { href: "/interactive-learning", label: "Interactive Learning" },

@@ -686,7 +686,7 @@ export const courses: Course[] = [
   {
     id: "dj-artistry-program",
     slug: "dj-artistry-program",
-    title: "DJ Advanced Performance Program",
+    title: "Advanced DJing Program",
     tagline: "Perfect For: Aspiring professional DJs",
     category: "djing",
     description: "Month 2 transforms you from a technically good DJ into a performance-ready artist with industry awareness. Led by Faculty Kamazaki.",
