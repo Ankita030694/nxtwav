@@ -14,7 +14,7 @@ const navLinks = [
     label: "About Us",
     children: [
       { href: "/about#founders", label: "Our Founders" },
-      { href: "/about#faculty", label: "Our Faculties" },
+      { href: "/about#faculty", label: "Our Faculty" },
       { href: "/about#mission-vision", label: "Mission & Vision" },
     ]
   },
