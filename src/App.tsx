@@ -7,6 +7,7 @@ import { AuthProvider } from "@/hooks/useAuth";
 import { PageLoader } from "@/components/PageLoader";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { WhatsAppWidget } from "@/components/WhatsAppWidget";
+import { ConsultationButton } from "@/components/ConsultationButton";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import CoursesPage from "./pages/CoursesPage";
@@ -40,6 +41,7 @@ const App = () => (
           <ScrollToTop />
           <PageLoader />
           <WhatsAppWidget />
+          <ConsultationButton />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/about" element={<About />} />

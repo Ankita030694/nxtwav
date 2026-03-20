@@ -66,8 +66,12 @@ const processContent = (html: string) => {
   const sections: { id: string, title: string }[] = [];
   if (!html) return { content: "", sections: [] };
 
-  const modifiedContent = html.replace(/<(h[23])(.*?)>(.*?)<\/\1>/g, (match, tag, attrs, title) => {
+  // Track the content more broadly to include h2, h3, and h4
+  const modifiedContent = html.replace(/<(h[234])(.*?)>(.*?)<\/\1>/g, (match, tag, attrs, title) => {
     const cleanTitle = title.replace(/<[^>]*>/g, '').trim();
+    if (!cleanTitle) return match; // Skip empty headers
+    
+    // Create a URL-safe ID
     const id = cleanTitle.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
     
     sections.push({ id, title: cleanTitle });
@@ -217,7 +221,7 @@ const BlogPostDetail = () => {
                 {blog.subtitle}
               </p>
             )}
-            <div className="flex justify-center items-center gap-6 text-sm text-muted-foreground/60 border-y border-border/50 py-4 max-w-fit mx-auto px-10 rounded-full bg-card/10 backdrop-blur-sm">
+            <div className="flex justify-center items-center gap-6 text-sm text-white/70 border-y border-border/50 py-4 max-w-fit mx-auto px-10 rounded-full bg-card/20 backdrop-blur-md">
               <span className="flex items-center gap-2"><Calendar className="w-4 h-4 text-primary" /> {new Date(blog.date).toLocaleDateString()}</span>
               <span className="w-1 h-1 bg-border rounded-full" />
               <span className="flex items-center gap-2"><User className="w-4 h-4 text-primary" /> {blog.author}</span>
@@ -257,15 +261,22 @@ const BlogPostDetail = () => {
                <TableOfContents sections={sections} />
             </div>
 
-            <article className="bg-card/30 backdrop-blur-xl p-8 md:p-16 rounded-[2.5rem] border border-border shadow-2xl space-y-16">
+            <article className="bg-card/30 backdrop-blur-xl p-8 md:p-16 rounded-[2.5rem] border border-border shadow-2xl space-y-16 text-white">
               {/* Proccessed Article Content */}
               <div 
-                className="prose prose-lg dark:prose-invert max-w-none tiptap-content prose-p:leading-relaxed prose-headings:font-display prose-headings:font-bold prose-a:text-primary prose-img:rounded-2xl prose-blockquote:border-primary/50 prose-blockquote:bg-primary/5 prose-blockquote:px-8 prose-blockquote:py-6"
+                className="prose prose-lg dark:prose-invert max-w-none tiptap-content text-white 
+                  prose-p:leading-relaxed prose-p:text-white/90 
+                  prose-headings:font-display prose-headings:font-bold prose-headings:text-primary 
+                  prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6 prose-h2:scroll-mt-32
+                  prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-4 prose-h3:scroll-mt-32
+                  prose-a:text-primary prose-a:font-semibold hover:prose-a:text-primary-foreground
+                  prose-img:rounded-2xl prose-img:shadow-2xl 
+                  prose-blockquote:border-primary/50 prose-blockquote:bg-primary/5 prose-blockquote:px-8 prose-blockquote:py-6 prose-blockquote:rounded-r-2xl prose-blockquote:text-white/80"
                 dangerouslySetInnerHTML={{ __html: processedContent }}
               />
 
               {/* Share Section */}
-              <div className="border-t border-border pt-10 mt-16">
+              <div className="border-t border-border/50 pt-10 mt-16 text-white">
                 <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
                   <span className="font-display font-bold text-xl flex items-center gap-2">
                     <Share2 className="w-5 h-5 text-primary" /> Spread the Knowledge:
@@ -273,19 +284,19 @@ const BlogPostDetail = () => {
                   <div className="flex gap-4">
                     <button 
                       onClick={() => handleShare('facebook')}
-                      className="w-12 h-12 rounded-full border border-border flex items-center justify-center hover:bg-primary hover:text-white transition-all hover:shadow-[0_0_20px_rgba(var(--primary-rgb),0.4)]"
+                      className="w-12 h-12 rounded-full border border-border flex items-center justify-center text-white/70 hover:bg-primary hover:text-white transition-all hover:shadow-[0_0_20px_rgba(var(--primary-rgb),0.4)]"
                     >
                       <FontAwesomeIcon icon={faFacebook} className="text-xl" />
                     </button>
                     <button 
                       onClick={() => handleShare('twitter')}
-                      className="w-12 h-12 rounded-full border border-border flex items-center justify-center hover:bg-primary hover:text-white transition-all hover:shadow-[0_0_20px_rgba(var(--primary-rgb),0.4)]"
+                      className="w-12 h-12 rounded-full border border-border flex items-center justify-center text-white/70 hover:bg-primary hover:text-white transition-all hover:shadow-[0_0_20px_rgba(var(--primary-rgb),0.4)]"
                     >
                       <FontAwesomeIcon icon={faTwitter} className="text-xl" />
                     </button>
                     <button 
                       onClick={() => handleShare('linkedin')}
-                      className="w-12 h-12 rounded-full border border-border flex items-center justify-center hover:bg-primary hover:text-white transition-all hover:shadow-[0_0_20px_rgba(var(--primary-rgb),0.4)]"
+                      className="w-12 h-12 rounded-full border border-border flex items-center justify-center text-white/70 hover:bg-primary hover:text-white transition-all hover:shadow-[0_0_20px_rgba(var(--primary-rgb),0.4)]"
                     >
                       <FontAwesomeIcon icon={faLinkedin} className="text-xl" />
                     </button>
@@ -314,14 +325,14 @@ const BlogPostDetail = () => {
                             </div>
                             <span className="font-bold text-sm bg-primary/20 text-primary px-2 py-0.5 rounded">{review.rating}.0</span>
                           </div>
-                          <p className="text-muted-foreground/90 italic mb-6 leading-relaxed">"{review.review}"</p>
+                          <p className="text-white/80 italic mb-6 leading-relaxed">"{review.review}"</p>
                           <div className="flex items-center">
                             <div className="w-12 h-12 bg-primary/10 rounded-full border border-primary/20 flex items-center justify-center text-primary mr-4 overflow-hidden">
                               <FontAwesomeIcon icon={faUser} />
                             </div>
                             <div>
-                                <p className="font-bold text-foreground">{review.name}</p>
-                                <p className="text-xs text-muted-foreground uppercase tracking-wider">Verified Scholar</p>
+                                <p className="font-bold text-white">{review.name}</p>
+                                <p className="text-xs text-white/50 uppercase tracking-wider">Verified Scholar</p>
                             </div>
                           </div>
                         </div>
@@ -342,7 +353,7 @@ const BlogPostDetail = () => {
                           onClick={() => toggleFaq(faq.id)}
                           className="flex justify-between items-center w-full text-left p-6 font-semibold group"
                         >
-                          <span className="flex items-center pr-4">
+                          <span className="flex items-center pr-4 text-white">
                             <span className="text-primary mr-4 font-display text-xl">Q.</span>
                             {faq.question}
                           </span>
@@ -358,7 +369,7 @@ const BlogPostDetail = () => {
                                 exit={{ height: 0, opacity: 0 }}
                                 className="overflow-hidden"
                             >
-                              <div className="px-6 pb-8 pt-0 text-muted-foreground leading-relaxed pl-14">
+                              <div className="px-6 pb-8 pt-0 text-white/70 leading-relaxed pl-14">
                                 {faq.answer}
                               </div>
                             </motion.div>
@@ -390,10 +401,10 @@ const BlogPostDetail = () => {
                             </div>
                           </div>
                           <div className="p-8 flex-1 flex flex-col">
-                            <h3 className="text-xl font-display font-bold text-foreground mb-4 group-hover:text-primary transition-colors line-clamp-2">
+                            <h3 className="text-xl font-display font-bold text-white mb-4 group-hover:text-primary transition-colors line-clamp-2">
                               {article.title}
                             </h3>
-                            <p className="text-sm text-muted-foreground/80 mb-6 line-clamp-2 flex-1">
+                            <p className="text-sm text-white/60 mb-6 line-clamp-2 flex-1">
                                 {article.subtitle}
                             </p>
                             <span className="text-primary font-bold text-sm flex items-center mt-auto gap-2 group-hover:gap-4 transition-all">
@@ -412,8 +423,8 @@ const BlogPostDetail = () => {
           {/* Right Sidebar - Author & CTA */}
           <aside className="space-y-10 sticky top-24 pt-4">
               {/* Author Card */}
-              <div className="bg-card/50 backdrop-blur-xl p-8 rounded-[2rem] shadow-sm border border-border group hover:border-primary/30 transition-all">
-                <h3 className="text-lg font-display font-bold text-foreground mb-6 flex items-center gap-2 border-b border-border/50 pb-4">
+              <div className="bg-card/50 backdrop-blur-xl p-8 rounded-[2rem] shadow-sm border border-border group hover:border-primary/30 transition-all text-white">
+                <h3 className="text-lg font-display font-bold text-white mb-6 flex items-center gap-2 border-b border-border/50 pb-4">
                   Meet the Author
                 </h3>
                 <div className="flex items-center mb-6">
@@ -425,11 +436,11 @@ const BlogPostDetail = () => {
                     />
                   </div>
                   <div>
-                    <h4 className="font-bold text-foreground group-hover:text-primary transition-colors">{author.name}</h4>
-                    <p className="text-[10px] text-muted-foreground uppercase tracking-[0.2em]">Contributor</p>
+                    <h4 className="font-bold text-white group-hover:text-primary transition-colors">{author.name}</h4>
+                    <p className="text-[10px] text-white/50 uppercase tracking-[0.2em]">Contributor</p>
                   </div>
                 </div>
-                <p className="text-sm text-muted-foreground/80 mb-6 leading-relaxed line-clamp-4 italic">
+                <p className="text-sm text-white/70 mb-6 leading-relaxed line-clamp-4 italic">
                   "{author.description}"
                 </p>
                 <a 

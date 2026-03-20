@@ -11,7 +11,6 @@ import { SuccessStoriesSection } from "@/components/sections/SuccessStoriesSecti
 import { FAQSection } from "@/components/sections/FAQSection";
 import { CTASection } from "@/components/sections/CTASection";
 import { WhyJoinSection } from "@/components/about/WhyJoinSection";
-import { ConsultationButton } from "@/components/ConsultationButton";
 import SEO from "@/components/SEO";
 
 const Index = () => {
@@ -55,7 +54,6 @@ const Index = () => {
       <FAQSection />
       <CTASection />
       <Footer />
-      <ConsultationButton />
     </main>
   );
 };

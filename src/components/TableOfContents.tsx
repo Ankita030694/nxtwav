@@ -40,11 +40,14 @@ export default function TableOfContents({ sections, orientation = "horizontal" }
 
   if (orientation === "vertical") {
     return (
-      <nav className="space-y-4">
-        <h3 className="text-sm font-bold uppercase tracking-wider text-muted-foreground/70 mb-4 flex items-center gap-2">
-          <List className="w-4 h-4 text-primary" /> On This Page
-        </h3>
-        <ul className="space-y-2 text-sm border-l-2 border-border/50">
+      <nav className="space-y-6">
+        <div className="flex items-center gap-2 text-primary">
+          <List className="w-4 h-4" />
+          <h3 className="text-xs font-bold uppercase tracking-[0.2em]">
+            On This Page
+          </h3>
+        </div>
+        <ul className="space-y-4 text-sm border-l border-white/10">
           {sections.map((section) => (
             <li key={section.id}>
               <Link
@@ -54,10 +57,10 @@ export default function TableOfContents({ sections, orientation = "horizontal" }
                 duration={500}
                 spy={true}
                 className={cn(
-                  "block py-1 pl-4 -ml-[2px] cursor-pointer transition-all border-l-2",
+                  "block py-1 pl-4 -ml-[1px] cursor-pointer transition-all border-l",
                   activeId === section.id
-                    ? "text-primary border-primary font-semibold"
-                    : "text-muted-foreground border-transparent hover:text-primary hover:border-primary/30"
+                    ? "text-primary border-primary font-bold shadow-[0_0_15px_rgba(var(--primary-rgb),0.1)]"
+                    : "text-white/50 border-transparent hover:text-white hover:border-white/30"
                 )}
               >
                 {section.title}

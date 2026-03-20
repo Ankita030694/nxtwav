@@ -71,7 +71,7 @@ const MenuBar: React.FC<MenuBarProps> = ({ editor, uploading, onImageRequest }) 
 
   const colors = useMemo(
     () => [
-      { name: 'Default', value: '#000000' },
+      { name: 'Default', value: '#FFFFFF' },
       { name: 'Gray', value: '#4B5563' },
       { name: 'Red', value: '#EF4444' },
       { name: 'Orange', value: '#F97316' },
@@ -534,7 +534,7 @@ const TiptapEditor: React.FC<TiptapEditorProps> = ({ content, onChange, classNam
     },
     editorProps: {
       attributes: {
-        class: 'prose prose-sm sm:prose lg:prose-lg prose-invert max-w-none p-4 min-h-[300px] focus:outline-none text-white',
+        class: 'prose prose-lg dark:prose-invert max-w-none tiptap-content text-white prose-p:leading-relaxed prose-p:text-white/90 prose-headings:font-display prose-headings:font-bold prose-headings:text-primary prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6 prose-h2:scroll-mt-32 prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-4 prose-h3:scroll-mt-32 prose-a:text-primary prose-a:font-semibold hover:prose-a:text-primary-foreground prose-img:rounded-2xl prose-img:shadow-2xl prose-blockquote:border-primary/50 prose-blockquote:bg-primary/5 prose-blockquote:px-8 prose-blockquote:py-6 prose-blockquote:rounded-r-2xl prose-blockquote:text-white/80 p-6 min-h-[400px] focus:outline-none',
       },
       handleDrop: (view, event, slice, moved) => {
         if (!moved && event.dataTransfer && event.dataTransfer.files && event.dataTransfer.files.length > 0) {
@@ -700,26 +700,14 @@ const TiptapEditor: React.FC<TiptapEditorProps> = ({ content, onChange, classNam
         margin: 0 6px;
       }
       .ProseMirror {
-        min-height: 300px;
+        min-height: 400px;
         outline: none;
         color: white;
       }
-      .ProseMirror p { margin: 1em 0; color: white; }
-      .ProseMirror h1, .ProseMirror h2, .ProseMirror h3, .ProseMirror h4, .ProseMirror h5, .ProseMirror h6 { color: white; }
-      .ProseMirror blockquote { border-left: 4px solid #d1d5db; margin-left: 0; padding-left: 1em; color: #4b5563; }
-      .ProseMirror pre { background-color: #f5f5f5; padding: 0.75em; border-radius: 0.5em; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
       .ProseMirror table { border-collapse: collapse; margin: 0; overflow: hidden; table-layout: fixed; width: 100%; }
       .ProseMirror table td,
-      .ProseMirror table th { border: 2px solid #ced4da; box-sizing: border-box; min-width: 1em; padding: 6px 8px; position: relative; vertical-align: top; }
-      .ProseMirror table th { background-color: #f8f9fa; font-weight: 600; text-align: left; }
-      .ProseMirror ul { list-style-type: disc; padding-left: 1.5em; margin: 1em 0; }
-      .ProseMirror ol { list-style-type: decimal; padding-left: 1.5em; margin: 1em 0; }
-      .ProseMirror li { margin: 0.5em 0; display: list-item; }
-      .ProseMirror ul ul { list-style-type: circle; margin: 0.5em 0; }
-      .ProseMirror ul ul ul { list-style-type: square; margin: 0.5em 0; }
-      .ProseMirror ol ol { list-style-type: lower-alpha; margin: 0.5em 0; }
-      .ProseMirror ol ol ol { list-style-type: lower-roman; margin: 0.5em 0; }
-      .ProseMirror hr { border: none; border-top: 2px solid #ced4da; margin: 1.5em 0; }
+      .ProseMirror table th { border: 2px solid #3f3f46; box-sizing: border-box; min-width: 1em; padding: 6px 8px; position: relative; vertical-align: top; }
+      .ProseMirror table th { background-color: #27272a; font-weight: 600; text-align: left; }
       .ProseMirror img { max-width: 100%; height: auto; border-radius: 0.5rem; }
       .ProseMirror img.error-image {
         border: 2px solid #ef4444;
