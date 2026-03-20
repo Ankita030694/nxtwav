@@ -7,6 +7,7 @@ import { getCourseBySlug, getInstructorsForCourse, formatPrice, categoryInfo } f
 import { Clock, Users, GraduationCap, CheckCircle, ArrowLeft, Calendar, BookOpen } from "lucide-react";
 import { cn } from "@/lib/utils";
 import SEO from "@/components/SEO";
+import { AbletonCertifiedLogo } from "@/components/AbletonCertifiedLogo";
 
 const CourseDetail = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -28,6 +29,10 @@ const CourseDetail = () => {
 
   const category = categoryInfo[course.category];
   const colorClass = course.category === "production" ? "primary" : course.category === "djing" ? "secondary" : "accent";
+
+  const isAbletonCertified = course.tagline.toLowerCase().includes("ableton certified trainer") || 
+                            course.longDescription.toLowerCase().includes("ableton certified trainer") ||
+                            course.whatsIncluded.some(item => item.toLowerCase().includes("ableton certified trainer"));
 
   return (
     <main className="min-h-screen bg-background">
@@ -53,6 +58,11 @@ const CourseDetail = () => {
             <span className="px-3 py-1 rounded-full bg-muted text-muted-foreground text-xs font-medium capitalize">
               {course.level}
             </span>
+            {isAbletonCertified && (
+              <div className="inline-flex items-center">
+                <AbletonCertifiedLogo className="h-4" />
+              </div>
+            )}
           </div>
           
           <h1 className="font-display text-4xl sm:text-5xl font-bold text-foreground mb-4">{course.title}</h1>
@@ -83,7 +93,15 @@ const CourseDetail = () => {
               {/* Description */}
               <div>
                 <h2 className="font-display text-2xl font-bold text-foreground mb-4">About This Course</h2>
-                <p className="text-muted-foreground leading-relaxed">{course.longDescription}</p>
+                <div className="flex flex-col sm:flex-row sm:items-start gap-6">
+                  <p className="text-muted-foreground leading-relaxed flex-grow">{course.longDescription}</p>
+                  {isAbletonCertified && (
+                    <div className="flex-shrink-0 flex flex-col items-center sm:items-end gap-2 p-4 bg-muted/50 rounded-xl border border-border/50 self-start">
+                      <span className="text-[10px] uppercase font-bold text-muted-foreground tracking-wider">Official Training Partner</span>
+                      <AbletonCertifiedLogo className="h-10" />
+                    </div>
+                  )}
+                </div>
               </div>
 
               {/* Learning Outcomes */}
@@ -201,7 +219,10 @@ const CourseDetail = () => {
                   </Button>
                   <div className="space-y-2 text-sm text-muted-foreground">
                     {course.whatsIncluded.slice(0, 4).map((item) => (
-                      <div key={item} className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-accent" />{item}</div>
+                      <div key={item} className="flex items-center gap-2">
+                        <CheckCircle className="w-4 h-4 text-accent" />
+                        {item}
+                      </div>
                     ))}
                   </div>
                 </div>
@@ -212,25 +233,34 @@ const CourseDetail = () => {
                     <h3 className="font-display text-lg font-bold text-foreground">
                       {instructorsForCourse.length > 1 ? "Your Instructors" : "Your Instructor"}
                     </h3>
-                    {instructorsForCourse.map((instructor) => (
-                      <div key={instructor.id} className="p-6 rounded-2xl bg-card border border-border">
-                        <div className="flex items-center gap-4 mb-4">
-                          <img 
-                            src={instructor.photo} 
-                            alt={instructor.name} 
-                            className={cn(
-                              "w-16 h-16 rounded-full object-cover bg-muted",
-                              instructor.id === "garry" && "object-top"
-                            )}
-                          />
-                          <div>
-                            <p className="font-semibold text-foreground">{instructor.name}</p>
-                            <p className={cn("text-sm", `text-${colorClass}`)}>{instructor.stageName}</p>
+                    {instructorsForCourse.map((instructor) => {
+                      const instructorIsCertified = instructor.bio.toLowerCase().includes("ableton certified trainer");
+                      return (
+                        <div key={instructor.id} className="p-6 rounded-2xl bg-card border border-border">
+                          <div className="flex items-center gap-4 mb-4">
+                            <img 
+                              src={instructor.photo} 
+                              alt={instructor.name} 
+                              className={cn(
+                                "w-16 h-16 rounded-full object-cover bg-muted",
+                                instructor.id === "garry" && "object-top"
+                              )}
+                            />
+                            <div>
+                              <p className="font-semibold text-foreground">{instructor.name}</p>
+                              <p className={cn("text-sm", `text-${colorClass}`)}>{instructor.stageName}</p>
+                            </div>
                           </div>
+                          <div className="flex justify-between items-center mb-2">
+                            <p className="text-sm text-muted-foreground">{instructor.specialty}</p>
+                            {instructorIsCertified && <AbletonCertifiedLogo className="h-5" />}
+                          </div>
+                          {instructorIsCertified && (
+                            <p className="text-[10px] text-muted-foreground font-semibold uppercase tracking-tight">Ableton Certified Trainer</p>
+                          )}
                         </div>
-                        <p className="text-sm text-muted-foreground">{instructor.specialty}</p>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
                 )}
               </div>

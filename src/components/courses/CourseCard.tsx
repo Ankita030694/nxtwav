@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Clock, Users, GraduationCap, ArrowRight, Sparkles } from "lucide-react";
 import { Course, CourseCategory, categoryInfo, formatPrice } from "@/data/courses";
 import { cn } from "@/lib/utils";
+import { AbletonCertifiedLogo } from "@/components/AbletonCertifiedLogo";
 
 interface CourseCardProps {
   course: Course;
@@ -42,6 +43,10 @@ export function CourseCard({ course }: CourseCardProps) {
     "all-levels": "All Levels",
   };
 
+  const isAbletonCertified = course.tagline.toLowerCase().includes("ableton certified trainer") || 
+                            course.description.toLowerCase().includes("ableton certified trainer") ||
+                            course.whatsIncluded.some(item => item.toLowerCase().includes("ableton certified trainer"));
+
   return (
     <div
       className={cn(
@@ -53,14 +58,19 @@ export function CourseCard({ course }: CourseCardProps) {
       <div className={cn("absolute top-0 left-0 right-0 h-1", colors.accent)} />
 
       {/* Featured Badge */}
-      {course.featured && (
-        <div className="absolute top-4 right-4 z-10">
-          <span className="inline-flex items-center gap-1 px-3 py-1 bg-gradient-cta text-primary-foreground text-xs font-medium rounded-full">
+      <div className="absolute top-4 right-4 z-10 flex flex-col items-end gap-2">
+        {course.featured && (
+          <span className="inline-flex items-center gap-1 px-3 py-1 bg-gradient-cta text-primary-foreground text-xs font-medium rounded-full shadow-lg">
             <Sparkles className="w-3 h-3" />
             Featured
           </span>
-        </div>
-      )}
+        )}
+        {isAbletonCertified && (
+          <div className="bg-black/40 backdrop-blur-sm p-1.5 rounded-lg border border-white/10 shadow-lg">
+            <AbletonCertifiedLogo className="h-4" />
+          </div>
+        )}
+      </div>
 
       <div className="p-6">
         {/* Category & Level */}

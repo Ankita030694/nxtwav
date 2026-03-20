@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -161,11 +160,10 @@ export default function Signup() {
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="name">Name</Label>
               <Input
                 id="name"
                 type="text"
-                placeholder="Rahul Sharma"
+                placeholder="Name"
                 value={formData.name}
                 onChange={handleTextChange}
                 className="bg-background/50"
@@ -174,11 +172,10 @@ export default function Signup() {
             </div>
             
             <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
               <Input
                 id="email"
                 type="email"
-                placeholder="rahul@example.com"
+                placeholder="Email"
                 value={formData.email}
                 onChange={handleTextChange}
                 className="bg-background/50"
@@ -187,11 +184,10 @@ export default function Signup() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="phone">Phone Number</Label>
               <Input
                 id="phone"
                 type="tel"
-                placeholder="9876543210"
+                placeholder="Phone Number"
                 value={formData.phone}
                 onChange={handleTextChange}
                 className="bg-background/50"
@@ -201,11 +197,10 @@ export default function Signup() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="instagram">Instagram Username</Label>
                 <Input
                   id="instagram"
                   type="text"
-                  placeholder="@yourusername"
+                  placeholder="Instagram Username"
                   value={formData.instagram}
                   onChange={handleTextChange}
                   className="bg-background/50"
@@ -214,11 +209,10 @@ export default function Signup() {
               </div>
               
               <div className="space-y-2">
-                <Label htmlFor="linkedin">LinkedIn Profile (Optional)</Label>
                 <Input
                   id="linkedin"
                   type="text"
-                  placeholder="Profile URL"
+                  placeholder="LinkedIn Profile (Optional)"
                   value={formData.linkedin}
                   onChange={handleTextChange}
                   className="bg-background/50"
@@ -227,10 +221,9 @@ export default function Signup() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="state">State</Label>
               <Select value={formData.state} onValueChange={handleStateChange} required>
                 <SelectTrigger className="bg-background/50">
-                  <SelectValue placeholder="Select your state" />
+                  <SelectValue placeholder="State" />
                 </SelectTrigger>
                 <SelectContent>
                   {indianStatesAndUTs.map((s) => (
@@ -241,10 +234,9 @@ export default function Signup() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="message">Message</Label>
               <Textarea
                 id="message"
-                placeholder="How can we help you?"
+                placeholder="Message"
                 value={formData.message}
                 onChange={handleTextChange}
                 className="bg-background/50 min-h-[100px]"

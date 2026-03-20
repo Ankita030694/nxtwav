@@ -3,6 +3,7 @@ import { Instagram, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react
 import { faculty } from "@/data/faculty";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
+import { AbletonCertifiedLogo } from "@/components/AbletonCertifiedLogo";
 
 function FacultyImageCarousel({ images, name }: { images: string[]; name: string }) {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -120,6 +121,7 @@ export function FacultySection() {
             };
 
             const colorClass = getSpecialtyColor(member.specialty);
+            const isCertified = member.bio.toLowerCase().includes("ableton certified trainer");
 
             return (
               <div
@@ -130,6 +132,14 @@ export function FacultySection() {
                 <div className="relative aspect-[4/5] overflow-hidden bg-muted">
                   <FacultyImageCarousel images={member.photos} name={member.name} />
                   
+                  {/* Certification Badge Over Image */}
+                  {isCertified && (
+                    <div className="absolute top-4 left-4 z-20 bg-black/60 backdrop-blur-md px-3 py-2 rounded-lg border border-white/10 flex flex-col items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <span className="text-[8px] uppercase font-bold text-white tracking-widest leading-none">Official</span>
+                      <AbletonCertifiedLogo className="h-6" />
+                    </div>
+                  )}
+
                   {/* Color accent bar */}
                   <div className={cn(
                     "absolute bottom-0 left-0 right-0 h-1 z-10",
@@ -143,9 +153,12 @@ export function FacultySection() {
                 <div className="p-6 flex flex-col flex-grow">
                   <div className="flex items-start justify-between mb-3">
                     <div>
-                      <h3 className="font-display text-xl font-bold text-foreground">
-                        {member.stageName}
-                      </h3>
+                      <div className="flex items-center gap-2 mb-1">
+                        <h3 className="font-display text-xl font-bold text-foreground">
+                          {member.stageName}
+                        </h3>
+                        {isCertified && <AbletonCertifiedLogo className="h-4" />}
+                      </div>
                       <p className="text-sm text-muted-foreground">
                         {member.name}
                       </p>
@@ -185,6 +198,12 @@ export function FacultySection() {
                     )}>
                       {member.specialty}
                     </span>
+                    {isCertified && (
+                      <div className="flex items-center gap-2 p-2 bg-muted/40 rounded-lg border border-border/50">
+                        <AbletonCertifiedLogo className="h-4" />
+                        <span className="text-[10px] font-semibold text-muted-foreground uppercase tracking-tight">Ableton Certified Trainer</span>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
