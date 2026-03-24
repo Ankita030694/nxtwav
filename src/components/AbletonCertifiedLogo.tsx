@@ -3,12 +3,10 @@ import { cn } from "@/lib/utils";
 
 export function AbletonCertifiedLogo({ className }: { className?: string }) {
   return (
-    <div className={cn("flex items-center", className)}>
-      <img 
-        src={logo} 
-        alt="Ableton Certified Trainer Logo" 
-        className="h-8 w-auto filter invert brightness-200" 
-      />
-    </div>
+    <img 
+      src={logo} 
+      alt="Ableton Certified Trainer Logo" 
+      className={cn("h-8 w-auto filter invert brightness-200 object-contain shrink-0", className)} 
+    />
   );
 }

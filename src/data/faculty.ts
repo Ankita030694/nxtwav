@@ -33,12 +33,12 @@ export interface Faculty {
 export const faculty: Faculty[] = [
   {
     id: "aryaman",
-    name: "Aryaman Aggarwal",
-    stageName: "ARYAMAN AGGARWAL",
+    name: "Aryaman Agarwal",
+    stageName: "ARYAMAN AGARWAL",
     role: "Faculty",
     photo: aryaman1,
     photos: [aryaman1, aryaman2, aryaman3],
-    bio: "Aryaman Aggarwal is a graduate in Digital Sound Producer (Advanced) from Pyramind @ San Francisco. He is a Certified Avid Pro Tools Operator, Apple Logic Pro X certified, and an Ableton Certified Trainer with 13+ years of teaching experience and has mentored 450+ students.",
+    bio: "Aryaman Agarwal is a graduate in Digital Sound Producer (Advanced) from Pyramind @ San Francisco. He is a Certified Avid Pro Tools Operator, Apple Logic Pro X certified, and an Ableton Certified Trainer with 13+ years of teaching experience and has mentored 450+ students.",
     specialty: "Music Production & Sound Design",
     socialLinks: {
       instagram: "https://www.instagram.com/yarkiman/",

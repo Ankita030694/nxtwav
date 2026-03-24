@@ -137,10 +137,10 @@ export const instructors: Instructor[] = [
   },
   {
     id: "aryaman",
-    name: "Aryaman Aggarwal",
-    stageName: "ARYAMAN AGGARWAL",
+    name: "Aryaman Agarwal",
+    stageName: "ARYAMAN AGARWAL",
     photo: aryamann,
-    bio: "Aryaman Aggarwal is a graduate in Digital Sound Producer (Advanced) from Pyramind @ San Francisco, California. He is a Certified Avid Pro Tools Operator, Apple Logic Pro X Certified, and an Ableton Certified Trainer with 13+ years of teaching experience and has mentored 450+ students.",
+    bio: "Aryaman Agarwal is a graduate in Digital Sound Producer (Advanced) from Pyramind @ San Francisco, California. He is a Certified Avid Pro Tools Operator, Apple Logic Pro X Certified, and an Ableton Certified Trainer with 13+ years of teaching experience and has mentored 450+ students.",
     specialty: "Music Production & Sound Design",
     socialLinks: {
       instagram: "https://www.instagram.com/yarkiman/",
@@ -424,7 +424,7 @@ export const courses: Course[] = [
     tagline: "Achieve professional-grade production excellence with an Ableton Certified Trainer",
     category: "production",
     description: "Go beyond presets - understand synthesis, sound shaping, and instrument architecture to craft your own signature sound. Master full-spectrum production from core fundamentals to advanced performance techniques.",
-    longDescription: "This intensive 5-month program is designed for producers ready to reach professional levels. Train with Aryaman Aggarwal, a Pyramind graduate and Ableton Certified Trainer. Get Ableton Live Suite 12 along with the course and master sampling, groove design, sound shaping, and industry-ready workflow systems.",
+    longDescription: "This intensive 5-month program is designed for producers ready to reach professional levels. Train with Aryaman Agarwal, a Pyramind graduate and Ableton Certified Trainer. Get Ableton Live Suite 12 along with the course and master sampling, groove design, sound shaping, and industry-ready workflow systems.",
     duration: { months: 5 },
     price: 179999,
     originalPrice: 224999,

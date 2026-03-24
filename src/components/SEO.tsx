@@ -1,6 +1,12 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
+declare global {
+  interface Window {
+    gtag?: (...args: any[]) => void;
+  }
+}
+
 interface SEOProps {
   title: string;
   description: string;
@@ -116,7 +122,15 @@ const SEO = ({
       }
     }
 
-  }, [title, description, keywords, ogTitle, ogDescription, ogType, canonicalUrl, currentUrl, noindex]);
+    // Track Page View
+    if (window.gtag) {
+      window.gtag('config', 'G-6DQ2MYDNVF', {
+        page_path: location.pathname + location.search + location.hash,
+        page_title: title,
+      });
+    }
+
+  }, [title, description, keywords, ogTitle, ogDescription, ogType, canonicalUrl, currentUrl, noindex, location.pathname, location.search, location.hash]);
 
   return null;
 };
