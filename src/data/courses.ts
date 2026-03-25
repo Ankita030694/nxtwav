@@ -408,7 +408,7 @@ export const courses: Course[] = [
     sessions: [
       {
         sessionNumber: 1,
-        title: "Module 1: INTRODUCTION TO DAW (12 sessions)",
+        title: "Module 1: INTRODUCTION TO DAW",
         duration: 24,
         objectives: ["Introduction to the DAW and its interface", "Setting up for production", "Core fundamental tools"],
         topics: ["Interface overview", "Session vs Arrangement", "Signal flow", "Setting up your studio"],
@@ -416,7 +416,7 @@ export const courses: Course[] = [
       },
       {
         sessionNumber: 2,
-        title: "Module 2: Sampling, Groove & Beat Design (12 sessions)",
+        title: "Module 2: Sampling, Groove & Beat Design",
         duration: 24,
         objectives: ["Master sampling techniques", "Develop unique groove and rhythm", "Advanced beat design"],
         topics: ["Sampling methods", "Groove manipulation", "Beat structuring", "Layering drums"],
@@ -424,7 +424,7 @@ export const courses: Course[] = [
       },
       {
         sessionNumber: 3,
-        title: "Module 3: Core Music & Production Tools (12 sessions)",
+        title: "Module 3: Core Music & Production Tools",
         duration: 24,
         objectives: ["Understand essential production tools", "Master core effects and processors", "Musicality in production"],
         topics: ["Compressors", "EQ", "Reverb & Delay", "Saturation", "Dynamics"],
@@ -510,7 +510,7 @@ export const courses: Course[] = [
     sessions: [
       {
         sessionNumber: 1,
-        title: "Module 1: INTRODUCTION TO DAW (12 sessions)",
+        title: "Module 1: INTRODUCTION TO DAW",
         duration: 24,
         objectives: ["Introduction to the DAW and its interface", "Setting up for production", "Core fundamental tools"],
         topics: ["Interface overview", "Session vs Arrangement", "Signal flow", "Setting up your studio"],
@@ -518,7 +518,7 @@ export const courses: Course[] = [
       },
       {
         sessionNumber: 2,
-        title: "Module 2: Sampling, Groove & Beat Design (12 sessions)",
+        title: "Module 2: Sampling, Groove & Beat Design",
         duration: 24,
         objectives: ["Master sampling techniques", "Develop unique groove and rhythm", "Advanced beat design"],
         topics: ["Sampling methods", "Groove manipulation", "Beat structuring", "Layering drums"],
@@ -526,7 +526,7 @@ export const courses: Course[] = [
       },
       {
         sessionNumber: 3,
-        title: "Module 3: Core Music & Production Tools (12 sessions)",
+        title: "Module 3: Core Music & Production Tools",
         duration: 24,
         objectives: ["Understand essential production tools", "Master core effects and processors", "Musicality in production"],
         topics: ["Compressors", "EQ", "Reverb & Delay", "Saturation", "Dynamics"],
@@ -534,7 +534,7 @@ export const courses: Course[] = [
       },
       {
         sessionNumber: 4,
-        title: "Module 4: Ableton Instruments Deep Dive (12 sessions)",
+        title: "Module 4: Ableton Instruments Deep Dive",
         duration: 24,
         objectives: ["Comprehensive study of Ableton instruments", "In-depth instrument architecture", "Sound shaping"],
         topics: ["Serum", "Operator", "Wavetable", "Analog", "Simpler/Sampler"],
@@ -542,7 +542,7 @@ export const courses: Course[] = [
       },
       {
         sessionNumber: 5,
-        title: "Module 5: Arrangement, Workflow & Creativity (4 sessions)",
+        title: "Module 5: Arrangement, Workflow & Creativity",
         duration: 8,
         objectives: ["Master fast and creative workflows", "Structure tracks professionally", "Overcoming creative blocks"],
         topics: ["Arrangement tricks", "Workflow optimization", "Creativity hacks", "Song structure"],
@@ -550,7 +550,7 @@ export const courses: Course[] = [
       },
       {
         sessionNumber: 6,
-        title: "Module 6: Mixing & Production Techniques (4 sessions)",
+        title: "Module 6: Mixing & Production Techniques",
         duration: 8,
         objectives: ["Achieve professional mix quality", "Master production techniques", "Polishing tracks"],
         topics: ["Mixing balance", "Space and depth", "Production tricks", "Polishing"],
@@ -558,7 +558,7 @@ export const courses: Course[] = [
       },
       {
         sessionNumber: 7,
-        title: "Module 7: Advanced Ableton Techniques (4 sessions)",
+        title: "Module 7: Advanced Ableton Techniques",
         duration: 8,
         objectives: ["Perform live with Ableton", "Advanced Max for Live", "Advanced automation and routing"],
         topics: ["Live performance", "Max for Live", "Advanced routing", "Automation mastery"],

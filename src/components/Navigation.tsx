@@ -29,7 +29,7 @@ const navLinks = [
     ]
   },
   { href: "/interactive-learning", label: "Interactive Learning" },
-  { href: "/blog", label: "Journal" },
+  { href: "/blog", label: "Blogs" },
   { href: "/pricing", label: "Pricing" },
 ];
 
