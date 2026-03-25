@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import nxtwavLogo from "@/assets/nxtwav-logo-v2.png";
@@ -13,6 +13,7 @@ import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
 import ParticleBackground from "@/components/ui/particle-background";
 import SEO from "@/components/SEO";
+import { courses, categoryInfo } from "@/data/courses";
 
 const indianStatesAndUTs = [
   "Andaman and Nicobar Islands", "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", 
@@ -29,6 +30,7 @@ export default function Signup() {
     email: "",
     phone: "",
     state: "",
+    course: "",
     instagram: "",
     linkedin: "",
     message: ""
@@ -67,10 +69,10 @@ export default function Signup() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!formData.name || !formData.email || !formData.phone || !formData.state || !formData.instagram) {
+    if (!formData.name || !formData.email || !formData.phone || !formData.state || !formData.course || !formData.instagram) {
       toast({
         title: "Missing fields",
-        description: "Please fill in all required fields, including your Instagram username.",
+        description: "Please fill in all required fields, including your Instagram username and course of interest.",
         variant: "destructive",
       });
       return;
@@ -112,6 +114,7 @@ export default function Signup() {
         email: "",
         phone: "",
         state: "",
+        course: "",
         instagram: "",
         linkedin: "",
         message: ""
@@ -181,6 +184,34 @@ export default function Signup() {
                 className="bg-background/50"
                 required
               />
+            </div>
+
+            <div className="space-y-2">
+              <Select 
+                value={formData.course} 
+                onValueChange={(value) => setFormData(prev => ({ ...prev, course: value }))} 
+                required
+              >
+                <SelectTrigger className="bg-background/50">
+                  <SelectValue placeholder="Course of Interest" />
+                </SelectTrigger>
+                <SelectContent>
+                  {(Object.keys(categoryInfo) as Array<keyof typeof categoryInfo>).map((cat) => (
+                    <SelectGroup key={cat}>
+                      <SelectLabel className="text-xs font-semibold text-muted-foreground uppercase tracking-wider bg-muted/30 px-2 py-1.5 mb-1 rounded-sm">
+                        {categoryInfo[cat].label}
+                      </SelectLabel>
+                      {courses
+                        .filter((c) => c.category === cat)
+                        .map((course) => (
+                          <SelectItem key={course.id} value={course.title}>
+                            {course.title}
+                          </SelectItem>
+                        ))}
+                    </SelectGroup>
+                  ))}
+                </SelectContent>
+              </Select>
             </div>
 
             <div className="space-y-2">

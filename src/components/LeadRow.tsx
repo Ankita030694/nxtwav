@@ -20,6 +20,7 @@ interface Lead {
   email: string;
   phone: string;
   state: string;
+  course: string;
   instagram?: string;
   linkedin?: string;
   message: string;
@@ -121,6 +122,11 @@ export function LeadRow({ lead, index, isLast, innerRef }: LeadRowProps) {
       <TableCell className="font-medium align-top py-2">{lead.name}</TableCell>
       <TableCell className="align-top py-2">{lead.email}</TableCell>
       <TableCell className="align-top py-2">{lead.phone}</TableCell>
+      <TableCell className="align-top py-2">
+        <span className="px-2 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-wider border border-primary/20">
+          {lead.course}
+        </span>
+      </TableCell>
       <TableCell className="align-top py-2">{lead.instagram || "-"}</TableCell>
       <TableCell className="align-top py-2">
         {lead.linkedin ? (

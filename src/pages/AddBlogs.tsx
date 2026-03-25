@@ -28,6 +28,7 @@ import { AdminSidebar } from "@/components/AdminSidebar";
 import TiptapEditor from '@/components/TiptapEditor';
 import { Loader2 } from "lucide-react";
 import SEO from "@/components/SEO";
+import logo from "@/assets/nxtwav-logo-v2.png";
 
 const BLOG_DRAFT_KEY = 'nxtwav:blogDraft';
 
@@ -592,45 +593,48 @@ const AddBlogs = () => {
               </h1>
               <div className="w-32 h-1 bg-primary rounded-full"></div>
             </div>
-            <motion.button
-               onClick={() => {
-                  if (showBlogForm) {
-                    if (newBlog.title || newBlog.description) {
-                       if(window.confirm('You have unsaved changes. Do you want to discard them?')) {
-                         resetForm();
-                         clearDraft();
-                       }
+            <div className="flex flex-col items-end gap-4">
+              <img src={logo} alt="NXTwav Logo" className="h-10 w-auto object-contain hidden sm:block" />
+              <motion.button
+                 onClick={() => {
+                    if (showBlogForm) {
+                      if (newBlog.title || newBlog.description) {
+                         if(window.confirm('You have unsaved changes. Do you want to discard them?')) {
+                           resetForm();
+                           clearDraft();
+                         }
+                      } else {
+                        resetForm();
+                      }
                     } else {
-                      resetForm();
-                    }
-                  } else {
-                    const savedDraft = localStorage.getItem(BLOG_DRAFT_KEY);
-                    if (savedDraft) {
-                      try {
-                        const { blog, mode } = JSON.parse(savedDraft);
-                        if (window.confirm('We found an unsaved blog draft. Would you like to restore it?')) {
-                          setNewBlog(blog);
-                          setFormMode(mode || 'add');
-                          setShowBlogForm(true);
-                          return;
-                        } else {
+                      const savedDraft = localStorage.getItem(BLOG_DRAFT_KEY);
+                      if (savedDraft) {
+                        try {
+                          const { blog, mode } = JSON.parse(savedDraft);
+                          if (window.confirm('We found an unsaved blog draft. Would you like to restore it?')) {
+                            setNewBlog(blog);
+                            setFormMode(mode || 'add');
+                            setShowBlogForm(true);
+                            return;
+                          } else {
+                            clearDraft();
+                          }
+                        } catch (e) {
                           clearDraft();
                         }
-                      } catch (e) {
-                        clearDraft();
                       }
+                      setFormMode('add');
+                      setShowBlogForm(true);
                     }
-                    setFormMode('add');
-                    setShowBlogForm(true);
-                  }
-                }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="flex items-center px-6 py-3 bg-primary text-primary-foreground rounded-lg font-semibold shadow-lg transition-all"
-            >
-              <FontAwesomeIcon icon={showBlogForm ? faChartLine : faPlus} className="mr-2" />
-              {showBlogForm ? 'View Blogs' : 'Add Blog'}
-            </motion.button>
+                  }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="flex items-center px-6 py-3 bg-primary text-primary-foreground rounded-lg font-semibold shadow-lg transition-all"
+              >
+                <FontAwesomeIcon icon={showBlogForm ? faChartLine : faPlus} className="mr-2" />
+                {showBlogForm ? 'View Blogs' : 'Add Blog'}
+              </motion.button>
+            </div>
           </div>
 
           <motion.div

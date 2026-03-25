@@ -9,6 +9,7 @@ import { ScrollToTop } from "@/components/ScrollToTop";
 import { WhatsAppWidget } from "@/components/WhatsAppWidget";
 import { ConsultationButton } from "@/components/ConsultationButton";
 import Index from "./pages/Index";
+import Landing from "./pages/Landing";
 import About from "./pages/About";
 import CoursesPage from "./pages/CoursesPage";
 import InteractiveLearning from "./pages/InteractiveLearning";
@@ -44,6 +45,7 @@ const App = () => (
           <ConsultationButton />
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/landing" element={<Landing />} />
             <Route path="/about" element={<About />} />
             <Route path="/courses" element={<CoursesPage />} />
             <Route path="/interactive-learning" element={<InteractiveLearning />} />

@@ -15,9 +15,9 @@ export interface CourseSession {
   sessionNumber: number;
   title: string;
   duration: number; // hours
-  objectives: string[];
-  topics: string[];
-  exercise: string;
+  objectives?: string[];
+  topics?: string[];
+  exercise?: string;
 }
 
 export interface Instructor {
@@ -55,6 +55,8 @@ export interface Course {
   sessionsPerWeek: number;
   totalSessions: number;
   totalHours: number;
+  sessionDuration: number; // hrs per session
+  specialAccess?: string; // "Studio Access" or "Unlimited Practice Time"
   learningOutcomes: string[];
   prerequisites: string;
   whatsIncluded: string[];
@@ -197,6 +199,8 @@ export const courses: Course[] = [
     sessionsPerWeek: 3,
     totalSessions: 12,
     totalHours: 24,
+    sessionDuration: 2,
+    specialAccess: "Studio Access",
     learningOutcomes: [
       "Navigate your DAW interface with confidence",
       "Record and edit audio and MIDI",
@@ -206,6 +210,7 @@ export const courses: Course[] = [
     ],
     prerequisites: "None - perfect for absolute beginners",
     whatsIncluded: [
+      "Studio Access for practice and projects",
       "Train with Ableton Certified Trainer Aryaman Agarwal (13+ years experience)",
       "Get hands-on experience with Ableton Live Suite 12",
       "Learn sound design and creative production techniques",
@@ -354,6 +359,8 @@ export const courses: Course[] = [
     sessionsPerWeek: 3,
     totalSessions: 36,
     totalHours: 72,
+    sessionDuration: 2,
+    specialAccess: "Studio Access",
     featured: true,
     learningOutcomes: [
       "Compose original music in multiple genres",
@@ -364,6 +371,7 @@ export const courses: Course[] = [
     ],
     prerequisites: "Introduction to DAW or basic DAW knowledge",
     whatsIncluded: [
+      "Studio Access for practice and recordings",
       "Train with Ableton Certified Trainer Aryaman Agarwal (13+ years experience)",
       "Splice membership included for access to professional sample libraries",
       "Hands-on training in beat making, sampling, and production workflows",
@@ -400,20 +408,27 @@ export const courses: Course[] = [
     sessions: [
       {
         sessionNumber: 1,
-        title: "Production Mindset & Setup",
-        duration: 2,
-        objectives: ["Understand the producer's role", "Optimize your setup", "Set creative goals"],
-        topics: ["What makes a great producer", "Studio ergonomics", "Listening environment", "Goal setting"],
-        exercise: "Audit and optimize your production setup",
+        title: "Module 1: INTRODUCTION TO DAW (12 sessions)",
+        duration: 24,
+        objectives: ["Introduction to the DAW and its interface", "Setting up for production", "Core fundamental tools"],
+        topics: ["Interface overview", "Session vs Arrangement", "Signal flow", "Setting up your studio"],
+        exercise: "Configure your setup and explore the DAW interface",
       },
-      // Additional sessions would be added here...
       {
-        sessionNumber: 36,
-        title: "Final Showcase",
-        duration: 2,
-        objectives: ["Present your EP", "Receive feedback", "Plan next steps"],
-        topics: ["Portfolio presentation", "Industry feedback", "Career planning", "Continuing education"],
-        exercise: "Present your completed EP to the class",
+        sessionNumber: 2,
+        title: "Module 2: Sampling, Groove & Beat Design (12 sessions)",
+        duration: 24,
+        objectives: ["Master sampling techniques", "Develop unique groove and rhythm", "Advanced beat design"],
+        topics: ["Sampling methods", "Groove manipulation", "Beat structuring", "Layering drums"],
+        exercise: "Create a unique beat using custom samples and grooves",
+      },
+      {
+        sessionNumber: 3,
+        title: "Module 3: Core Music & Production Tools (12 sessions)",
+        duration: 24,
+        objectives: ["Understand essential production tools", "Master core effects and processors", "Musicality in production"],
+        topics: ["Compressors", "EQ", "Reverb & Delay", "Saturation", "Dynamics"],
+        exercise: "Apply core processors to shape a sound palette",
       },
     ],
   },
@@ -431,8 +446,10 @@ export const courses: Course[] = [
     level: "advanced",
     instructorId: "aryaman",
     sessionsPerWeek: 3,
-    totalSessions: 72,
-    totalHours: 144,
+    totalSessions: 60,
+    totalHours: 120,
+    sessionDuration: 2,
+    specialAccess: "Studio Access",
     learningOutcomes: [
       "Master Ableton Live Suite 12 from core fundamentals to advanced performance",
       "Develop deep instrument & sound design knowledge beyond presets",
@@ -444,7 +461,7 @@ export const courses: Course[] = [
     whatsIncluded: [
       "Train with Ableton Certified Trainer Aryaman Agarwal (13+ years experience)",
       "Ableton Live Suite 12 software included with the course",
-      "Splice membership included for access to world-class sounds and samples",
+      "Studio Access for practice and recording",
       "Deep instrument, synthesis, and sound design knowledge",
       "Professional production, arrangement, and mixing techniques",
       "Free templates, sample packs, and project resources",
@@ -500,7 +517,7 @@ export const courses: Course[] = [
         exercise: "Configure your setup and explore the DAW interface",
       },
       {
-        sessionNumber: 13,
+        sessionNumber: 2,
         title: "Module 2: Sampling, Groove & Beat Design (12 sessions)",
         duration: 24,
         objectives: ["Master sampling techniques", "Develop unique groove and rhythm", "Advanced beat design"],
@@ -508,7 +525,7 @@ export const courses: Course[] = [
         exercise: "Create a unique beat using custom samples and grooves",
       },
       {
-        sessionNumber: 25,
+        sessionNumber: 3,
         title: "Module 3: Core Music & Production Tools (12 sessions)",
         duration: 24,
         objectives: ["Understand essential production tools", "Master core effects and processors", "Musicality in production"],
@@ -516,7 +533,7 @@ export const courses: Course[] = [
         exercise: "Apply core processors to shape a sound palette",
       },
       {
-        sessionNumber: 37,
+        sessionNumber: 4,
         title: "Module 4: Ableton Instruments Deep Dive (12 sessions)",
         duration: 24,
         objectives: ["Comprehensive study of Ableton instruments", "In-depth instrument architecture", "Sound shaping"],
@@ -524,25 +541,25 @@ export const courses: Course[] = [
         exercise: "Build a signature synth patch from scratch using any Ableton instrument",
       },
       {
-        sessionNumber: 49,
-        title: "Module 5: Arrangement, Workflow & Creativity (8 sessions)",
-        duration: 16,
+        sessionNumber: 5,
+        title: "Module 5: Arrangement, Workflow & Creativity (4 sessions)",
+        duration: 8,
         objectives: ["Master fast and creative workflows", "Structure tracks professionally", "Overcoming creative blocks"],
         topics: ["Arrangement tricks", "Workflow optimization", "Creativity hacks", "Song structure"],
         exercise: "Arrange a loop into a full 3-minute track structure",
       },
       {
-        sessionNumber: 57,
-        title: "Module 6: Mixing & Production Techniques (8 sessions)",
-        duration: 16,
+        sessionNumber: 6,
+        title: "Module 6: Mixing & Production Techniques (4 sessions)",
+        duration: 8,
         objectives: ["Achieve professional mix quality", "Master production techniques", "Polishing tracks"],
         topics: ["Mixing balance", "Space and depth", "Production tricks", "Polishing"],
         exercise: "Complete a professional-level mix of your track",
       },
       {
-        sessionNumber: 65,
-        title: "Module 7: Advanced Ableton Techniques (8 sessions)",
-        duration: 16,
+        sessionNumber: 7,
+        title: "Module 7: Advanced Ableton Techniques (4 sessions)",
+        duration: 8,
         objectives: ["Perform live with Ableton", "Advanced Max for Live", "Advanced automation and routing"],
         topics: ["Live performance", "Max for Live", "Advanced routing", "Automation mastery"],
         exercise: "Set up a live performance set for your original production",
@@ -567,6 +584,8 @@ export const courses: Course[] = [
     sessionsPerWeek: 2,
     totalSessions: 8,
     totalHours: 16,
+    sessionDuration: 2,
+    specialAccess: "Unlimited Practice Time",
     learningOutcomes: [
       "Perform a clean, well-structured DJ set without relying on shortcuts",
       "Master manual beatmatching skills consistently without sync",
@@ -576,6 +595,7 @@ export const courses: Course[] = [
     ],
     prerequisites: "None - perfect for complete beginners",
     whatsIncluded: [
+      "Unlimited Practice Time in professional DJ booth",
       "Beginner DJ Certification upon course completion",
       "Hands-on training with industry-standard CDJs & Pioneer mixers",
       "Pre-booked practice slots in a professional DJ environment",
@@ -699,6 +719,8 @@ export const courses: Course[] = [
     sessionsPerWeek: 2,
     totalSessions: 16,
     totalHours: 32,
+    sessionDuration: 2,
+    specialAccess: "Unlimited Practice Time",
     learningOutcomes: [
       "Master advanced performance techniques on industry-standard equipment",
       "Develop technically advanced and performance-ready DJ skills",
@@ -708,6 +730,7 @@ export const courses: Course[] = [
     ],
     prerequisites: "None - Includes the full 1-Month Fundamentals Program",
     whatsIncluded: [
+      "Unlimited Practice Time in professional DJ booth",
       "Access to industry-standard DJ equipment & pre-booked practice slots",
       "Professionally recorded mixtape and performance video for your portfolio",
       "Guaranteed DJ performance slots through academy showcases",
@@ -908,6 +931,7 @@ export const courses: Course[] = [
     sessionsPerWeek: 2,
     totalSessions: 8,
     totalHours: 16,
+    sessionDuration: 2,
     featured: true,
     learningOutcomes: [
       "Create professional-quality Remixes, edits, and mash ups",
@@ -955,65 +979,41 @@ export const courses: Course[] = [
         sessionNumber: 1,
         title: "Module 1: Introduction - The Art & History of Remixing",
         duration: 2,
-        objectives: ["Understand the origins of Remix culture", "Analyze the evolution of Remixing", "Philosophy of creative interpretation"],
-        topics: ["Remix history", "Cultural impact", "Finding your signature style"],
-        exercise: "Analyze the evolution of a classic remix",
       },
       {
         sessionNumber: 2,
         title: "Module 2: Deconstructing Originals, Looping, Beat Matching, Edits, Mash Ups",
         duration: 2,
-        objectives: ["Master deconstruction of tracks", "Learn looping and beat matching", "Create quick edits and mash ups"],
-        topics: ["Deconstruction", "Looping techniques", "Beat matching", "Mash up workflow"],
-        exercise: "Create a simple mash up using two tracks",
       },
       {
         sessionNumber: 3,
         title: "Module 3: Arrangement, Stem Separation, Module Set Up",
         duration: 2,
-        objectives: ["Understand stems and separation", "Set up your project module", "Arrangement strategies"],
-        topics: ["Stem separation", "Project organization", "Arrangement blueprints"],
-        exercise: "Set up a remix project with separated stems",
       },
       {
         sessionNumber: 4,
         title: "Module 4: Building a Club Remix - Adding Drums & Drops",
         duration: 2,
-        objectives: ["Build energy with drums", "Create impactful drops", "Club-focused production"],
-        topics: ["Drum programming", "Drop design", "Energy management"],
-        exercise: "Produce a drum section and drop for your remix",
       },
       {
         sessionNumber: 5,
         title: "Module 5: Advanced Creative Techniques: Chopping, Pitch-Shifting, Effects",
         duration: 2,
-        objectives: ["Master advanced chopping", "Use pitch-shifting creatively", "Advanced FX processing"],
-        topics: ["Audio chopping", "Pitch manipulation", "Creative effects"],
-        exercise: "Apply advanced chopping to a vocal or instrumental hook",
       },
       {
         sessionNumber: 6,
         title: "Module 6: Advanced Technical Tips - Improving the Quality of your Remix",
         duration: 2,
-        objectives: ["Improve production quality", "Technical troubleshooting", "Sonic enhancement"],
-        topics: ["Quality control", "Production tips", "Sonic clarity"],
-        exercise: "Implement technical improvements to your production",
       },
       {
         sessionNumber: 7,
         title: "Module 7: Finishing Your Remix - Mixdown & Mastering",
         duration: 2,
-        objectives: ["Achieve a professional mixdown", "Essential mastering for remixes", "Finalizing the sound"],
-        topics: ["Mixdown workflow", "Mastering basics", "Final polish"],
-        exercise: "Complete the mixdown and mastering of your remix",
       },
       {
         sessionNumber: 8,
         title: "Module 8: Getting Your Remix Out There - Distribution, Copyright & Promotion",
         duration: 2,
-        objectives: ["Understand distribution channels", "Navigate copyright issues", "Effective promotion strategies"],
-        topics: ["Distribution", "Copyright law", "Self-promotion"],
-        exercise: "Develop a basic release and promotion plan for your remix",
       },
     ],
   },

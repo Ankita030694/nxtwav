@@ -70,16 +70,26 @@ const CourseDetail = () => {
           
           <div className="flex flex-wrap gap-6 text-muted-foreground">
             <div className="flex items-center gap-2"><Clock className="w-5 h-5" /> {course.duration.months || course.duration.weeks} {course.duration.months ? "Months" : "Weeks"}</div>
-            <div className="flex items-center gap-2"><Users className="w-5 h-5" /> {course.sessionsPerWeek} sessions/week</div>
-            <div className="flex items-center gap-2"><GraduationCap className="w-5 h-5" /> {course.totalSessions} Sessions</div>
-            <div className="flex items-center gap-2 text-foreground font-semibold">
-              {course.originalPrice && (
-                <span className="text-muted-foreground line-through text-base font-normal mr-1">
-                  {formatPrice(course.originalPrice)}
-                </span>
-              )}
-              <span>{formatPrice(course.price)}</span>
-            </div>
+
+            <div className="flex items-center gap-2"><GraduationCap className="w-5 h-5" /> {course.totalSessions} {course.instructorId === "sureal" ? "Modules" : "Sessions"}</div>
+            {course.instructorId !== "sureal" && (
+              <div className="flex items-center gap-2"><BookOpen className="w-5 h-5" /> {course.sessionDuration} hrs per Session</div>
+            )}
+            {course.specialAccess && (
+              <div className="flex items-center gap-2 text-primary font-medium">
+                <CheckCircle className="w-5 h-5" /> {course.specialAccess}
+              </div>
+            )}
+            {course.instructorId !== "sureal" && (
+              <div className="flex items-center gap-2 text-foreground font-semibold">
+                {course.originalPrice && (
+                  <span className="text-muted-foreground line-through text-base font-normal mr-1">
+                    {formatPrice(course.originalPrice)}
+                  </span>
+                )}
+                <span>{formatPrice(course.price)}</span>
+              </div>
+            )}
           </div>
         </div>
       </section>
@@ -120,51 +130,71 @@ const CourseDetail = () => {
               {/* Curriculum */}
               <div>
                 <h2 className="font-display text-2xl font-bold text-foreground mb-6">Course Curriculum</h2>
-                <Accordion type="single" collapsible className="space-y-3">
-                  {course.sessions.map((session) => (
-                    <AccordionItem key={session.sessionNumber} value={`session-${session.sessionNumber}`} className="border border-border rounded-lg px-4 bg-card">
-                      <AccordionTrigger className="hover:no-underline py-4">
-                        <div className="flex items-center gap-4 text-left">
-                          <span className={cn("w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium", `bg-${colorClass}/10 text-${colorClass}`)}>
-                            {session.sessionNumber}
-                          </span>
-                          <div>
-                            <p className="font-semibold text-foreground">{session.title}</p>
-                            <p className="text-sm text-muted-foreground">{session.duration} hours</p>
-                          </div>
+                {course.id === "pro-remix-alchemy" ? (
+                  <div className="space-y-3">
+                    {course.sessions.map((session) => (
+                      <div key={session.sessionNumber} className="border border-border rounded-lg px-4 py-4 bg-card flex items-center gap-4">
+                        <span className={cn("w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium", `bg-${colorClass}/10 text-${colorClass}`)}>
+                          {session.sessionNumber}
+                        </span>
+                        <div>
+                          <p className="font-semibold text-foreground">{session.title}</p>
                         </div>
-                      </AccordionTrigger>
-                      <AccordionContent className="pb-4 pt-2">
-                        <div className="pl-12 space-y-4">
-                          <div>
-                            <h4 className="font-medium text-foreground mb-2">Objectives</h4>
-                            <ul className="space-y-1">
-                              {session.objectives.map((obj) => (
-                                <li key={obj} className="text-sm text-muted-foreground flex items-start gap-2">
-                                  <span className="text-primary">•</span> {obj}
-                                </li>
-                              ))}
-                            </ul>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <Accordion type="single" collapsible className="space-y-3">
+                    {course.sessions.map((session) => (
+                      <AccordionItem key={session.sessionNumber} value={`session-${session.sessionNumber}`} className="border border-border rounded-lg px-4 bg-card">
+                        <AccordionTrigger className="hover:no-underline py-4">
+                          <div className="flex items-center gap-4 text-left">
+                            <span className={cn("w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium", `bg-${colorClass}/10 text-${colorClass}`)}>
+                              {session.sessionNumber}
+                            </span>
+                            <div>
+                              <p className="font-semibold text-foreground">{session.title}</p>
+                            </div>
                           </div>
-                          <div>
-                            <h4 className="font-medium text-foreground mb-2">Topics</h4>
-                            <ul className="space-y-1">
-                              {session.topics.map((topic) => (
-                                <li key={topic} className="text-sm text-muted-foreground flex items-start gap-2">
-                                  <span className="text-secondary">•</span> {topic}
-                                </li>
-                              ))}
-                            </ul>
+                        </AccordionTrigger>
+                        <AccordionContent className="pb-4 pt-2">
+                          <div className="pl-12 space-y-4">
+                            {session.objectives && session.objectives.length > 0 && (
+                              <div>
+                                <h4 className="font-medium text-foreground mb-2">Objectives</h4>
+                                <ul className="space-y-1">
+                                  {session.objectives.map((obj) => (
+                                    <li key={obj} className="text-sm text-muted-foreground flex items-start gap-2">
+                                      <span className="text-primary">•</span> {obj}
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            )}
+                            {session.topics && session.topics.length > 0 && (
+                              <div>
+                                <h4 className="font-medium text-foreground mb-2">Topics</h4>
+                                <ul className="space-y-1">
+                                  {session.topics.map((topic) => (
+                                    <li key={topic} className="text-sm text-muted-foreground flex items-start gap-2">
+                                      <span className="text-secondary">•</span> {topic}
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            )}
+                            {session.exercise && (
+                              <div className="p-3 bg-muted rounded-lg">
+                                <h4 className="font-medium text-foreground mb-1">Exercise</h4>
+                                <p className="text-sm text-muted-foreground">{session.exercise}</p>
+                              </div>
+                            )}
                           </div>
-                          <div className="p-3 bg-muted rounded-lg">
-                            <h4 className="font-medium text-foreground mb-1">Exercise</h4>
-                            <p className="text-sm text-muted-foreground">{session.exercise}</p>
-                          </div>
-                        </div>
-                      </AccordionContent>
-                    </AccordionItem>
-                  ))}
-                </Accordion>
+                        </AccordionContent>
+                      </AccordionItem>
+                    ))}
+                  </Accordion>
+                )}
               </div>
 
               {/* Post-Course Benefits */}
@@ -199,19 +229,21 @@ const CourseDetail = () => {
                 <div className="p-6 rounded-2xl bg-card border border-border">
                   <h3 className="font-display text-xl font-bold text-foreground mb-4">Enrollment Details</h3>
                   <div className="space-y-3 mb-6">
-                    <div className="flex justify-between items-baseline">
-                      <span className="text-muted-foreground">Price</span>
-                      <div className="flex flex-col items-end">
-                        {course.originalPrice && (
-                          <span className="text-muted-foreground line-through text-xs font-normal">
-                            {formatPrice(course.originalPrice)}
-                          </span>
-                        )}
-                        <span className="font-semibold text-foreground">{formatPrice(course.price)}</span>
+                    {course.instructorId !== "sureal" && (
+                      <div className="flex justify-between items-baseline">
+                        <span className="text-muted-foreground">Price</span>
+                        <div className="flex flex-col items-end">
+                          {course.originalPrice && (
+                            <span className="text-muted-foreground line-through text-xs font-normal">
+                              {formatPrice(course.originalPrice)}
+                            </span>
+                          )}
+                          <span className="font-semibold text-foreground">{formatPrice(course.price)}</span>
+                        </div>
                       </div>
-                    </div>
+                    )}
                     <div className="flex justify-between"><span className="text-muted-foreground">Duration</span><span className="text-foreground">{course.duration.months || course.duration.weeks} {course.duration.months ? "Months" : "Weeks"}</span></div>
-                    <div className="flex justify-between"><span className="text-muted-foreground">Sessions</span><span className="text-foreground">{course.totalSessions} total</span></div>
+                    <div className="flex justify-between"><span className="text-muted-foreground">{course.instructorId === "sureal" ? "Modules" : "Sessions"}</span><span className="text-foreground">{course.totalSessions} total</span></div>
                     <div className="flex justify-between"><span className="text-muted-foreground">Level</span><span className="text-foreground capitalize">{course.level}</span></div>
                   </div>
                   <Button className="w-full bg-gradient-cta hover:opacity-90 text-primary-foreground mb-3" asChild>
