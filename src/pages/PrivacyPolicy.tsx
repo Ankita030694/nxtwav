@@ -72,7 +72,7 @@ const PrivacyPolicy = () => {
 
             <section>
               <h2 className="text-2xl font-display font-bold text-foreground mb-4">8. Contact Us</h2>
-              <p>If you have any questions about this Privacy Policy, please contact us at <a href="mailto:support@nxtwav.com" className="text-primary hover:underline">support@nxtwav.com</a>.</p>
+              <p>If you have any questions about this Privacy Policy, please contact us at <a href="mailto:support@nxtwavacademy.in" className="text-primary hover:underline">support@nxtwavacademy.in</a>.</p>
             </section>
           </div>
         </div>

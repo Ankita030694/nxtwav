@@ -8,4 +8,4 @@ Disallow: /leads
 Disallow: /addblogs
 
 # Sitemap link
-Sitemap: https://nxtwav.com/sitemap.xml
+Sitemap: https://www.nxtwavacademy.in/sitemap.xml

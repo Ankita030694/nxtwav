@@ -16,6 +16,7 @@ interface SEOProps {
   ogType?: string;
   canonicalUrl?: string;
   noindex?: boolean;
+  trackEvent?: { name: string; params?: Record<string, any> };
 }
 
 const SEO = ({ 
@@ -26,10 +27,11 @@ const SEO = ({
   ogDescription, 
   ogType = 'website',
   canonicalUrl,
-  noindex = false
+  noindex = false,
+  trackEvent
 }: SEOProps) => {
   const location = useLocation();
-  const baseUrl = 'https://nxtwav.com';
+  const baseUrl = 'https://www.nxtwavacademy.in';
   const currentUrl = `${baseUrl}${location.pathname}`;
 
   useEffect(() => {
@@ -128,9 +130,14 @@ const SEO = ({
         page_path: location.pathname + location.search + location.hash,
         page_title: title,
       });
+
+      // Track Custom Event if provided
+      if (trackEvent) {
+        window.gtag('event', trackEvent.name, trackEvent.params);
+      }
     }
 
-  }, [title, description, keywords, ogTitle, ogDescription, ogType, canonicalUrl, currentUrl, noindex, location.pathname, location.search, location.hash]);
+  }, [title, description, keywords, ogTitle, ogDescription, ogType, canonicalUrl, currentUrl, noindex, location.pathname, location.search, location.hash, trackEvent]);
 
   return null;
 };

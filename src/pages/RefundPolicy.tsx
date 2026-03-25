@@ -34,7 +34,7 @@ const RefundPolicy = () => {
 
             <section>
               <h2 className="text-2xl font-display font-bold text-foreground mb-4">2. How to Request a Refund</h2>
-              <p>To request a refund, contact our support team at <a href="mailto:support@nxtwav.com" className="text-primary hover:underline">support@nxtwav.com</a> with your order details and reason for the refund.</p>
+              <p>To request a refund, contact our support team at <a href="mailto:support@nxtwavacademy.in" className="text-primary hover:underline">support@nxtwavacademy.in</a> with your order details and reason for the refund.</p>
               <p className="mt-3">Once your refund request is approved, we will provide you with confirmation and next steps.</p>
             </section>
 
@@ -57,7 +57,7 @@ const RefundPolicy = () => {
 
             <section>
               <h2 className="text-2xl font-display font-bold text-foreground mb-4">5. Technical Issues</h2>
-              <p>If you experience technical issues that prevent you from accessing course content, please contact us immediately at <a href="mailto:support@nxtwav.com" className="text-primary hover:underline">support@nxtwav.com</a> with details of the issue. We will provide a resolution or refund at no additional cost.</p>
+              <p>If you experience technical issues that prevent you from accessing course content, please contact us immediately at <a href="mailto:support@nxtwavacademy.in" className="text-primary hover:underline">support@nxtwavacademy.in</a> with details of the issue. We will provide a resolution or refund at no additional cost.</p>
             </section>
 
             <section>
@@ -71,7 +71,7 @@ const RefundPolicy = () => {
 
             <section>
               <h2 className="text-2xl font-display font-bold text-foreground mb-4">7. Contact Us</h2>
-              <p>If you have any questions about our refund policy, please reach out to us at <a href="mailto:support@nxtwav.com" className="text-primary hover:underline">support@nxtwav.com</a>.</p>
+              <p>If you have any questions about our refund policy, please reach out to us at <a href="mailto:support@nxtwavacademy.in" className="text-primary hover:underline">support@nxtwavacademy.in</a>.</p>
             </section>
           </div>
         </div>

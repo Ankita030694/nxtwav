@@ -16,7 +16,7 @@ const firebaseConfig = {
   storageBucket: "nxtwavv.firebasestorage.app",
   messagingSenderId: "28998387260",
   appId: "1:28998387260:web:de6de23f5092d6b8dbe539",
-  measurementId: "G-EBSCYJNZFC"
+  measurementId: "G-6DQ2MYDNVF"
 };
 
 // Initialize Firebase

@@ -28,6 +28,7 @@ export default function ThankYou() {
         title="Thank You | NXTwav Academy"
         description="Thank you for getting in touch with NXTwav Academy."
         noindex={true}
+        trackEvent={{ name: 'generate_lead', params: { page_path: '/thank-you' } }}
       />
       <ParticleBackground />
       
