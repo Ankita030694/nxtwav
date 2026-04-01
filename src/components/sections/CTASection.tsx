@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
-import { Link } from "react-router-dom";
+import { LeadFormSheet } from "@/components/LeadFormSheet";
 
 export function CTASection() {
   return (
@@ -28,12 +28,14 @@ export function CTASection() {
           </p>
 
           <div className="flex flex-wrap justify-center gap-4">
-            <Link to="/auth/signup">
-              <Button size="lg" className="bg-gradient-cta hover:opacity-90 text-primary-foreground shadow-glow-blue">
-                Start Your Journey
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Button>
-            </Link>
+            <LeadFormSheet 
+              trigger={
+                <Button size="lg" className="bg-gradient-cta hover:opacity-90 text-primary-foreground shadow-glow-blue">
+                  Start Your Journey
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Button>
+              }
+            />
           </div>
 
         

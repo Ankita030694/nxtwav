@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import heroStudio from "@/assets/hero-studio.jpg";
 import { LeadForm } from "@/components/LeadForm";
+import { LeadFormSheet } from "@/components/LeadFormSheet";
 
 export function LandingHero() {
   return (
@@ -27,10 +28,14 @@ export function LandingHero() {
           {/* Left Content */}
           <div className="max-w-2xl">
             {/* Main Headline */}
-            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 animate-fade-in" style={{ animationDelay: '0.1s' }}>
+            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-2 animate-fade-in" style={{ animationDelay: '0.1s' }}>
               From Producer to{" "}
               <span className="text-gradient">Paycheck</span>
             </h1>
+
+            <p className="text-xl font-bold text-accent mb-6 animate-fade-in" style={{ animationDelay: '0.15s' }}>
+              Courses Starting from INR 34,999/-
+            </p>
 
             {/* Subheadline */}
             <p className="text-lg sm:text-xl text-muted-foreground max-w-xl mb-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
@@ -45,11 +50,18 @@ export function LandingHero() {
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Link>
               </Button>
+              <LeadFormSheet 
+                trigger={
+                  <Button size="lg" variant="outline" className="border-border text-foreground hover:bg-muted">
+                    Talk to our career expert
+                  </Button>
+                } 
+              />
             </div>
           </div>
 
           {/* Right Form */}
-          <div className="w-full max-w-md mx-auto lg:ml-auto animate-fade-in" style={{ animationDelay: '0.4s' }}>
+          <div id="lead-form" className="w-full max-w-md mx-auto lg:ml-auto animate-fade-in scroll-mt-24" style={{ animationDelay: '0.4s' }}>
             <LeadForm />
           </div>
         </div>

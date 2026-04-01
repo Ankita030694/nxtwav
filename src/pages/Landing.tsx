@@ -13,6 +13,7 @@ import { FacultySection } from "@/components/about/FacultySection";
 import { PartnersSection } from "@/components/about/PartnersSection";
 import { FAQSection } from "@/components/sections/FAQSection";
 import { CTASection } from "@/components/sections/CTASection";
+import { PricingSection } from "@/components/sections/PricingSection";
 import SEO from "@/components/SEO";
 
 const Landing = () => {
@@ -49,6 +50,7 @@ const Landing = () => {
       <LandingHero />
       <WhyNXTwavSection />
       <CoursesSection />
+      <PricingSection />
       <WhyJoinSection />
       <WhatWeTeach />
       <MissionSection />

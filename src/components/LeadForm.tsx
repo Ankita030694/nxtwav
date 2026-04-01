@@ -253,7 +253,7 @@ export function LeadForm({ className }: { className?: string }) {
                 Submitting...
               </>
             ) : (
-              "Submit"
+              "Request for a callback"
             )}
           </Button>
         </form>
