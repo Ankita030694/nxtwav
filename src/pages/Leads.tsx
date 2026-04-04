@@ -23,6 +23,7 @@ interface Lead {
   instagram?: string;
   linkedin?: string;
   message: string;
+  formUrl?: string;
   createdAt: any;
 }
 
@@ -154,7 +155,7 @@ export default function Leads() {
         }
       });
 
-      const headers = ["S.No.", "Date", "Name", "Email", "Phone", "Course", "Instagram", "LinkedIn", "State", "Message", "Latest Remark"];
+      const headers = ["S.No.", "Date", "Name", "Email", "Phone", "Course", "Instagram", "LinkedIn", "State", "Message", "Form URL", "Latest Remark"];
       const csvContent = [
         headers.join(","),
         ...allLeads.map((lead, index) => [
@@ -168,6 +169,7 @@ export default function Leads() {
           lead.linkedin || "-",
           lead.state || '',
           `"${(lead.message || "").replace(/"/g, '""').replace(/\n/g, ' ')}"`,
+          `"${(lead.formUrl || "N/A").replace(/"/g, '""')}"`,
           `"${(remarkMap[lead.id] || "").replace(/"/g, '""').replace(/\n/g, ' ')}"`
         ].join(","))
       ].join("\n");
@@ -283,6 +285,7 @@ export default function Leads() {
                     <TableHead>LinkedIn</TableHead>
                     <TableHead>State</TableHead>
                     <TableHead className="min-w-[200px]">Message</TableHead>
+                    <TableHead className="min-w-[200px]">Form URL</TableHead>
                     <TableHead className="min-w-[250px]">Remarks</TableHead>
                   </TableRow>
                 </TableHeader>

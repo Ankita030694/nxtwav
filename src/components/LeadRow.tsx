@@ -24,6 +24,7 @@ interface Lead {
   instagram?: string;
   linkedin?: string;
   message: string;
+  formUrl?: string;
   createdAt: any;
 }
 
@@ -157,6 +158,20 @@ export function LeadRow({ lead, index, isLast, innerRef }: LeadRowProps) {
             </Dialog>
           )}
         </div>
+      </TableCell>
+      <TableCell className="max-w-xs md:max-w-[200px] align-top py-2 whitespace-normal break-all">
+        {lead.formUrl ? (
+          <a 
+            href={lead.formUrl} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="text-primary hover:underline text-xs"
+          >
+            {lead.formUrl}
+          </a>
+        ) : (
+          <span className="text-muted-foreground text-xs italic">N/A</span>
+        )}
       </TableCell>
       <TableCell className="min-w-[250px] align-top py-2">
         <div className="flex flex-col gap-2">

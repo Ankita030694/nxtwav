@@ -101,6 +101,7 @@ export default function Signup() {
     try {
       await addDoc(collection(db, "inquiries"), {
         ...formData,
+        formUrl: window.location.href,
         createdAt: serverTimestamp()
       });
       

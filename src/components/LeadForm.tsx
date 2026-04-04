@@ -97,6 +97,7 @@ export function LeadForm({ className }: { className?: string }) {
     try {
       await addDoc(collection(db, "inquiries"), {
         ...formData,
+        formUrl: window.location.href,
         createdAt: serverTimestamp()
       });
       
