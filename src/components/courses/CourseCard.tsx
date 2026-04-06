@@ -107,20 +107,26 @@ export function CourseCard({ course }: CourseCardProps) {
             <GraduationCap className="w-4 h-4 text-muted-foreground/70" />
             <span>{course.totalSessions} Total Sessions</span>
           </div>
-          <div className="flex items-center gap-2 text-sm font-semibold text-foreground">
-            {course.originalPrice ? (
-              <div className="flex items-center gap-1.5">
-                <span className="text-muted-foreground line-through text-xs font-normal">
-                  {formatPrice(course.originalPrice)}
-                </span>
-                <span className="text-primary">{formatPrice(course.price)}</span>
-              </div>
-            ) : (
-              <>
-                <span className="text-muted-foreground/70">₹</span>
-                <span>{formatPrice(course.price).replace("₹", "")}</span>
-              </>
-            )}
+          <div className="flex flex-col gap-1.5 min-h-[4.5rem]">
+            <div className="flex items-center gap-2 text-sm font-semibold text-foreground">
+              {course.originalPrice ? (
+                <div className="flex items-center gap-1.5">
+                  <span className="text-muted-foreground line-through text-xs font-normal">
+                    {formatPrice(course.originalPrice)}
+                  </span>
+                  <span className="text-primary">{formatPrice(course.price)}</span>
+                </div>
+              ) : (
+                <>
+                  <span className="text-muted-foreground/70">₹</span>
+                  <span>{formatPrice(course.price).replace("₹", "")}</span>
+                </>
+              )}
+            </div>
+            <div className="flex items-center gap-1 text-[10px] font-bold text-amber-600 dark:text-amber-400 uppercase tracking-tight animate-pulse bg-amber-500/10 px-2 py-0.5 rounded-full w-fit border border-amber-500/20">
+              <Sparkles className="w-2.5 h-2.5" />
+              Introductory Offer
+            </div>
           </div>
         </div>
 

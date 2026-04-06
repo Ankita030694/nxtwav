@@ -4,7 +4,7 @@ import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { getCourseBySlug, getInstructorsForCourse, formatPrice, categoryInfo } from "@/data/courses";
-import { Clock, Users, GraduationCap, CheckCircle, ArrowLeft, Calendar, BookOpen } from "lucide-react";
+import { Clock, Users, GraduationCap, CheckCircle, ArrowLeft, Calendar, BookOpen, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 import SEO from "@/components/SEO";
 import { AbletonCertifiedLogo } from "@/components/AbletonCertifiedLogo";
@@ -81,13 +81,19 @@ const CourseDetail = () => {
               </div>
             )}
             {course.instructorId !== "sureal" && (
-              <div className="flex items-center gap-2 text-foreground font-semibold">
-                {course.originalPrice && (
-                  <span className="text-muted-foreground line-through text-base font-normal mr-1">
-                    {formatPrice(course.originalPrice)}
-                  </span>
-                )}
-                <span>{formatPrice(course.price)}</span>
+              <div className="flex flex-col gap-1">
+                <div className="flex items-center gap-2 text-foreground font-semibold">
+                  {course.originalPrice && (
+                    <span className="text-muted-foreground line-through text-base font-normal mr-1">
+                      {formatPrice(course.originalPrice)}
+                    </span>
+                  )}
+                  <span>{formatPrice(course.price)}</span>
+                </div>
+                <div className="flex items-center gap-1 text-[10px] font-bold text-amber-600 dark:text-amber-400 uppercase tracking-tight animate-pulse bg-amber-500/10 px-2 py-0.5 rounded-full w-fit border border-amber-500/20 mt-1">
+                  <Sparkles className="w-2.5 h-2.5" />
+                  Introductory Offer
+                </div>
               </div>
             )}
           </div>
@@ -232,13 +238,18 @@ const CourseDetail = () => {
                     {course.instructorId !== "sureal" && (
                       <div className="flex justify-between items-baseline">
                         <span className="text-muted-foreground">Price</span>
-                        <div className="flex flex-col items-end">
-                          {course.originalPrice && (
-                            <span className="text-muted-foreground line-through text-xs font-normal">
-                              {formatPrice(course.originalPrice)}
-                            </span>
-                          )}
-                          <span className="font-semibold text-foreground">{formatPrice(course.price)}</span>
+                        <div className="flex flex-col items-end gap-1">
+                          <div className="flex flex-col items-end">
+                            {course.originalPrice && (
+                              <span className="text-muted-foreground line-through text-[10px] font-normal">
+                                {formatPrice(course.originalPrice)}
+                              </span>
+                            )}
+                            <span className="font-semibold text-foreground text-lg">{formatPrice(course.price)}</span>
+                          </div>
+                          <div className="flex items-center gap-1 text-[9px] font-bold text-amber-600 dark:text-amber-400 uppercase tracking-tight animate-pulse bg-amber-500/10 px-2 py-0.5 rounded-full w-fit border border-amber-500/20">
+                            Introductory Offer
+                          </div>
                         </div>
                       </div>
                     )}

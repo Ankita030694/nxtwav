@@ -178,7 +178,10 @@ export function PricingSection() {
           <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
             Transparent <span className="text-gradient">Pricing</span>
           </h2>
-          <p className="text-muted-foreground mb-8">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-amber-500/10 text-amber-600 dark:text-amber-400 rounded-full text-[10px] font-bold uppercase tracking-wider mb-6 border border-amber-500/20 animate-pulse">
+            Introductory Offer - Limited Time Only
+          </div>
+          <p className="text-muted-foreground mb-8 text-base">
             Choose the program that fits your goals. Start your journey into the music industry today.
           </p>
 

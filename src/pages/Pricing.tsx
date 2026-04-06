@@ -290,6 +290,10 @@ const Pricing = () => {
           <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">
             Compare Our <span className="text-gradient">Programs</span>
           </h1>
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-amber-500/10 text-amber-600 dark:text-amber-400 rounded-full text-[10px] font-bold uppercase tracking-wider mb-6 border border-amber-500/20 animate-pulse">
+            <Sparkles className="w-3 h-3" />
+            Introductory Offer - Limited Time Only
+          </div>
           <p className="text-base text-muted-foreground max-w-2xl mx-auto mb-8">
             Choose the right path for your journey. From DJing fundamentals to 
             professional music production mastery.
