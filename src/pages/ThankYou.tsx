@@ -15,6 +15,12 @@ export default function ThankYou() {
   useEffect(() => {
     if (!hasSubmitted) {
       navigate("/auth/signup", { replace: true });
+    } else {
+      // Track Lead conversion on successful submission for Meta Pixel
+      if (typeof window !== 'undefined' && 'fbq' in window) {
+        // @ts-ignore
+        window.fbq('track', 'Lead');
+      }
     }
   }, [hasSubmitted, navigate]);
 
