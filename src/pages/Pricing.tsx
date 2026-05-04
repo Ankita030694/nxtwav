@@ -126,7 +126,7 @@ const productionComparison = [
   { feature: "Career Guidance", values: [false, "Basic Direction", "Advanced / Mentorship"] },
   { feature: "Post-Course Mentorship", values: [false, "Limited", true] },
   { feature: "Ableton License", values: [false, false, true] },
-  { feature: "Splice Free Samples", values: [false, true, false] },
+  { feature: "Splice Free Samples", values: [false, true, true] },
   { feature: "Certification", values: [true, true, true] },
   { feature: "Best For", values: ["Beginners", "Serious learners", "Aspiring professionals"] },
 ];

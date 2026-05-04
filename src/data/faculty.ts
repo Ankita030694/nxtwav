@@ -13,6 +13,7 @@ import skipster3 from "@/assets/faculty/skipster_3.jpg";
 import garryBedi1 from "@/assets/faculty/garry_bedi_1.png";
 import garryBedi2 from "@/assets/faculty/garry_bedi_2.png";
 import garryBedi3 from "@/assets/faculty/garry_bedi_3.png";
+import vaibhavSahay1 from "@/assets/faculty/vaibhav_sahay_1.png";
 
 export interface Faculty {
   id: string;
@@ -94,6 +95,19 @@ export const faculty: Faculty[] = [
     specialty: "Artist Development Programme",
     socialLinks: {
       instagram: "https://www.instagram.com/realsureal/",
+    },
+  },
+  {
+    id: "vaibhav",
+    name: "Vaibhav Sahay",
+    stageName: "VAIBHAV SAHAY",
+    role: "Faculty",
+    photo: vaibhavSahay1,
+    photos: [vaibhavSahay1],
+    bio: "Vaibhav Sahay is an industry expert with over 17+ years of experience in Logic Pro. He specializes in professional production, arrangement, and mixing techniques, helping aspiring producers master the art of music creation.",
+    specialty: "Logic Pro Production & Mixing",
+    socialLinks: {
+      instagram: "https://www.instagram.com/vaibhavsahay/",
     },
   },
 ];
