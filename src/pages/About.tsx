@@ -9,6 +9,7 @@ import { MissionSection } from "@/components/about/MissionSection";
 import { FoundersSection } from "@/components/about/FoundersSection";
 import { FacultySection } from "@/components/about/FacultySection";
 import { PartnersSection } from "@/components/about/PartnersSection";
+import { CollaboratorsSection } from "@/components/about/CollaboratorsSection";
 import { WhyJoinSection } from "@/components/about/WhyJoinSection";
 import { AboutCTA } from "@/components/about/AboutCTA";
 import { CTASection } from "@/components/sections/CTASection";
@@ -52,6 +53,7 @@ const About = () => {
       <FoundersSection />
       <FacultySection />
       <PartnersSection />
+      <CollaboratorsSection />
     
       <CTASection />
       <Footer />

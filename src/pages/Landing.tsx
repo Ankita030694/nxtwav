@@ -11,6 +11,7 @@ import { MissionSection } from "@/components/about/MissionSection";
 import { FoundersSection } from "@/components/about/FoundersSection";
 import { FacultySection } from "@/components/about/FacultySection";
 import { PartnersSection } from "@/components/about/PartnersSection";
+import { CollaboratorsSection } from "@/components/about/CollaboratorsSection";
 import { FAQSection } from "@/components/sections/FAQSection";
 import { CTASection } from "@/components/sections/CTASection";
 import { PricingSection } from "@/components/sections/PricingSection";
@@ -57,6 +58,7 @@ const Landing = () => {
       <FoundersSection />
       <FacultySection />
       <PartnersSection />
+      <CollaboratorsSection />
       <FAQSection />
       <CTASection />
       <Footer />
