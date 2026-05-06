@@ -1,0 +1,16 @@
+
+> vite_react_shadcn_ts@0.0.0 build
+> vite build
+
+vite v5.4.21 building for production...
+transforming...
+✓ 1880 modules transformed.
+x Build failed in 979ms
+error during build:
+[vite:build-import-analysis] [plugin vite:build-import-analysis] src/assets/faculty/vaibhav_sahay.PNG: Failed to parse source for import analysis because the content contains invalid JS syntax. You may need to install appropriate plugins to handle the .PNG file format, or if it's an asset, add "**/*.PNG" to `assetsInclude` in your configuration.
+file: /Users/apple/Desktop/ama/nxtwav/nxtwav/src/assets/faculty/vaibhav_sahay.PNG
+    at getRollupError (file:///Users/apple/Desktop/ama/nxtwav/nxtwav/node_modules/.pnpm/rollup@4.60.3/node_modules/rollup/dist/es/shared/parseAst.js:406:41)
+    at error (file:///Users/apple/Desktop/ama/nxtwav/nxtwav/node_modules/.pnpm/rollup@4.60.3/node_modules/rollup/dist/es/shared/parseAst.js:402:42)
+    at Object.error (file:///Users/apple/Desktop/ama/nxtwav/nxtwav/node_modules/.pnpm/rollup@4.60.3/node_modules/rollup/dist/es/shared/node-entry.js:22665:20)
+    at Object.error (file:///Users/apple/Desktop/ama/nxtwav/nxtwav/node_modules/.pnpm/rollup@4.60.3/node_modules/rollup/dist/es/shared/node-entry.js:21706:42)
+    at Object.transform (file:///Users/apple/Desktop/ama/nxtwav/nxtwav/node_modules/.pnpm/vite@5.4.21_@types+node@22.19.17/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64913:14)

@@ -13,7 +13,7 @@ import skipster3 from "@/assets/faculty/skipster_3.jpg";
 import garryBedi1 from "@/assets/faculty/garry_bedi_1.png";
 import garryBedi2 from "@/assets/faculty/garry_bedi_2.png";
 import garryBedi3 from "@/assets/faculty/garry_bedi_3.png";
-import vaibhavSahay1 from "@/assets/faculty/vaibhav_sahay_1.png";
+import vaibhavSahay1 from "@/assets/faculty/vaibhav_sahay.png";
 
 export interface Faculty {
   id: string;

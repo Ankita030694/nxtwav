@@ -7,7 +7,7 @@ import kamazakiImage from "@/assets/faculty/kamazaki_1.png";
 import garryBedi from "@/assets/faculty/garry_bedi_1.png";
 import aryamann from "@/assets/faculty/aryaman_1.jpg";
 import skipsterPhoto1 from "@/assets/faculty/skipster_1.jpg";
-import vaibhavSahay1 from "@/assets/faculty/vaibhav_sahay_1.png";
+import vaibhavSahay1 from "@/assets/faculty/vaibhav_sahay.png";
 
 export type CourseCategory = "production" | "djing" | "artist-dev";
 export type CourseLevel = "beginner" | "intermediate" | "advanced" | "all-levels";

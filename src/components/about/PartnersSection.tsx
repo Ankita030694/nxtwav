@@ -5,12 +5,26 @@ import abletonLogo from "@/assets/partners/ableton.png";
 import slctExpLogo from "@/assets/partners/slct_experiences.png";
 import slctTalentLogo from "@/assets/partners/slct_talents.png";
 import spliceLogo from "@/assets/partners/splice.png";
+import arturiaLogo from "@/assets/partners/arturia.png";
+import udgLogo from "@/assets/partners/udg.jpeg";
+import uagLogo from "@/assets/partners/uag.jpg";
+import focusriteLogo from "@/assets/partners/focusrite.jpeg";
+import novationLogo from "@/assets/partners/novation.png";
+import denonDjLogo from "@/assets/partners/denon-dj.png";
+import proDjStudioLogo from "@/assets/partners/pro-dj-studio.jpg";
 
 const partners = [
   { name: "Ableton", logo: abletonLogo },
+  { name: "Arturia", logo: arturiaLogo },
+  { name: "Focusrite", logo: focusriteLogo },
+  { name: "Novation", logo: novationLogo },
+  { name: "Denon DJ", logo: denonDjLogo },
+  { name: "UDG Gear", logo: udgLogo },
+  { name: "UAG", logo: uagLogo },
+  { name: "Pro DJ Studio", logo: proDjStudioLogo },
+  { name: "Splice", logo: spliceLogo },
   { name: "SLCT Experiences", logo: slctExpLogo },
   { name: "SLCT Talents", logo: slctTalentLogo },
-  { name: "Splice", logo: spliceLogo },
 ];
 
 export function PartnersSection() {
@@ -55,7 +69,7 @@ export function PartnersSection() {
           
           <div className="relative bg-[#0A0A0C]/80 backdrop-blur-xl border border-white/10 rounded-3xl py-12 px-6 flex justify-center items-center shadow-2xl">
             {/* Logos Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10 items-center justify-center w-full max-w-4xl">
+            <div className="flex flex-wrap justify-center gap-6 md:gap-10 items-center w-full max-w-4xl mx-auto">
               {partners.map((partner, index) => (
                 <motion.div
                   key={partner.name}
@@ -64,12 +78,12 @@ export function PartnersSection() {
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
                   whileHover={{ scale: 1.05, y: -5 }}
-                  className="aspect-square relative group/item bg-white rounded-xl p-4 sm:p-6 shadow-lg hover:shadow-primary/20 transition-all duration-300 border border-white/5 flex items-center justify-center"
+                  className="w-[130px] h-[130px] sm:w-[180px] sm:h-[180px] relative group/item bg-white rounded-xl p-4 sm:p-6 shadow-lg hover:shadow-primary/20 transition-all duration-300 border border-white/5 flex items-center justify-center"
                 >
                   <img
                     src={partner.logo}
                     alt={partner.name}
-                    className="max-w-[90%] max-h-[90%] object-contain filter grayscale hover:grayscale-0 transition-all duration-500"
+                    className="max-w-[85%] max-h-[85%] object-contain filter grayscale hover:grayscale-0 transition-all duration-500"
                   />
                 </motion.div>
               ))}
