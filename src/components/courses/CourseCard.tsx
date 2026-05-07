@@ -57,7 +57,21 @@ export function CourseCard({ course }: CourseCardProps) {
       {/* Category Accent Bar */}
       <div className={cn("absolute top-0 left-0 right-0 h-1", colors.accent)} />
 
-      {/* Featured Badge */}
+      {/* Featured & Availability Badges */}
+      <div className="absolute top-4 left-4 z-10 flex flex-col gap-2">
+        {course.availability && (
+          <span className={cn(
+            "inline-flex items-center gap-1 px-3 py-1 text-[10px] font-bold uppercase tracking-wider rounded-full shadow-lg border backdrop-blur-md",
+            course.availability === "both" 
+              ? "bg-primary/20 text-primary border-primary/30" 
+              : "bg-secondary/20 text-secondary border-secondary/30"
+          )}>
+            {course.availability === "both" ? "Online & Offline" : course.availability}
+          </span>
+        )}
+      </div>
+
+      {/* Featured & Certified Badges */}
       <div className="absolute top-4 right-4 z-10 flex flex-col items-end gap-2">
         {course.featured && (
           <span className="inline-flex items-center gap-1 px-3 py-1 bg-gradient-cta text-primary-foreground text-xs font-medium rounded-full shadow-lg">
@@ -72,7 +86,7 @@ export function CourseCard({ course }: CourseCardProps) {
         )}
       </div>
 
-      <div className="p-6">
+      <div className="p-6 pt-16">
         {/* Category & Level */}
         <div className="flex items-center gap-2 mb-4">
           <span className={cn("px-3 py-1 rounded-full text-xs font-medium uppercase tracking-wide", colors.badge)}>

@@ -10,8 +10,6 @@ import { courses, CourseCategory, getCoursesByCategory } from "@/data/courses";
 import { Gamepad2, Wifi, MapPin } from "lucide-react";
 import SEO from "@/components/SEO";
 
-// Logic Pro course IDs are online, all others are offline
-const ONLINE_COURSE_IDS = ["logic-pro-kickstart", "logic-pro-mastery"];
 
 const CoursesPage = () => {
   const location = useLocation();
@@ -43,14 +41,8 @@ const CoursesPage = () => {
     : getCoursesByCategory(activeCategory);
 
   const productionCourses = getCoursesByCategory("production");
-  const onlineProductionCourses = productionCourses.filter(c => ONLINE_COURSE_IDS.includes(c.id));
-  const offlineProductionCourses = productionCourses.filter(c => !ONLINE_COURSE_IDS.includes(c.id));
   const djingCourses = getCoursesByCategory("djing");
   const artistDevCourses = getCoursesByCategory("artist-dev");
-
-  // For filtered view of production, also split into online/offline
-  const filteredOnlineCourses = filteredCourses.filter(c => c.category === "production" && ONLINE_COURSE_IDS.includes(c.id));
-  const filteredOfflineCourses = filteredCourses.filter(c => c.category === "production" && !ONLINE_COURSE_IDS.includes(c.id));
 
   return (
     <main className="min-h-screen bg-background">
@@ -101,37 +93,10 @@ const CoursesPage = () => {
               {/* Production Category */}
               <div id="production" className="scroll-mt-32">
                 <CategoryHeader category="production" />
-                
-                {/* Offline Sub-section */}
-                <div className="mb-12">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="flex items-center gap-2 px-4 py-2 bg-secondary/10 border border-secondary/20 rounded-full">
-                      <MapPin className="w-4 h-4 text-secondary" />
-                      <span className="text-sm font-semibold text-secondary tracking-wide uppercase">Offline</span>
-                    </div>
-                    <div className="h-px flex-1 bg-gradient-to-r from-secondary/30 to-transparent" />
-                  </div>
-                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {offlineProductionCourses.map((course) => (
-                      <CourseCard key={course.id} course={course} />
-                    ))}
-                  </div>
-                </div>
-
-                {/* Online Sub-section */}
-                <div>
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="flex items-center gap-2 px-4 py-2 bg-green-500/10 border border-green-500/20 rounded-full">
-                      <Wifi className="w-4 h-4 text-green-400" />
-                      <span className="text-sm font-semibold text-green-400 tracking-wide uppercase">Online</span>
-                    </div>
-                    <div className="h-px flex-1 bg-gradient-to-r from-green-500/30 to-transparent" />
-                  </div>
-                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {onlineProductionCourses.map((course) => (
-                      <CourseCard key={course.id} course={course} />
-                    ))}
-                  </div>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {productionCourses.map((course) => (
+                    <CourseCard key={course.id} course={course} />
+                  ))}
                 </div>
               </div>
 
@@ -154,46 +119,6 @@ const CoursesPage = () => {
                   ))}
                 </div>
               </div>
-            </div>
-          ) : activeCategory === "production" ? (
-            <div>
-              <CategoryHeader category={activeCategory} />
-              
-              {/* Offline Sub-section */}
-              {filteredOfflineCourses.length > 0 && (
-                <div className="mb-12">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="flex items-center gap-2 px-4 py-2 bg-secondary/10 border border-secondary/20 rounded-full">
-                      <MapPin className="w-4 h-4 text-secondary" />
-                      <span className="text-sm font-semibold text-secondary tracking-wide uppercase">Offline</span>
-                    </div>
-                    <div className="h-px flex-1 bg-gradient-to-r from-secondary/30 to-transparent" />
-                  </div>
-                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {filteredOfflineCourses.map((course) => (
-                      <CourseCard key={course.id} course={course} />
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Online Sub-section */}
-              {filteredOnlineCourses.length > 0 && (
-                <div>
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="flex items-center gap-2 px-4 py-2 bg-green-500/10 border border-green-500/20 rounded-full">
-                      <Wifi className="w-4 h-4 text-green-400" />
-                      <span className="text-sm font-semibold text-green-400 tracking-wide uppercase">Online</span>
-                    </div>
-                    <div className="h-px flex-1 bg-gradient-to-r from-green-500/30 to-transparent" />
-                  </div>
-                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {filteredOnlineCourses.map((course) => (
-                      <CourseCard key={course.id} course={course} />
-                    ))}
-                  </div>
-                </div>
-              )}
             </div>
           ) : (
             <div>

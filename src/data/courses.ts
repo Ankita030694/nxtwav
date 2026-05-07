@@ -66,6 +66,7 @@ export interface Course {
     items: string[];
   }[];
   featured?: boolean;
+  availability?: "online" | "offline" | "both";
 }
 
 // Founders/Instructors data
@@ -213,6 +214,8 @@ export const courses: Course[] = [
     totalHours: 24,
     sessionDuration: 2,
     specialAccess: "Studio Access",
+    featured: true,
+    availability: "both",
     learningOutcomes: [
       "Navigate your DAW interface with confidence",
       "Record and edit audio and MIDI",
@@ -374,6 +377,7 @@ export const courses: Course[] = [
     sessionDuration: 2,
     specialAccess: "Studio Access",
     featured: true,
+    availability: "both",
     learningOutcomes: [
       "Compose original music in multiple genres",
       "Design unique sounds from scratch",
@@ -462,6 +466,7 @@ export const courses: Course[] = [
     totalHours: 120,
     sessionDuration: 2,
     specialAccess: "Studio Access",
+    availability: "both",
     learningOutcomes: [
       "Master Ableton Live Suite 12 from core fundamentals to advanced performance",
       "Develop deep instrument & sound design knowledge beyond presets",
@@ -596,6 +601,8 @@ export const courses: Course[] = [
     totalHours: 24,
     sessionDuration: 2,
     specialAccess: "Studio Access",
+    featured: true,
+    availability: "online",
     learningOutcomes: [
       "Master Logic Pro interface and efficient workflows",
       "Understand professional signal flow and routing",
@@ -673,6 +680,7 @@ export const courses: Course[] = [
     sessionDuration: 2,
     specialAccess: "Studio Access",
     featured: true,
+    availability: "online",
     learningOutcomes: [
       "Master full-spectrum production in Logic Pro",
       "Develop deep synthesis and sound design knowledge",
@@ -784,6 +792,7 @@ export const courses: Course[] = [
     totalHours: 16,
     sessionDuration: 2,
     specialAccess: "Unlimited Practice Time",
+    availability: "offline",
     learningOutcomes: [
       "Perform a clean, well-structured DJ set without relying on shortcuts",
       "Master manual beatmatching skills consistently without sync",
@@ -919,6 +928,7 @@ export const courses: Course[] = [
     totalHours: 32,
     sessionDuration: 2,
     specialAccess: "Unlimited Practice Time",
+    availability: "offline",
     learningOutcomes: [
       "Master advanced performance techniques on industry-standard equipment",
       "Develop technically advanced and performance-ready DJ skills",
@@ -1131,6 +1141,7 @@ export const courses: Course[] = [
     totalHours: 16,
     sessionDuration: 2,
     featured: true,
+    availability: "offline",
     learningOutcomes: [
       "Create professional-quality Remixes, edits, and mash ups",
       "Creatively re-interpret songs to your own signature style",
