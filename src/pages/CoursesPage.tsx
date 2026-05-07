@@ -93,10 +93,39 @@ const CoursesPage = () => {
               {/* Production Category */}
               <div id="production" className="scroll-mt-32">
                 <CategoryHeader category="production" />
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {productionCourses.map((course) => (
-                    <CourseCard key={course.id} course={course} />
-                  ))}
+                
+                {/* Online & Offline Sub-section */}
+                <div className="mb-12">
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/20 rounded-full">
+                      <Wifi className="w-4 h-4 text-primary" />
+                      <span className="text-muted-foreground mx-1">+</span>
+                      <MapPin className="w-4 h-4 text-primary" />
+                      <span className="text-sm font-semibold text-primary tracking-wide uppercase">Online & Offline</span>
+                    </div>
+                    <div className="h-px flex-1 bg-gradient-to-r from-primary/30 to-transparent" />
+                  </div>
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {productionCourses.filter(c => c.availability === "both").map((course) => (
+                      <CourseCard key={course.id} course={course} />
+                    ))}
+                  </div>
+                </div>
+
+                {/* Online Only Sub-section */}
+                <div>
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="flex items-center gap-2 px-4 py-2 bg-green-500/10 border border-green-500/20 rounded-full">
+                      <Wifi className="w-4 h-4 text-green-400" />
+                      <span className="text-sm font-semibold text-green-400 tracking-wide uppercase">Online Only</span>
+                    </div>
+                    <div className="h-px flex-1 bg-gradient-to-r from-green-500/30 to-transparent" />
+                  </div>
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {productionCourses.filter(c => c.availability === "online").map((course) => (
+                      <CourseCard key={course.id} course={course} />
+                    ))}
+                  </div>
                 </div>
               </div>
 
@@ -123,11 +152,49 @@ const CoursesPage = () => {
           ) : (
             <div>
               <CategoryHeader category={activeCategory} />
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {filteredCourses.map((course) => (
-                  <CourseCard key={course.id} course={course} />
-                ))}
-              </div>
+              {activeCategory === "production" ? (
+                <div className="space-y-12">
+                  {/* Online & Offline Sub-section */}
+                  <div>
+                    <div className="flex items-center gap-3 mb-6">
+                      <div className="flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/20 rounded-full">
+                        <Wifi className="w-4 h-4 text-primary" />
+                        <span className="text-muted-foreground mx-1">+</span>
+                        <MapPin className="w-4 h-4 text-primary" />
+                        <span className="text-sm font-semibold text-primary tracking-wide uppercase">Online & Offline</span>
+                      </div>
+                      <div className="h-px flex-1 bg-gradient-to-r from-primary/30 to-transparent" />
+                    </div>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                      {filteredCourses.filter(c => c.availability === "both").map((course) => (
+                        <CourseCard key={course.id} course={course} />
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Online Only Sub-section */}
+                  <div>
+                    <div className="flex items-center gap-3 mb-6">
+                      <div className="flex items-center gap-2 px-4 py-2 bg-green-500/10 border border-green-500/20 rounded-full">
+                        <Wifi className="w-4 h-4 text-green-400" />
+                        <span className="text-sm font-semibold text-green-400 tracking-wide uppercase">Online Only</span>
+                      </div>
+                      <div className="h-px flex-1 bg-gradient-to-r from-green-500/30 to-transparent" />
+                    </div>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                      {filteredCourses.filter(c => c.availability === "online").map((course) => (
+                        <CourseCard key={course.id} course={course} />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {filteredCourses.map((course) => (
+                    <CourseCard key={course.id} course={course} />
+                  ))}
+                </div>
+              )}
             </div>
           )}
         </div>
