@@ -26,39 +26,89 @@ const getOriginalFormattedPrice = (id: string) => {
   return course?.originalPrice ? formatPrice(course.originalPrice) : undefined;
 };
 
-const productionPlans = [
+const offlineProductionPlans = [
   {
-    id: "daw-fundamentals",
-    name: "Introduction to DAW",
+    id: "daw-fundamentals-offline",
+    name: "DAW Fundamentals",
     description: "Beginners exploring music production with focus on software understanding",
-    price: getPrice("daw-fundamentals"),
-    displayPrice: getFormattedPrice("daw-fundamentals"),
-    originalDisplayPrice: getOriginalFormattedPrice("daw-fundamentals"),
-    period: "/ 1 month",
+    price: 39999,
+    displayPrice: "₹39,999",
+    originalDisplayPrice: "₹54,999",
     popular: false,
-    cta: "Get Started",
+    cta: "Enroll Now",
   },
   {
-    id: "intro-to-music-production",
-    name: "Intermediate Music Production",
+    id: "intro-to-music-production-offline",
+    name: "Introduction to Music Production",
     description: "Serious learners building a strong foundation in structured production",
-    price: getPrice("intro-to-music-production"),
-    displayPrice: getFormattedPrice("intro-to-music-production"),
-    originalDisplayPrice: getOriginalFormattedPrice("intro-to-music-production"),
-    period: "/ 3 months",
+    price: 99999,
+    displayPrice: "₹99,999",
+    originalDisplayPrice: "₹1,24,999",
     popular: true,
     cta: "Enroll Now",
   },
   {
-    id: "advanced-production-mastery",
+    id: "advanced-production-mastery-offline",
     name: "Advanced Production Mastery",
     description: "Complete professional-level mastery for aspiring producers",
-    price: getPrice("advanced-production-mastery"),
-    displayPrice: getFormattedPrice("advanced-production-mastery"),
-    originalDisplayPrice: getOriginalFormattedPrice("advanced-production-mastery"),
-    period: "/ 5 months",
+    price: 179999,
+    displayPrice: "₹1,79,999",
+    originalDisplayPrice: "₹2,24,999",
     popular: false,
-    cta: "Apply Now",
+    cta: "Enroll Now",
+  },
+];
+
+const onlineProductionPlans = [
+  {
+    id: "daw-fundamentals-online",
+    name: "DAW Fundamentals",
+    description: "Beginners exploring music production with focus on software understanding",
+    price: 19999,
+    displayPrice: "₹19,999",
+    originalDisplayPrice: "₹29,999",
+    popular: false,
+    cta: "Enroll Now",
+  },
+  {
+    id: "intro-to-music-production-online",
+    name: "Introduction to Music Production",
+    description: "Serious learners building a strong foundation in structured production",
+    price: 49999,
+    displayPrice: "₹49,999",
+    originalDisplayPrice: "₹89,999",
+    popular: true,
+    cta: "Enroll Now",
+  },
+  {
+    id: "advanced-production-mastery-online",
+    name: "Advanced Production Mastery",
+    description: "Complete professional-level mastery for aspiring producers",
+    price: 99999,
+    displayPrice: "₹99,999",
+    originalDisplayPrice: "₹1,49,999",
+    popular: false,
+    cta: "Enroll Now",
+  },
+  {
+    id: "logic-pro-kickstart",
+    name: "LOGIC PRO KICKSTART",
+    description: "Beginners who want to learn Logic Pro basics and start making beats",
+    price: 19999,
+    displayPrice: "₹19,999",
+    originalDisplayPrice: "₹29,999",
+    popular: false,
+    cta: "Enroll Now",
+  },
+  {
+    id: "logic-pro-mastery",
+    name: "LOGIC PRO MASTERY",
+    description: "Serious learners who want to produce, mix, master, and build portfolio-ready tracks",
+    price: 49999,
+    displayPrice: "₹49,999",
+    originalDisplayPrice: "₹89,999",
+    popular: false,
+    cta: "Enroll Now",
   },
 ];
 
@@ -101,34 +151,64 @@ const artistDevPlans = [
   },
 ];
 
-const productionComparison = [
-  { feature: "Price", values: [
-    courses.find(c => c.id === "daw-fundamentals")?.originalPrice ? `${formatPrice(courses.find(c => c.id === "daw-fundamentals")!.originalPrice!)} ${getFormattedPrice("daw-fundamentals")}` : getFormattedPrice("daw-fundamentals"),
-    courses.find(c => c.id === "intro-to-music-production")?.originalPrice ? `${formatPrice(courses.find(c => c.id === "intro-to-music-production")!.originalPrice!)} ${getFormattedPrice("intro-to-music-production")}` : getFormattedPrice("intro-to-music-production"),
-    courses.find(c => c.id === "advanced-production-mastery")?.originalPrice ? `${formatPrice(courses.find(c => c.id === "advanced-production-mastery")!.originalPrice!)} ${getFormattedPrice("advanced-production-mastery")}` : getFormattedPrice("advanced-production-mastery")
-  ] },
-  { feature: "Duration", values: ["1 Month", "3 Months", "5 Months"] },
+const offlineProductionComparison = [
+  { feature: "Original Price | Discounted Price", values: ["₹54,999 | ₹39,999", "₹1,24,999 | ₹99,999", "₹2,24,999 | ₹1,79,999"] },
+  { feature: "Duration", values: ["1 Month | 12 Sessions", "3 Month | 36 Sessions", "5 Month | 60 Sessions"] },
   { feature: "Sessions Per Week", values: ["3", "3", "3"] },
   { feature: "Hours Per Session", values: ["2 Hours", "2 Hours", "2 Hours"] },
-  { feature: "Total Learning Depth", values: ["Basic Software", "Structured Training", "Professional Mastery"] },
+  { feature: "Total Learning Depth", values: ["Basic Software Understanding", "Structured Production Training", "Professional-Level Mastery"] },
   { feature: "DAW Navigation & Workflow", values: [true, true, true] },
   { feature: "Arrangement Basics", values: [true, true, true] },
   { feature: "Sound Design Fundamentals", values: [false, true, true] },
   { feature: "Sampling & Beat Creation", values: [false, true, true] },
   { feature: "Full Track Production", values: [false, true, true] },
   { feature: "Advanced Sound Design", values: [false, false, true] },
-  { feature: "Advanced Arrangement", values: [false, false, true] },
+  { feature: "Advanced Arrangement Techniques", values: [false, false, true] },
   { feature: "Mixing Techniques", values: ["Basic", "Intermediate", "Advanced / Release-Ready"] },
   { feature: "Creative Workflow Systems", values: [false, true, true] },
-  { feature: "Portfolio Development", values: [false, false, "Professional Level"] },
-  { feature: "Industry-Ready Track", values: [false, "Partial", true] },
-  { feature: "Live Performance", values: [false, false, true] },
-  { feature: "Career Guidance", values: [false, "Basic Direction", "Advanced / Mentorship"] },
+  { feature: "Portfolio Development", values: [false, false, "✔ (Professional Level)"] },
+  { feature: "Industry-Ready Track Output", values: [false, "Partial", true] },
+  { feature: "Live Performance Techniques", values: [false, false, true] },
+  { feature: "Career Guidance", values: [false, "Basic Direction", "Advanced Strategy & Mentorship"] },
   { feature: "Post-Course Mentorship", values: [false, "Limited", true] },
-  { feature: "Ableton License", values: [false, false, true] },
-  { feature: "Splice Free Samples", values: [false, true, true] },
+  { feature: "Ableton License Included", values: [false, false, true] },
+  { feature: "Apple Creator Studio - 1 Year Subscription", values: [false, false, false] },
+  { feature: "Splice Free Samples Included", values: [false, true, true] },
   { feature: "Certification", values: [true, true, true] },
-  { feature: "Best For", values: ["Beginners", "Serious learners", "Aspiring professionals"] },
+  { feature: "Best For", values: ["Beginners exploring music production", "Serious learners building strong foundation", "Aspiring professional producers"] },
+];
+
+const onlineProductionComparison = [
+  { feature: "Original Price | Discounted Price", values: ["₹29,999 | ₹19,999", "₹89,999 | ₹49,999", "₹1,49,999 | ₹99,999", "₹29,999 | ₹19,999", "₹89,999 | ₹49,999"] },
+  { feature: "Duration", values: ["1 Month | 12 Sessions", "3 Month | 36 Sessions", "5 Month | 60 Sessions", "1 Month | 12 Sessions", "3 Month | 36 Sessions"] },
+  { feature: "Sessions Per Week", values: ["3", "3", "3", "3", "3"] },
+  { feature: "Hours Per Session", values: ["2 Hours", "2 Hours", "2 Hours", "2 Hours", "2 Hours"] },
+  { feature: "Total Learning Depth", values: ["Basic Software Understanding", "Structured Production Training", "Professional-Level Mastery", "Basic Software Understanding", "Professional-Level Mastery"] },
+  { feature: "DAW Navigation & Workflow", values: [true, true, true, true, true] },
+  { feature: "Arrangement Basics", values: [true, true, true, true, true] },
+  { feature: "Sound Design Fundamentals", values: [false, true, true, true, true] },
+  { feature: "Sampling & Beat Creation", values: [false, true, true, true, true] },
+  { feature: "Full Track Production", values: [false, true, true, true, true] },
+  { feature: "Advanced Sound Design", values: [false, false, true, true, true] },
+  { feature: "Advanced Arrangement Techniques", values: [false, false, true, true, true] },
+  { feature: "Mixing Techniques", values: ["Basic", "Intermediate", "Advanced / Release-Ready", "Basic", "Advanced / Release-Ready"] },
+  { feature: "Creative Workflow Systems", values: [false, true, true, true, true] },
+  { feature: "Portfolio Development", values: [false, false, "✔ (Professional Level)", false, true] },
+  { feature: "Industry-Ready Track Output", values: [false, "Partial", true, false, true] },
+  { feature: "Live Performance Techniques", values: [false, false, true, false, false] },
+  { feature: "Career Guidance", values: [false, "Basic Direction", "Advanced Strategy & Mentorship", false, true] },
+  { feature: "Post-Course Mentorship", values: [false, "Limited", true, false, true] },
+  { feature: "Ableton License Included", values: [false, false, true, false, false] },
+  { feature: "Apple Creator Studio - 1 Year Subscription", values: [false, false, false, false, true] },
+  { feature: "Splice Free Samples Included", values: [false, true, true, true, true] },
+  { feature: "Certification", values: [true, true, true, true, true] },
+  { feature: "Best For", values: [
+    "Beginners exploring music production", 
+    "Serious learners building strong foundation", 
+    "Aspiring professional producers", 
+    "Beginners who want to learn Logic Pro basics and start making beats", 
+    "Serious learners who want to produce, mix, master, and build portfolio-ready tracks"
+  ] },
 ];
 
 const djingComparison = [
@@ -184,6 +264,7 @@ const Pricing = () => {
   const { initiatePayment, isLoading } = useRazorpay();
   const { user } = useAuth();
   const [activeCategory, setActiveCategory] = useState<"production" | "djing">("production");
+  const [productionMode, setProductionMode] = useState<"offline" | "online">("offline");
 
   const handlePurchase = async (plan: any) => {
     await initiatePayment({
@@ -195,17 +276,17 @@ const Pricing = () => {
 
   const renderComparisonTable = (plans: any[], data: any[]) => (
     <div className="bg-card border border-border rounded-2xl overflow-hidden shadow-sm backdrop-blur-sm">
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto scrollbar-thin scrollbar-thumb-border scrollbar-track-transparent">
         <table className="w-full border-collapse">
           <thead>
             <tr>
-              <th className="py-4 px-6 text-left text-muted-foreground text-xs font-semibold bg-muted/10 border-b border-border min-w-[180px]">
+              <th className="py-4 px-6 text-left text-muted-foreground text-[10px] uppercase tracking-wider font-semibold bg-muted/10 border-b border-border min-w-[150px]">
                 Features / Benefits
               </th>
               {plans.map(plan => (
                 <th 
                   key={plan.id} 
-                  className={cn("py-4 px-6 text-center bg-muted/10 border-b border-border min-w-[160px]", plan.popular && "relative")}
+                  className={cn("py-4 px-4 text-center bg-muted/10 border-b border-border min-w-[130px]", plan.popular && "relative")}
                 >
                   {plan.popular && (
                     <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-cta" />
@@ -230,7 +311,7 @@ const Pricing = () => {
           <tbody className="divide-y divide-border/50">
             {data.map((row, index) => (
               <tr key={index} className="hover:bg-muted/5 transition-colors group">
-                <td className="py-2.5 px-6 text-foreground text-xs font-medium group-hover:text-primary transition-colors">
+                <td className="py-2.5 px-6 text-foreground text-[11px] font-medium group-hover:text-primary transition-colors">
                   {row.feature}
                 </td>
                 {row.values.map((val, i) => {
@@ -251,8 +332,13 @@ const Pricing = () => {
                           <X className="w-4 h-4 text-muted-foreground/20 mx-auto" />
                         )
                       ) : (
-                        <span className={cn("text-xs font-medium whitespace-nowrap", isPopular ? "text-foreground" : "text-muted-foreground")}>
-                          {typeof val === 'string' && val.includes(' ₹') ? (
+                        <span className={cn("text-[11px] font-medium leading-tight block", isPopular ? "text-foreground" : "text-muted-foreground")}>
+                          {typeof val === 'string' && val.includes(' | ') ? (
+                            <div className="flex flex-col items-center gap-0.5">
+                              <span className="text-[10px] text-muted-foreground/60 line-through">{val.split('|')[0].trim()}</span>
+                              <span className="text-foreground font-bold">{val.split('|')[1].trim()}</span>
+                            </div>
+                          ) : typeof val === 'string' && val.includes(' ₹') ? (
                             <>
                               <span className="line-through text-muted-foreground/60 mr-1.5">{val.split(' ')[0]}</span>
                               <span>{val.split(' ')[1]}</span>
@@ -323,7 +409,7 @@ const Pricing = () => {
       {/* Pricing Comparison Section */}
       <section className="py-8">
         <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto">
+          <div className="max-w-6xl mx-auto">
             <div className="text-center mb-8">
               <h2 className="font-display text-2xl sm:text-3xl font-bold text-foreground mb-2">
                 {activeCategory === "production" ? "Production Comparison" : "DJing Comparison"}
@@ -335,7 +421,36 @@ const Pricing = () => {
             
             <Tabs value={activeCategory} className="w-full">
               <TabsContent value="production" className="mt-0 focus-visible:outline-none focus-visible:ring-0">
-                {renderComparisonTable(productionPlans, productionComparison)}
+                <div className="flex justify-center mb-8">
+                  <div className="inline-flex p-1 bg-muted/50 backdrop-blur-sm border border-border/50 rounded-xl">
+                    <button
+                      onClick={() => setProductionMode("offline")}
+                      className={cn(
+                        "px-6 py-2 text-xs font-bold rounded-lg transition-all",
+                        productionMode === "offline" 
+                          ? "bg-background text-primary shadow-sm" 
+                          : "text-muted-foreground hover:text-foreground"
+                      )}
+                    >
+                      OFFLINE
+                    </button>
+                    <button
+                      onClick={() => setProductionMode("online")}
+                      className={cn(
+                        "px-6 py-2 text-xs font-bold rounded-lg transition-all",
+                        productionMode === "online" 
+                          ? "bg-background text-primary shadow-sm" 
+                          : "text-muted-foreground hover:text-foreground"
+                      )}
+                    >
+                      ONLINE
+                    </button>
+                  </div>
+                </div>
+                {productionMode === "offline" 
+                  ? renderComparisonTable(offlineProductionPlans, offlineProductionComparison)
+                  : renderComparisonTable(onlineProductionPlans, onlineProductionComparison)
+                }
               </TabsContent>
               <TabsContent value="djing" className="mt-0 focus-visible:outline-none focus-visible:ring-0">
                 {renderComparisonTable(djingPlans, djingComparison)}

@@ -67,6 +67,10 @@ export interface Course {
   }[];
   featured?: boolean;
   availability?: "online" | "offline" | "both";
+  onlinePrice?: number;
+  onlineOriginalPrice?: number;
+  offlinePrice?: number;
+  offlineOriginalPrice?: number;
 }
 
 // Founders/Instructors data
@@ -205,8 +209,12 @@ export const courses: Course[] = [
     description: "Learn the fundamentals of Digital Audio Workstations (DAW). Perfect for absolute beginners looking to start their production journey.",
     longDescription: "This intensive 1-month program takes you from zero to confident DAW user. You'll learn interface navigation, basic recording, MIDI programming, and essential editing techniques. By the end, you'll have a solid foundation to build upon in more advanced courses.",
     duration: { months: 1 },
-    price: 39999,
-    originalPrice: 54999,
+    price: 19999, // Default to lowest
+    originalPrice: 29999,
+    onlinePrice: 19999,
+    onlineOriginalPrice: 29999,
+    offlinePrice: 39999,
+    offlineOriginalPrice: 54999,
     level: "beginner",
     instructorId: "aryaman",
     sessionsPerWeek: 3,
@@ -367,8 +375,12 @@ export const courses: Course[] = [
     description: "Comprehensive introduction to music production covering composition, sound design, arrangement, and production workflow. Students complete production-ready tracks.",
     longDescription: "This 3-month intensive program transforms you from a beginner into a capable music producer. You'll master composition, sound design, arrangement, and mixing fundamentals while creating your own original tracks. By the end, you'll have a portfolio of production-ready music.",
     duration: { months: 3 },
-    price: 99999,
-    originalPrice: 124999,
+    price: 49999, // Default to lowest
+    originalPrice: 89999,
+    onlinePrice: 49999,
+    onlineOriginalPrice: 89999,
+    offlinePrice: 99999,
+    offlineOriginalPrice: 124999,
     level: "intermediate",
     instructorId: "aryaman",
     sessionsPerWeek: 3,
@@ -457,8 +469,12 @@ export const courses: Course[] = [
     description: "Go beyond presets - understand synthesis, sound shaping, and instrument architecture to craft your own signature sound. Master full-spectrum production from core fundamentals to advanced performance techniques.",
     longDescription: "This intensive 5-month program is designed for producers ready to reach professional levels. Train with Aryaman Agarwal, a Pyramind graduate and Ableton Certified Trainer. Get Ableton Live Suite 12 along with the course and master sampling, groove design, sound shaping, and industry-ready workflow systems.",
     duration: { months: 5 },
-    price: 179999,
-    originalPrice: 224999,
+    price: 99999, // Default to lowest
+    originalPrice: 149999,
+    onlinePrice: 99999,
+    onlineOriginalPrice: 149999,
+    offlinePrice: 179999,
+    offlineOriginalPrice: 224999,
     level: "advanced",
     instructorId: "aryaman",
     sessionsPerWeek: 3,
@@ -590,10 +606,10 @@ export const courses: Course[] = [
     tagline: "Master Logic Pro fundamentals in 1 month",
     category: "production",
     description: "Learn from Industry Expert Vaibhav Sahay with 17+ years experience in Logic Pro. Month 1 functions as a complete beginner course covering foundations, rhythm, and sound design basics.",
-    longDescription: "This intensive 1-month program takes you from zero to confident Logic Pro user. You'll learn interface navigation, signal flow, MIDI programming, drum design, and synthesis fundamentals. Perfect for absolute beginners looking to start their production journey in Logic Pro.",
+    longDescription: "This 1-month intensive program is designed for beginners and early-stage producers who want to build a strong foundation in music production using Logic Pro. The course focuses on developing essential skills required to create, arrange, and complete tracks with clarity and confidence.\n\nYou will learn how to navigate Logic Pro efficiently, program MIDI, work with audio, and structure full compositions from scratch. By the end of the course, you will be able to produce complete tracks with basic mixing and arrangement techniques.",
     duration: { months: 1 },
-    price: 39999,
-    originalPrice: 54999,
+    price: 19999,
+    originalPrice: 29999,
     level: "beginner",
     instructorId: "vaibhav",
     sessionsPerWeek: 3,
@@ -668,10 +684,10 @@ export const courses: Course[] = [
     tagline: "Your 3-month roadmap to professional music production",
     category: "production",
     description: "The ultimate Logic Pro program covering everything from foundations to professional mastering. Includes Apple Creator Studio bundle and Splice membership.",
-    longDescription: "This comprehensive 3-month program transforms you into a professional music producer. Master sound design, sampling, advanced arrangement, mixing, and mastering. Includes career roadmap support for paths like Music Producer, Mix Engineer, and Sound Designer.",
+    longDescription: "This intensive 3-month program is designed for producers looking to elevate their skills to a professional level using Logic Pro. The course focuses on advanced production techniques, sound design, arrangement, mixing, and real-world workflows used in the music industry.\n\nYou will learn how to move beyond basic production and develop a refined, efficient workflow that allows you to create industry-ready tracks. From building complex arrangements to achieving professional mixes and masters, this course is structured to simulate real production environments.",
     duration: { months: 3 },
-    price: 99999,
-    originalPrice: 124999,
+    price: 49999,
+    originalPrice: 89999,
     level: "all-levels",
     instructorId: "vaibhav",
     sessionsPerWeek: 3,
@@ -724,6 +740,7 @@ export const courses: Course[] = [
         items: [
           "Music Producer / Beatmaker",
           "Mix Engineer",
+          "Ableton Live Performer",
           "Studio Assistant",
           "Independent Artist",
           "Freelance Sound Designer",
