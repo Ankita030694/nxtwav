@@ -9,6 +9,7 @@ import { useToast } from "@/hooks/use-toast";
 import nxtwavLogo from "@/assets/nxtwav-logo-v2.png";
 import ParticleBackground from "@/components/ui/particle-background";
 import SEO from "@/components/SEO";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -20,6 +21,7 @@ export default function Login() {
   const { signIn, signInWithGoogle, user } = useAuth();
   const navigate = useNavigate();
   const { toast } = useToast();
+  const { executeRecaptcha } = useGoogleReCaptcha();
 
   useEffect(() => {
     if (user) {
@@ -49,6 +51,28 @@ export default function Login() {
     }
 
     setIsLoading(true);
+
+    if (!executeRecaptcha) {
+      toast({
+        title: "Captcha Error",
+        description: "ReCaptcha has not been loaded yet. Please try again in a moment.",
+        variant: "destructive",
+      });
+      setIsLoading(false);
+      return;
+    }
+
+    const token = await executeRecaptcha("login_form_submit");
+    
+    if (!token) {
+      toast({
+        title: "Captcha Error",
+        description: "Failed to verify reCAPTCHA. Please try again.",
+        variant: "destructive",
+      });
+      setIsLoading(false);
+      return;
+    }
     
     const { error } = await signIn(email, password);
     

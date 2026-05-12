@@ -14,6 +14,7 @@ import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import ParticleBackground from "@/components/ui/particle-background";
 import SEO from "@/components/SEO";
 import { courses, categoryInfo } from "@/data/courses";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
 const indianStatesAndUTs = [
   "Andaman and Nicobar Islands", "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", 
@@ -31,6 +32,7 @@ export default function Signup() {
     phone: "",
     state: "",
     course: "",
+    mode: "", // Online or Offline
     instagram: "",
     linkedin: "",
     message: ""
@@ -39,6 +41,7 @@ export default function Signup() {
   
   const navigate = useNavigate();
   const { toast } = useToast();
+  const { executeRecaptcha } = useGoogleReCaptcha();
 
   const validateEmail = (email: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -69,10 +72,10 @@ export default function Signup() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!formData.name || !formData.email || !formData.phone || !formData.state || !formData.course || !formData.instagram) {
+    if (!formData.name || !formData.email || !formData.phone || !formData.state || !formData.course || !formData.mode || !formData.instagram) {
       toast({
         title: "Missing fields",
-        description: "Please fill in all required fields, including your Instagram username and course of interest.",
+        description: "Please fill in all required fields, including your preference for Online/Offline course.",
         variant: "destructive",
       });
       return;
@@ -97,10 +100,33 @@ export default function Signup() {
     }
 
     setIsLoading(true);
+
+    if (!executeRecaptcha) {
+      toast({
+        title: "Captcha Error",
+        description: "ReCaptcha has not been loaded yet. Please try again in a moment.",
+        variant: "destructive",
+      });
+      setIsLoading(false);
+      return;
+    }
+
+    const token = await executeRecaptcha("signup_form_submit");
+    
+    if (!token) {
+      toast({
+        title: "Captcha Error",
+        description: "Failed to verify reCAPTCHA. Please try again.",
+        variant: "destructive",
+      });
+      setIsLoading(false);
+      return;
+    }
     
     try {
       await addDoc(collection(db, "inquiries"), {
         ...formData,
+        captchaToken: token,
         formUrl: window.location.href,
         createdAt: serverTimestamp()
       });
@@ -116,6 +142,7 @@ export default function Signup() {
         phone: "",
         state: "",
         course: "",
+        mode: "",
         instagram: "",
         linkedin: "",
         message: ""
@@ -211,6 +238,22 @@ export default function Signup() {
                         ))}
                     </SelectGroup>
                   ))}
+                </SelectContent>
+              </Select>
+            </div>
+
+            <div className="space-y-2">
+              <Select 
+                value={formData.mode} 
+                onValueChange={(value) => setFormData(prev => ({ ...prev, mode: value }))} 
+                required
+              >
+                <SelectTrigger className="bg-background/50">
+                  <SelectValue placeholder="Interested in Online or Offline?" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="Online">Online</SelectItem>
+                  <SelectItem value="Offline">Offline</SelectItem>
                 </SelectContent>
               </Select>
             </div>

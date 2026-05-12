@@ -8,6 +8,7 @@ import { PageLoader } from "@/components/PageLoader";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { WhatsAppWidget } from "@/components/WhatsAppWidget";
 import { ConsultationButton } from "@/components/ConsultationButton";
+import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
 import Index from "./pages/Index";
 import Landing from "./pages/Landing";
 import About from "./pages/About";
@@ -38,7 +39,8 @@ const App = () => (
       <AuthProvider>
         <Toaster />
         <Sonner />
-        <BrowserRouter>
+        <GoogleReCaptchaProvider reCaptchaKey={import.meta.env.VITE_RECAPTCHA_SITE_KEY || "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"}> 
+          <BrowserRouter>
           <ScrollToTop />
           <PageLoader />
           <WhatsAppWidget />
@@ -67,6 +69,7 @@ const App = () => (
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
+        </GoogleReCaptchaProvider>
       </AuthProvider>
     </TooltipProvider>
   </QueryClientProvider>
