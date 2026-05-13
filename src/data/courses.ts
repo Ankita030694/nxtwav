@@ -928,8 +928,8 @@ export const courses: Course[] = [
     ],
   },
   {
-    id: "dj-artistry-program",
-    slug: "dj-artistry-program",
+    id: "advanced-djing-program",
+    slug: "advanced-djing-program",
     title: "Advanced DJing Program",
     tagline: "Perfect For: Aspiring professional DJs",
     category: "djing",

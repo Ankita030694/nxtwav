@@ -125,12 +125,12 @@ const djingPlans = [
     cta: "Get Started",
   },
   {
-    id: "dj-artistry-program",
+    id: "advanced-djing-program",
     name: "Advanced DJing Program",
     description: "Transform from a technically good DJ into a performance-ready artist.",
-    price: getPrice("dj-artistry-program"),
-    displayPrice: getFormattedPrice("dj-artistry-program"),
-    originalDisplayPrice: getOriginalFormattedPrice("dj-artistry-program"),
+    price: getPrice("advanced-djing-program"),
+    displayPrice: getFormattedPrice("advanced-djing-program"),
+    originalDisplayPrice: getOriginalFormattedPrice("advanced-djing-program"),
     period: "/ 8 weeks",
     popular: true,
     cta: "Enroll Now",
@@ -214,7 +214,7 @@ const onlineProductionComparison = [
 const djingComparison = [
   { feature: "Price", values: [
     courses.find(c => c.id === "dj-beginner")?.originalPrice ? `${formatPrice(courses.find(c => c.id === "dj-beginner")!.originalPrice!)} ${getFormattedPrice("dj-beginner")}` : getFormattedPrice("dj-beginner"),
-    courses.find(c => c.id === "dj-artistry-program")?.originalPrice ? `${formatPrice(courses.find(c => c.id === "dj-artistry-program")!.originalPrice!)} ${getFormattedPrice("dj-artistry-program")}` : getFormattedPrice("dj-artistry-program")
+    courses.find(c => c.id === "advanced-djing-program")?.originalPrice ? `${formatPrice(courses.find(c => c.id === "advanced-djing-program")!.originalPrice!)} ${getFormattedPrice("advanced-djing-program")}` : getFormattedPrice("advanced-djing-program")
   ] },
   { feature: "Duration", values: ["4 Weeks", "8 Weeks"] },
   { feature: "Total Sessions", values: ["8 Sessions", "16 Sessions"] },
