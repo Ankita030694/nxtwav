@@ -21,6 +21,7 @@ interface Lead {
   phone: string;
   state: string;
   course: string;
+  mode?: string;
   instagram?: string;
   linkedin?: string;
   message: string;
@@ -127,6 +128,9 @@ export function LeadRow({ lead, index, isLast, innerRef }: LeadRowProps) {
         <span className="px-2 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-wider border border-primary/20">
           {lead.course}
         </span>
+      </TableCell>
+      <TableCell className="align-top py-2 text-xs">
+        {lead.mode || "-"}
       </TableCell>
       <TableCell className="align-top py-2">{lead.instagram || "-"}</TableCell>
       <TableCell className="align-top py-2">

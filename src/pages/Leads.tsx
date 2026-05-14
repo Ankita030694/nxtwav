@@ -20,6 +20,7 @@ interface Lead {
   phone: string;
   state: string;
   course: string;
+  mode?: string;
   instagram?: string;
   linkedin?: string;
   message: string;
@@ -155,7 +156,7 @@ export default function Leads() {
         }
       });
 
-      const headers = ["S.No.", "Date", "Name", "Email", "Phone", "Course", "Instagram", "LinkedIn", "State", "Message", "Form URL", "Latest Remark"];
+      const headers = ["S.No.", "Date", "Name", "Email", "Phone", "Course", "Mode", "Instagram", "LinkedIn", "State", "Message", "Form URL", "Latest Remark"];
       const csvContent = [
         headers.join(","),
         ...allLeads.map((lead, index) => [
@@ -165,6 +166,7 @@ export default function Leads() {
           lead.email || '',
           lead.phone || '',
           lead.course || 'N/A',
+          lead.mode || 'N/A',
           lead.instagram || "-",
           lead.linkedin || "-",
           lead.state || '',
@@ -281,6 +283,7 @@ export default function Leads() {
                     <TableHead>Email</TableHead>
                     <TableHead>Phone</TableHead>
                     <TableHead>Course</TableHead>
+                    <TableHead>Mode</TableHead>
                     <TableHead>Instagram</TableHead>
                     <TableHead>LinkedIn</TableHead>
                     <TableHead>State</TableHead>
