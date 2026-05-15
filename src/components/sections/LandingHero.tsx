@@ -34,7 +34,7 @@ export function LandingHero() {
             </h1>
 
             <p className="text-xl font-bold text-accent mb-6 animate-fade-in" style={{ animationDelay: '0.15s' }}>
-              Courses Starting from INR 34,999/-
+              Courses Starting from INR 19,999/-
             </p>
 
             {/* Subheadline */}
